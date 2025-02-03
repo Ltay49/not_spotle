@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 const endpoints = require('../data/api.json')
-import {fetchAllStats} from '../models/model'
+import {fetchAllStats, fetchPlayer} from '../models/model'
 
 export const getApi = (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -23,3 +23,17 @@ export const getApi = (req: Request, res: Response, next: NextFunction) => {
         next(err)
     }
   }
+
+export const getPlayer = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+try {
+  const name: string = req.params.name;
+  const player = await fetchPlayer(name);
+  res.status(200).send(player)
+} catch (err) {
+  next(err);
+}
+};

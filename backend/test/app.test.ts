@@ -30,16 +30,24 @@ afterAll(async () => {
 });
 
 describe("API Health Check", () => {
-  it("should return a 200 status code for the root endpoint", async () => {
+  test("should return a 200 status code for the root endpoint", async () => {
     const response = await request(app).get("/api");
     expect(response.status).toBe(200);
   });
 });
 
 describe("GET: playerStas", () => {
-  it("returns an array of player stats ", async () => {
+  test("returns an array of player stats ", async () => {
     const response = await request(app).get("/api/playerStats");
     console.log(response.body)
     expect(response.status).toBe(200);
   });
 });
+
+describe("GET: playerByName", ()=>{
+test.only("returns a single player", async ()=>{
+  const response = await request(app).get("/api/playerStats/Mark Viduka");
+  console.log(response.body)
+  expect(response.status).toBe(200);
+})
+})

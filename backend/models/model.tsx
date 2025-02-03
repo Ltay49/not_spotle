@@ -17,3 +17,26 @@ export const fetchAllStats = async (): Promise<Stats[]> => {
     }
 };
 
+export const fetchPlayer = async (
+    name: string
+): Promise<Stats | null> => {
+    try {
+        // Initialize connection and get DB instance
+        await initializeConnection(MONGODB_URI, DATABASE_NAME);
+        const db = getDb();
+        
+        // Define collection for playerStats
+        const collection: Collection<Stats> = db.collection("PlayerStats");
+
+        // Find a single player by name
+        const player = await collection.findOne({ name: name });
+
+        // Return the player data or null if not found
+        return player;
+    } catch (err) {
+        console.error("Error fetching player:", err);
+        throw err;
+    }
+};
+
+

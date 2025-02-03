@@ -17,7 +17,7 @@ export async function seeding(
       const collection = db.collection(name);
       await collection.deleteMany({});
       console.log(`${name} collection cleared.`);
-      console.log("Seeding data:", data);
+      // console.log("Seeding data:", data);
       await collection.insertMany(data);
       console.log(`${name} collection seeded with ${data.length} records.`);
     }

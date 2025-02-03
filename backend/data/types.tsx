@@ -3,7 +3,8 @@ export type Stats = {
     nationality: string;
     seasons: number[];
     goals: number;
-    team: string[];
+    team: string[]
+    teamUrl: string[];
     games: number;
     position: string;
   };
