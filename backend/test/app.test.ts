@@ -28,3 +28,18 @@ beforeAll(async () => {
 afterAll(async () => {
   await closeConnection();
 });
+
+describe("API Health Check", () => {
+  it("should return a 200 status code for the root endpoint", async () => {
+    const response = await request(app).get("/api");
+    expect(response.status).toBe(200);
+  });
+});
+
+describe("GET: playerStas", () => {
+  it("returns an array of player stats ", async () => {
+    const response = await request(app).get("/api/playerStats");
+    console.log(response.body)
+    expect(response.status).toBe(200);
+  });
+});
