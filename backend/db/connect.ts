@@ -8,7 +8,6 @@ export const initializeConnection = async (uri: string, dbName: string) => {
     console.log("Connecting to MongoDB...");
     client = new MongoClient(uri, {  // Use global client variable
       tls: true,
-      ssl: true,  // Make sure SSL is enabled explicitly
     });
     await client.connect(); // Wait for the connection to establish
     db = client.db(dbName); // Set the database instance
