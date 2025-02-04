@@ -1,6 +1,6 @@
 import {
     playerStats
-  } from './data/playerStats';
+  } from './data/testdata/playerStats';
 
   import { seeding } from "./db/seed";
   import { MongoClient } from "mongodb";
