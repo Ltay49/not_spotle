@@ -2,8 +2,8 @@ import app from "./app"; // Import the Express app from app.ts
 import { initializeConnection } from "./db/connect"; // MongoDB connection logic
 import { MONGODB_URI, DATABASE_NAME } from "./db/config"; // Environment variables for MongoDB URI and DB name
 
-const { PORT = 5000 } = process.env; // Default port is 5000
-
+const { PORT = 4000 } = process.env; // Default port is 5000
+const port = Number(PORT) || 4000;
 const startServer = async () => {
   try {
     console.log("Starting server...");
@@ -13,8 +13,10 @@ const startServer = async () => {
     console.log("Connected to MongoDB");
 
     // Start the Express server
-    app.listen(PORT, () => {
+    app.listen(port, () => {
       console.log(`Server is listening on port ${PORT}`);
+    }).on("error", (err) => {
+      console.error("Error occurred while starting the server:", err);
     });
   } catch (error) {
     console.error("Failed to start the server:", error);
