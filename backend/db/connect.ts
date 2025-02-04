@@ -1,14 +1,14 @@
 import { MongoClient, Db } from "mongodb";
 
-let client: MongoClient | null = null;
+let client: MongoClient | null = null;  // Global client variable
 let db: Db | null = null;
 
 export const initializeConnection = async (uri: string, dbName: string) => {
-  if (!client) {
+  if (!client) {  // Check if client is not initialized
     console.log("Connecting to MongoDB...");
-    // No need for useNewUrlParser or useUnifiedTopology in MongoDB driver v4.x
-    client = new MongoClient(uri, {
-      tls: true,  // Explicitly set TLS/SSL for Atlas connection
+    client = new MongoClient(uri, {  // Use global client variable
+      tls: true,
+      ssl: true,  // Make sure SSL is enabled explicitly
     });
     await client.connect(); // Wait for the connection to establish
     db = client.db(dbName); // Set the database instance
@@ -34,3 +34,4 @@ export const closeConnection = async () => {
     console.log("MongoDB connection closed.");
   }
 };
+
