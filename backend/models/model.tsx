@@ -1,7 +1,7 @@
 import { Collection } from "mongodb";
 import { initializeConnection, getDb } from "../db/connect";
 import { MONGODB_URI, DATABASE_NAME } from "../db/config";
-import { Stats } from "../data/types";
+import { Stats } from "../data/devdata/types";
 
 export const fetchAllStats = async (): Promise<Stats[]> => {
     try {
@@ -39,4 +39,42 @@ export const fetchPlayer = async (
     }
 };
 
+export interface ChosenPlayer {
+    name: string;
+    nationality: string;
+    assists: number,
+    goals: number;
+    team: string[]
+    teamUrl: string[];
+    games: number;
+    position: string;
+}
 
+export const updateUsedStats = async (body: ChosenPlayer): Promise<Stats | null> => {
+    try {
+      const playerToInsert: Omit<Stats, "_id"> = {
+        name: body.name,
+        nationality: body.nationality,
+       assists: body.assists,
+        goals: body.goals,
+        team: body.team as string[],
+        teamUrl: body.teamUrl as string[],
+        games: body.games,
+        position: body.position,
+      };
+  
+      await initializeConnection(MONGODB_URI, DATABASE_NAME);
+      const db = getDb();
+      const collection: Collection<Stats> = db.collection("usedStats");
+  
+      const result = await collection.insertOne(playerToInsert);
+      
+      // Find the newly inserted player by its _id
+      const updatedStatsPlayer = await collection.findOne({ _id: result.insertedId });
+  
+      return updatedStatsPlayer; // ✅ Fixed syntax error (replaced `,` with `;`)
+    } catch (err) {
+      throw err;
+    }
+  };
+  

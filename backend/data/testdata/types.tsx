@@ -1,8 +1,8 @@
 export type Stats = {
     name: string;
     nationality: string;
-    seasons: number[];
-    goals: number;
+    assists: number,
+    goals: number,
     team: string[]
     teamUrl: string[];
     games: number;

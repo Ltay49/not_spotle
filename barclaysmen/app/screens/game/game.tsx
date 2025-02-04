@@ -1,29 +1,39 @@
 import { useNavigation } from 'expo-router';
-import { Text, StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View,ScrollView, Platform, Dimensions} from 'react-native';
 import { useEffect, useState } from 'react';
 import Questions from './questions';
-export default function gamePage (){
 
-    return(
 
-    <View style={styles.container}>
-    <Questions/>
-    </View>
-    
-    )    
+const isWeb = Platform.OS === 'web';
+const screenWidth = Dimensions.get('window').width;
+
+export default function GamePage() {
+    return (
+        <View style={styles.wrapper}>
+            <ScrollView contentContainerStyle={styles.container}>
+                <Questions />
+            </ScrollView>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      height:'50%',
-      width:'90%',
-        paddingTop:-10,
-        marginTop:-10,
-        borderWidth:2,
-        borderColor:'Black',
-        flex: 1,
-        alignItems: 'center',
-        // backgroundColor: 'grey',
-      },
-
-})
+  wrapper: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'white',
+  },
+  container: {
+      width: isWeb ? '150%' : '100%',
+      maxWidth: isWeb ? 1000 : '100%',
+      borderWidth: 2,
+      borderColor: 'black',
+      padding: 20,
+      borderRadius: 10,
+      backgroundColor: 'lightgray',
+      minHeight: 300,
+      alignItems: 'center',
+      justifyContent: 'center', 
+  },
+});

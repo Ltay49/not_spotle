@@ -53,7 +53,7 @@ export default function Login() {
 }
 const styles = StyleSheet.create({
     container: {
-        marginBottom:300,
+      marginBottom:300,
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',

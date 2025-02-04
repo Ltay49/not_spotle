@@ -1,13 +1,14 @@
-import { View, StyleSheet, Text, ScrollView, Image, TextInput} from "react-native"
+import { View, StyleSheet, Text, ScrollView, Image, TextInput, Platform, Dimensions} from "react-native"
 const JJ = require('../../../assets/images/jj.png');
 const Football = require ('../../../assets/images/Football.png')
 
+const isWeb = Platform.OS === "web";
+const screenWidth = Dimensions.get("window").width;
 
 export default function (){
 
     return (
-
-        <View>
+        <View style={styles.container}>
             <ScrollView>
             <View style={styles.chances}>
             <Image source={Football} style={styles.football} /> 
@@ -68,6 +69,18 @@ export default function (){
 }
 
 const styles = StyleSheet.create({
+    container: {
+        width: isWeb ? "100%" : "90%", // Adjusts width for web
+        maxWidth: isWeb ? 1200 : "100%",
+        padding: 15,
+        alignItems: "center",
+        backgroundColor: "#f8f8f8",
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 3,
+      },
     chances:{
         display:'flex',
         flexWrap:'wrap',
