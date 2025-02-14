@@ -410,8 +410,8 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 2,
         borderRadius: 10,
-        // width: '99%',
-        // fontSize:16,
+        paddingLeft:5,
+        fontSize:20,
         alignSelf: 'center',
     },
     chances: {
