@@ -5,9 +5,9 @@ export default function Layout() {
     <Stack
       screenOptions={{
         headerStyle: {
-          backgroundColor: 'salmon',
+          backgroundColor: 'black',
         },
-        headerTintColor: '#fff',
+        headerTintColor: 'black',
         headerTitleStyle: {
           fontWeight: 'bold',
         },

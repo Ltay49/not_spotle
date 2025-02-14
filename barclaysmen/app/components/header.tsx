@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     marginBottom:1 , // Optional: Add margin to the top if needed
   },
   header: {
-    marginTop:80,
+    color:'white',
+    marginTop:36,
     fontSize: 60,
     fontWeight: 'bold',
     textAlign: 'center', // Ensures text is centered in its container

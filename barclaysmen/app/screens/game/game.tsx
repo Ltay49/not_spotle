@@ -1,39 +1,35 @@
-import { useNavigation } from 'expo-router';
-import { Text, StyleSheet, View,ScrollView, Platform, Dimensions} from 'react-native';
-import { useEffect, useState } from 'react';
+import { ImageBackground, StyleSheet, View, Platform, Dimensions } from 'react-native';
+import { useState, useEffect } from 'react';
 import Questions from './questions';
 
+const Lua = require('../../../assets/images/LuaLua.png'); // Ensure the path is correct
 
 const isWeb = Platform.OS === 'web';
 const screenWidth = Dimensions.get('window').width;
 
 export default function GamePage() {
     return (
-        <View style={styles.wrapper}>
-            <ScrollView contentContainerStyle={styles.container}>
+        <ImageBackground source={Lua} style={styles.background} resizeMode="cover" blurRadius={5}>
+            <View style={styles.overlay}> 
                 <Questions />
-            </ScrollView>
-        </View>
+            </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'white',
-  },
-  container: {
-      width: isWeb ? '150%' : '100%',
-      maxWidth: isWeb ? 1000 : '100%',
-      borderWidth: 2,
-      borderColor: 'black',
-      padding: 20,
-      borderRadius: 10,
-      backgroundColor: 'lightgray',
-      minHeight: 300,
-      alignItems: 'center',
-      justifyContent: 'center', 
-  },
+    background: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    overlay: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)', // Optional: Add a translucent overlay
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });

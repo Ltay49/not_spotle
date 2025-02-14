@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react';
 import Login from './login';
 import Header from './components/header';
 
+
 export default function Home() {
   const navigation = useNavigation();
 
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation]);
-
 
   return (
     <View style={styles.container}>
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'salmon',
+      backgroundColor: 'black',
     },
 })

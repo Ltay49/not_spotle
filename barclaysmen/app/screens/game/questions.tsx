@@ -1,175 +1,677 @@
-import { View, StyleSheet, Text, ScrollView, Image, TextInput, Platform, Dimensions} from "react-native"
-const JJ = require('../../../assets/images/jj.png');
-const Football = require ('../../../assets/images/Football.png')
+import {
+    View,
+    StyleSheet,
+    Text,
+    ScrollView,
+    Image,
+    TextInput,
+    TouchableOpacity,
+    ImageBackground
+} from "react-native"
+import { useEffect, useState } from "react";
+import axios from "axios"
+const Alan = require('../../../assets/images/shearer.png')
+const Football = require('../../../assets/images/Football.png')
+const slip = require('../../../assets/images/slip.png')
+import { useFonts, Chewy_400Regular } from '@expo-google-fonts/chewy';
+import { Fredoka_700Bold } from '@expo-google-fonts/fredoka';
+import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
+import { Merriweather_700Bold } from '@expo-google-fonts/merriweather';
 
-const isWeb = Platform.OS === "web";
-const screenWidth = Dimensions.get("window").width;
+type Player = {
+    name: string;
+    assists: string;
+    seasons: string[];
+    goals: number;
+    position: string;
+    team: string[];
+    playerUrl: string;
+    teamUrl: string[];
+    nationality: string;
+    flagUrl: string;
+    games: number;
+};
 
-export default function (){
+export default function () {
+
+    const [fontsLoaded] = useFonts({
+        Chewy_400Regular,
+        Fredoka_700Bold,
+        LuckiestGuy_400Regular,
+        Merriweather_700Bold
+    });
+    const youLose = "you've let this one slip!"
+    const gameOver = "well done, same again tommorrow!"
+    const greeting = "You have 10 shots at bagging the Barclaysman!"
+    const [guessCount, setGuessCount] = useState(1)
+    const [footballImages, setFootballImages] = useState<string[]>([]);
+    const [playerStats, setPlayerStats] = useState<Player[]>([]);
+    const [chosenPlayer, setChosenPlayer] = useState<Player | null>(null);
+    const [searchText, setSearchText] = useState("")
+    const [guesses, setGuesses] = useState<string[]>([]);
+    const [gameComplete, setGameComplete] = useState(false);
+    const [gameLost, setGameLost] = useState(false)
+
+    const randomPlayer = (array: Player[]): Player => {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+    };
+
+    const handleGuess = (playerName: string) => {
+        if (!guesses.includes(playerName)) {
+            setGuesses([...guesses, playerName]);
+            // setGuessCount() 
+            setFootballImages(prev => [...prev, 'footballImage']); // Add new player gues
+            setGuessCount(prevCount => prevCount + 1)
+        }
+        setSearchText("");
+
+        const guessedPlayer = playerStats.find(player => player.name.toLowerCase() === playerName.toLowerCase());
+        if (guessedPlayer && chosenPlayer) {
+            if (guessedPlayer.name.toLowerCase() === chosenPlayer.name.toLowerCase()) { // Optionally, you can update the correctGuess state too
+                setGameComplete(true);  // Set the gameComplete state to true
+            }
+        }
+        if (guessCount === 10 && !gameComplete) {
+            setGameLost(true); // Set the game to fail
+            setGuesses(prevGuesses => [...prevGuesses, chosenPlayer?.name || '']); // Add the correct player to the guesses
+        }
+    };
+
+
+    useEffect(() => {
+        axios
+            .get<Player[]>("https://not-spotle.onrender.com/api/playerstats")
+            .then((response) => {
+                setPlayerStats(response.data);
+            })
+            .catch((error) => console.error("Error fetching player stats:", error));
+    }, []); // Fetch data only once when component mounts
+
+    useEffect(() => {
+        if (playerStats.length > 0) {
+            setChosenPlayer(randomPlayer(playerStats));
+        }
+    }, [playerStats]);
+
+    useEffect(() => {
+        if (chosenPlayer) {
+            console.log("Chosen Player:", chosenPlayer);
+        }
+    }, [chosenPlayer]);
+
+
+    const filteredPlayers = searchText
+        ? playerStats
+            .filter(player => player.name.toLowerCase().startsWith(searchText.toLowerCase())) // Match by the first letter
+            .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically
+            .slice(0, 5) // Limit to 5 players
+        : [];
+
 
     return (
         <View style={styles.container}>
-            <ScrollView>
-            <View style={styles.chances}>
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-            <Image source={Football} style={styles.football} /> 
-                <Text></Text>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                <View style={styles.innerContainer}>
+                    <View style={styles.chances}>
+                        {footballImages.map((image, index) => (
+                            <Image key={index} source={Football} style={styles.football} />
+                        ))}
+                    </View>
 
-            </View>
-            <View style={styles.guesses}>
-                <View><Text>You have 10 shots at bagging the Barclaysman</Text></View>
-                <Text></Text>
-                <TextInput style={styles.input} placeholder="Guess Here..." />
-            </View>
-            <View style={styles.player}>
-            <View style={styles.profile}>
-            <Image source={JJ} style={styles.image} /> 
-            </View>
-            <View style={styles.name}>
-                <Text style={styles.ntext}>Jay Jay Okocha</Text>
-            </View>
-            <View style={styles.stats}>  
-            <Text style={styles.stext}>:Goals</Text>
-            <Text style={styles.stext}>:Position</Text>
-            <Text style={styles.stext}>:Seasons</Text>
-            <Text style={styles.stext}>:Team</Text>
-            <Text style={styles.stext}>:Country</Text>
-            <Text style={styles.stext}>:Games</Text>
-            </View>
-            </View>
-            <View style={styles.player}>
-            <View style={styles.profile}>
-            <Image source={JJ} style={styles.image} /> 
-            </View>
-            <View style={styles.name}>
-                <Text style={styles.ntext}>Jay Jay Okocha</Text>
-            </View>
-            <View style={styles.stats}>  
-            <Text style={styles.stext}>:Goals</Text>
-            <Text style={styles.stext}>:Position</Text>
-            <Text style={styles.stext}>:Seasons</Text>
-            <Text style={styles.stext}>:Team</Text>
-            <Text style={styles.stext}>:Country</Text>
-            <Text style={styles.stext}>:Games</Text>
-            </View>
-            </View>
-            
+                    <View style={styles.guesses}>
+                        <Text style={[styles.guessText, (gameComplete || gameLost) && { opacity: 0 }]}>
+                            {greeting}
+                        </Text>
+
+                        <TextInput
+                            style={[styles.input, (gameComplete || gameLost) && styles.disabledInput]} // Conditionally add 'disabledInput' style
+                            onChangeText={setSearchText}
+                            value={searchText}
+                            placeholder={gameComplete ? "Come back tomorrow for another go" : "Guess Here..."} // Conditionally change placeholder
+                            editable={!gameComplete && !gameLost} // Disable the input when the game is complete or lost
+                        />
+
+                    </View>
+
+                    {filteredPlayers.length > 0 && (
+                        <View style={styles.list}>
+                            {filteredPlayers.map((player) => (
+                                <TouchableOpacity
+                                    key={player.name}
+                                    style={styles.listItem}
+                                    onPress={() => handleGuess(player.name)}
+                                >
+                                    <Text>{player.name}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    )}
+                    {(gameComplete || gameLost) && (
+                        <View style={styles.gameCompleteContainer}>
+                            <View style={styles.completionBox}>
+                                {/* Conditionally set the image based on game state */}
+                                <ImageBackground
+                                    style={styles.alan}
+                                    source={gameLost ? slip : Alan} // Use `Slip` if gameLost is true, otherwise use `Alan`
+                                    blurRadius={4}
+                                >
+                                    <Text style={styles.gameCompleteText}>
+                                        "They think it's all over!... It is now!"
+                                    </Text>
+                                    <Text style={styles.gameCompleteText}>
+                                        {gameComplete ? gameOver : gameLost ? youLose : ''}
+                                    </Text>
+                                </ImageBackground>
+                            </View>
+                        </View>
+                    )}
+
+                    {[...guesses].reverse().map((guess, index) => {
+                        const guessedPlayer = playerStats.find((player) => player.name.toLowerCase() === guess.toLowerCase());
+                        return guessedPlayer ? (
+                            <View key={index} style={styles.player}>
+                                <View style={styles.imagecontainer}>
+                                    <Image source={{ uri: guessedPlayer.playerUrl }} style={styles.playerimage} />
+                                    <View style={styles.playerName}>
+                                        <Text
+                                            style={
+                                                styles.playerNameText}
+                                        >
+                                            {guess}
+                                        </Text>
+                                    </View>
+                                    <View style={styles.teams}>
+                                        <Text>
+                                        </Text>
+
+                                        {guessedPlayer.teamUrl.map((teamUrl, index) => {
+                                            // Ensure both arrays (teamUrl and team) have the same length
+                                            const team = guessedPlayer.team[index];
+
+                                            // Check if the guessed team's name matches the chosen player's team
+                                            const isMatch = chosenPlayer?.team.includes(team);
+
+                                            return (
+                                                <View key={index} style={styles.team}>
+                                                    <Image
+                                                        source={{ uri: teamUrl }}
+                                                        style={[
+                                                            styles.teamBadge,
+                                                            !isMatch && { opacity: 0.3 } // Reduces brightness instead of full grayscale
+                                                        ]}
+                                                    />
+                                                </View>
+                                            );
+
+                                        })}
+                                    </View>
+                                </View>
+
+
+                                <View style={styles.statsContainer}>
+                                    <View style={styles.stats}>
+                                        <View style={styles.statsRowContainer}>
+                                            <View style={styles.statsContainerZ}>
+
+                                                <Image style={styles.flag} source={{ uri: guessedPlayer.flagUrl }} />
+                                                <Text
+                                                    style={[styles.flagText,
+                                                    guessedPlayer.nationality === chosenPlayer?.nationality && styles.correctguess]}>{guessedPlayer.nationality}</Text>
+                                            </View>
+                                            <View style={styles.statsContainerX}>
+                                                <View style={styles.seasonsContainer}>
+                                                    {guessedPlayer.seasons.map((season, index) => {
+                                                        // Check if the season is correct
+                                                        const isCorrect = chosenPlayer?.seasons?.includes(season);
+
+                                                        return (
+                                                            <View key={index} style={styles.seasonNo}>
+                                                                <Text
+                                                                    style={[
+                                                                        styles.seasonText,
+                                                                        {
+                                                                            fontSize: Math.max(25 - guessedPlayer.seasons.length, 10),
+                                                                            // Add a green circle with 50% opacity if the season is correct
+                                                                            ...(isCorrect
+                                                                                ? {
+                                                                                    textAlign: 'center',
+                                                                                    borderWidth: 1,
+                                                                                    borderColor: 'black',
+                                                                                    borderRadius: 20, // Adjust this for the circle size
+                                                                                    backgroundColor: 'rgba(0, 128, 0, 1)', // Green with 50% opacity
+                                                                                    padding: 3, // Adjust padding as needed to make the circle fit around the text
+                                                                                }
+                                                                                : {}),
+                                                                        },
+                                                                    ]}
+                                                                >
+                                                                    {season}
+                                                                </Text>
+                                                            </View>
+                                                        );
+                                                    })}
+                                                </View>
+                                            </View>
+
+
+                                        </View>
+
+
+                                        {/* </View> */}
+                                        <View>
+                                            <View style={styles.row}>
+                                                <Text
+                                                    style={[
+                                                        styles.stext,
+                                                        Number(guessedPlayer.goals) === (Number(chosenPlayer?.goals) || 0) // Green if perfect match
+                                                            ? styles.correctguess
+                                                            : Math.abs(Number(guessedPlayer.goals) - (Number(chosenPlayer?.goals) || 0)) <= 10
+                                                                ? styles.nearlyCorrectguess // Yellow if within 10
+                                                                : null
+                                                    ]}
+                                                >
+                                                    Gls: {guessedPlayer.goals}
+                                                </Text>
+
+                                                <Text
+                                                    style={[
+                                                        styles.stext,
+                                                        guessedPlayer.position === chosenPlayer?.position && styles.correctguess
+                                                    ]}
+                                                >Pos: {guessedPlayer.position}</Text>
+
+                                            </View>
+                                            <View style={styles.row}>
+                                                <Text
+                                                    style={[
+                                                        styles.stext,
+                                                        Number(guessedPlayer.assists) === (Number(chosenPlayer?.assists) || 0) // Green if perfect match
+                                                            ? styles.correctguess
+                                                            : Math.abs(Number(guessedPlayer.assists) - (Number(chosenPlayer?.assists) || 0)) <= 10
+                                                                ? styles.nearlyCorrectguess // Yellow if within 10
+                                                                : null
+                                                    ]}
+                                                >
+                                                    Ats: {guessedPlayer.assists}
+                                                </Text>
+
+                                                <Text
+                                                    style={[
+                                                        styles.stext,
+                                                        Number(guessedPlayer.games) === (Number(chosenPlayer?.games) || 0) // Green if perfect match
+                                                            ? styles.correctguess
+                                                            : Math.abs(Number(guessedPlayer.games) - (Number(chosenPlayer?.games) || 0)) <= 25
+                                                                ? styles.nearlyCorrectguess // Yellow if within 10
+                                                                : null
+                                                    ]}
+                                                >
+                                                    Apps: {guessedPlayer.games}
+                                                </Text>
+                                            </View>
+                                        </View>
+                                        {/* <Image style={styles.badge} source={{ uri: guessedPlayer.teamUrl[0]}} /> */}
+                                    </View>
+
+                                </View>
+                            </View>
+                        ) : null;
+                    })}
+                </View>
             </ScrollView>
         </View>
-
-    )
+    );
 }
+
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
     container: {
-        width: isWeb ? "100%" : "90%", // Adjusts width for web
-        maxWidth: isWeb ? 1200 : "100%",
-        padding: 15,
-        alignItems: "center",
-        backgroundColor: "#f8f8f8",
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 3,
-      },
-    chances:{
-        display:'flex',
-        flexWrap:'wrap',
-        // backgroundColor: 'red',
+        flex: 1,
+        // borderWidth: 5
+    },
+    innerContainer: {
+        // flex: 1, 
+        justifyContent: "center",
+    },
+    guesses: {
+        width: '100%',
+        alignSelf: 'center',
+    },
+    guessText: {
+        fontFamily: 'LuckiestGuy_400Regular',
+        marginTop: 20,
+        marginBottom: 10,
+        fontSize: 17,
+        textAlign: 'center',
+        fontWeight: 'bold'
+    },
+    input: {
+        // fontFamily: 'LuckiestGuy_400Regular',
+        width: '99%',
         height: 50,
-        width: '100%',
-        marginTop:20
+        borderWidth: 2,
+        borderRadius: 10,
+        // width: '99%',
+        alignSelf: 'center',
     },
-    guesses:{
-        backgroundColor: 'beige',
-        height: 100,
-        width: '100%',
-        marginTop:20
+    chances: {
+        flexDirection: 'row',        // Arrange children (images) in a row
+        flexWrap: 'wrap',            // Allow wrapping to the next line if needed
+        justifyContent: 'flex-start',
+        marginTop: 10,
+        alignSelf: 'center',
+        width: 400,
+        height: 40,
     },
-    player:{
-        backgroundColor: 'green',
-        height: 200,
+    football: {
+        height: 40,
+        width: 40
+    },
+    list: {
+        marginTop: 6,
+        alignSelf: 'center',
+        backgroundColor: "rgba(0, 0, 0, 0.6)", // Transparent dark blue
+        borderRadius: 10,
+        width: '99%',
+        position: 'absolute', // This keeps the list above the player section
+        zIndex: 10, // Ensure it sits above the player
+        top: 145, // Adjust this value to control the vertical position // Optional: Add padding for spacing
+    },
+    listItem: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#ddd",
+        height: 'auto',
         width: '100%',
-        marginTop:20,
-        borderRadius:'2%',
-        shadowOpacity: 1,
+    },
+    player: {
+        // borderWidth:2,
+        justifyContent: 'center',
+        flexDirection: 'row',  // Layout children in a row (side by side)
+        borderBottomWidth: 2,
+        borderBottomColor: "grey",
+        width: '99%',
+        position: 'relative',  // Necessary for absolute positioning of child elements
+    },
+    imagecontainer: {
+        alignContent: 'center',
+        width: '39%',
+        // width: width * 0.40, // Use 40% of screen width dynamically
+        marginTop: 5,
+        marginBottom: 6,
+        marginRight: 1,
+        shadowColor: 'blue', // Shadow color
+        borderRadius: 10,
+        shadowOffset: { width: 0, height: 4 }, // Shadow offset
+        shadowOpacity: 0.2, // Shadow opacity (0 to 1)
+        shadowRadius: 5, // Shadow blur radius
+        backgroundColor: 'rgba(0, 0, 1, 0.15)',
+        borderColor: 'grey',
+        position: 'relative',
+        overflow: 'hidden',
+        flexDirection: 'row', // Use row direction to align elements horizontally
+        alignItems: 'center', // Center vertically
+        justifyContent: 'flex-end',
+    },
+    playerimage: {
+        // borderWidth: 1,
+        top: '5%', // Adjust the position to match the image
+        // left: '49%', // Adjust based on where you want the player image to be positioned
+        position: 'absolute', // Position it relative to the image container
+        alignSelf: "center", // Adjust horizontal position if necessary
+        height: 178,  // Set the size of the overlay image
+        width: 90,
+        shadowColor: 'black',
+        shadowOffset: { width: 4, height: 2 }, // X and Y shadow
+        shadowOpacity: .8, // Adjust for darkness
+        shadowRadius: 1, // Blur effect
+    },
+    playerName: {
+        position: 'absolute',
+        alignSelf: 'center', // Centers container horizontally
+        width: 180,
+        height: 190,
+        justifyContent: 'center',  // Centers children vertically
+        alignItems: 'center',
+        transform: [{ translateX: 9 }],
+        // marginLeft: '1%', // Add left margin
+    },
+    playerNameText: {
+        fontFamily: 'LuckiestGuy_400Regular',
+        color: 'beige',
+        textAlign: 'center',  // Centers text inside the text component
+        fontSize: 23,
+        transform: [{ rotate: '-90deg' }],
+        textShadowColor: 'black',  // Shadow color
+        textShadowOffset: { width: 2, height: 1 },  // Shadow position
+        textShadowRadius: 1,
+
+    },
+    teams: {
+        // borderWidth: 1,
+        height: '75%',
+        width: 55,
+        position: 'absolute',
+        flexWrap: 'wrap', // Allows wrapping to new lines
+        flexDirection: 'row', // Arrange items in a row
+        alignItems: 'center',
+        justifyContent: 'center',
+        transform: [{ translateX: -101 }],// Align badges to the left
+    },
+
+    team: {
+        width: '45%',  // Each team takes up 45% of the container width
+        marginBottom: 10,  // Adds space between rows
+        alignItems: 'center', // Centers the content
+        justifyContent: 'center',  // Centers the content inside each team box
+        marginRight: '1%', // Add left margin
+    },
+    flag: {
+        // position: 'absolute',
+        top: 8,
+        height: 35,  // Set the size of the overlay image
+        width: 50,
+        borderRadius: 5,
+        alignSelf: 'center'
+    }, flagText:
+    {
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginHorizontal: 5,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 5,
+        padding: 5,
+        paddingTop: 10,
+        fontSize: 15,
+        lineHeight: 12,
+        color: 'white',
+        backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+    },
+    statsContainer: {
+        justifyContent: 'center',
+        marginTop: 5,
+        marginBottom: 5,
+        borderLeftWidth: 2,
+        borderBottomWidth: 2,
+        shadowColor: 'blue', // Shadow color (black)
+        borderRadius: 10,
+        shadowOffset: { width: 0, height: 4 }, // Shadow offset
+        shadowOpacity: 0.2, // Shadow opacity (0 to 1)
+        shadowRadius: 5, // Shadow blur radius
+        backgroundColor: 'rgba(50, 0, 0, 0.3)',
+        borderColor: 'grey',
+        width: '60%'
+
+        // Optional: space between the image and stats
+    },
+    statsRowContainer: {
+        flexDirection: 'row', // Align the children in a row (horizontally)
+        // justifyContent: 'space-between', // Add space between them if needed
+        width: '100%' // Make sure the container takes up the full width
+    },
+
+    statsContainerZ: {
+        marginTop: -50,
+        marginLeft: -2,
+        justifyContent: 'center',
+        borderLeftWidth: 2,
+        borderBottomWidth: 2,
+        shadowColor: 'blue',
+        borderRadius: 10,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
         shadowRadius: 5,
+        backgroundColor: 'rgba(90, 45, 50, 0.3)',
+        borderColor: 'grey',
+        width: '25%', // Adjust width as needed
+        height: 100,
     },
-    profile:{
-        marginLeft:5,
-        marginTop:10,
-        // backgroundColor: 'grey',
-        height: '50%',
-        width: '45%',
-        borderRadius:'50%'
+    statsContainerX: {
+        marginTop: -50,
+        justifyContent: 'center',
+        borderLeftWidth: 2,
+        borderBottomWidth: 2,
+        shadowColor: 'blue',
+        borderRadius: 10,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        backgroundColor: 'rgba(50, 95, 50, 0.3)',
+        borderColor: 'grey',
+        width: '76%', // Adjust width as needed
+        height: 100,
     },
-    name: {
-        justifyContent: 'center', // Centers content vertically
-        alignItems: 'center',     // Centers content horizontally
-        // backgroundColor: 'grey',
-        height: '25%',
-        marginLeft: 155,          // Keep marginLeft to position the container
-        width: '45%',
-        marginTop: -90,          // Adjust positioning if necessary
-        transform: [
-            { rotate: '-25deg' },   // Rotate the content by 45 degrees
-        ],
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain', // Ensures the image scales correctly
-      },
-    ntext:{
-        fontSize: 20,
-        fontWeight:'bold',
-    },
-    stats:{
-        display:'flex',
-        flexWrap: "wrap",
-        justifyContent:'space-evenly',
-        marginTop:45,
-        marginLeft:3,
-        height:'40%',
-        width:'98%',
-        // backgroundColor:"grey"
+    stats: {
+        marginTop: 50,
+        alignContent: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        // borderWidth: 2,
+        marginBottom: 5,
+        alignItems: 'center',
+        width: '100%'
+        // Optional: space between each stat text
     },
     stext: {
-        textAlign:'center',
-        marginTop:3,
-        marginBottom:2,
-        marginLeft:4,
-        marginRight:6.5,
-        padding:8,
-        fontWeight:'bold',
-        width:'30%',
-        color: 'white',           // Text color
-        borderStyle: 'solid',
-        backgroundColor: 'grey',
-        borderRadius:'22%',
-        borderWidth:1   // Border width for the bottom
-      },
-      football: {
-        width: '10%',
-        height: '100%',
-        resizeMode: 'contain', // Ensures the image scales correctly
-      },
-      input: {
-        flex: 1,
-        height: 40,
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginHorizontal: 5,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 1,
+        padding: 5,
+        fontSize: 20,
+        lineHeight: 20,
+        color: 'white',
+        backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center', // Center everything
+        alignItems: 'center',
+        width: '100%',  // Ensure full width so justifyContent applies
+    },
+    correctguess: {
+        alignSelf: 'center',
+        margin: 10,
+        color: 'black',
         borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5,
-        paddingHorizontal: 10,
-        backgroundColor: '#f9f9f9',
-      },
-    })
+        backgroundColor: 'green',
+        borderColor: 'black',
+        borderRadius: 9,
+    },
+
+    nearlyCorrectguess: {
+        alignSelf: 'center',
+        margin: 10,
+        color: 'black',
+        borderWidth: 1,
+        backgroundColor: '#D4A800',
+        borderColor: 'black',
+        borderRadius: 9, // Yellow for nearly correct
+    },
+
+    teamBadge: {
+        height: 20,
+        width: 20,
+        marginTop: 5,
+    },
+    seasonsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap', // Allows multiple rows
+        justifyContent: "flex-start",
+        alignItems: "flex-end",
+        width: '100%',
+        gap: 5, // Add space between items
+    },
+    seasonNo: {
+        left: 13,
+        flexBasis: '20%', // Adjust to fit four items per row (adjust as needed)
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    seasonText: {
+        fontFamily: 'LuckiestGuy_400Regular',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    country: {
+        fontSize: 20,
+        marginTop: 9,
+        textAlign: 'center',
+        fontFamily: 'LuckiestGuy_400Regular',
+    },
+    gameCompleteContainer: {
+        position: 'absolute',
+        top: 359,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.85)', // Gray overlay
+        zIndex: 10,
+        width: '99%',
+        borderRadius: 9
+        // height:'100%'
+    },
+    gameCompleteText: {
+        marginTop: 30,
+        fontFamily: 'LuckiestGuy_400Regular',
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center', // Green background with transparency
+        width: '100%',
+    },
+    disabledInput: {
+        backgroundColor: '#f0f0f0', // Grey background to indicate disabled state
+        opacity: 0, // Reduced opacity
+    },
+    slip, alan: {
+        height: 127,
+        width: '100%',
+        zIndex: 5,
+        opacity: 1,
+    },
+    completionBox: {
+        alignItems: 'center', // Horizontally center the content
+        justifyContent: 'center', // Center the content vertically within the box
+        // backgroundColor: 'rgba(0, 0, 0, 0.65)', 
+        borderRadius: 10, // Optional: rounded corners
+        width: '100%', // Optional: control width of the box
+        overflow: 'hidden', // Hide any overflow
+        textAlign: 'center', // Ensure text is centered within the box
+        height: 90, // Optional: Set a fixed height if needed
+        bottom: 300,
+        zIndex: 5
+
+
+    },
+});
