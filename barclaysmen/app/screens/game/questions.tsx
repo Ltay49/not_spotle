@@ -73,19 +73,19 @@ export default function () {
         Animated.parallel([
             Animated.timing(lastFadeAnim, {
                 toValue: 1, // Fade to full opacity
-                duration: 1500,
+                duration: 500,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
             Animated.timing(lastTranslateX, {
                 toValue: 0, // Move to normal position on the X axis
-                duration: 1500,
+                duration: 500,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
             Animated.timing(lastTranslateY, {
                 toValue: 0, // Move to normal position on the Y axis
-                duration: 1500,
+                duration: 500,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
