@@ -692,7 +692,7 @@ const styles = StyleSheet.create({
     },
     gameCompleteContainer: {
         position: 'absolute',
-        top: 348,
+        top: 355,
         left: 0,
         right: 0,
         bottom: 0,
@@ -731,7 +731,7 @@ const styles = StyleSheet.create({
         textAlign: 'center', // Ensure text is centered within the box
         height: 90, // Optional: Set a fixed height if needed
         zIndex: 5,
-        transform: [{ translateY: -288 }],
+        transform: [{ translateY: -295 }],
 
     },
 });
