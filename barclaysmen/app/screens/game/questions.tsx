@@ -67,7 +67,7 @@ export default function () {
         // Create new animations for the new ball
         const lastFadeAnim = new Animated.Value(0); // Fade animation
         const lastTranslateX = new Animated.Value(0); // Start position for X axis (e.g., off-screen to the left)
-        const lastTranslateY = new Animated.Value(200); // Start position for Y axis (e.g., off-screen down)
+        const lastTranslateY = new Animated.Value(0); // Start position for Y axis (e.g., off-screen down)
 
         // Animate the fade-in and translation at the same time
         Animated.parallel([
@@ -152,7 +152,8 @@ export default function () {
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}
+                keyboardShouldPersistTaps="handled">
                 <View style={styles.innerContainer}>
                 <View style={styles.chances}>
             {footballImages.map((image, index) => (
@@ -410,6 +411,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         // width: '99%',
+        // fontSize:16,
         alignSelf: 'center',
     },
     chances: {
