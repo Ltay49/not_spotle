@@ -430,14 +430,13 @@ const styles = StyleSheet.create({
         width: 40
     },
     list: {
-        transform: [{ translateY: 5 }],
         alignSelf: 'center',
         backgroundColor: "rgba(0, 0, 0, 0.65)", // Transparent dark blue
         borderRadius: 10,
         width: '90%',
         position: 'absolute', // This keeps the list above the player section
         zIndex: 10, // Ensure it sits above the player
-        top: 145, // Adjust this value to control the vertical position // Optional: Add padding for spacing
+        top: 153, // Adjust this value to control the vertical position // Optional: Add padding for spacing
     },
     listItem: {
         padding: 10,

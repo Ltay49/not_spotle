@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
       marginBottom: 20,
     },
     inputContainer: {
-      width: 300,
+      width: '100%',
       padding: 20,
       borderWidth: 1,
       borderColor: '#ccc',
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     input: {
       flex: 1,
       height: 40,
+      fontSize:20,
       borderWidth: 1,
       borderColor: '#ccc',
       borderRadius: 5,
