@@ -198,7 +198,7 @@ export default function () {
                                     style={styles.listItem}
                                     onPress={() => handleGuess(player.name)}
                                 >
-                                    <Text>{player.name}</Text>
+                                    <Text style={styles.listtext}>{player.name}</Text>
                                 </TouchableOpacity>
                             ))}
                         </View>
@@ -410,9 +410,11 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 2,
         borderRadius: 10,
-        paddingLeft:5,
-        fontSize:20,
+        padding:5,
+        fontSize:18,
         alignSelf: 'center',
+    },listtext:{
+        color:'beige'
     },
     chances: {
         flexDirection: 'row',        // Arrange children (images) in a row
@@ -428,21 +430,23 @@ const styles = StyleSheet.create({
         width: 40
     },
     list: {
-        marginTop: 6,
+        transform: [{ translateY: 5 }],
         alignSelf: 'center',
-        backgroundColor: "rgba(0, 0, 0, 0.6)", // Transparent dark blue
+        backgroundColor: "rgba(0, 0, 0, 0.65)", // Transparent dark blue
         borderRadius: 10,
-        width: '99%',
+        width: '90%',
         position: 'absolute', // This keeps the list above the player section
         zIndex: 10, // Ensure it sits above the player
         top: 145, // Adjust this value to control the vertical position // Optional: Add padding for spacing
     },
     listItem: {
         padding: 10,
+        borderRadius:8,
         borderBottomWidth: 1,
         borderBottomColor: "#ddd",
         height: 'auto',
         width: '100%',
+
     },
     player: {
         // borderWidth:2,
