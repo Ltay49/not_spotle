@@ -406,7 +406,7 @@ const styles = StyleSheet.create({
     },
     input: {
         // fontFamily: 'LuckiestGuy_400Regular',
-        width: '99%',
+        width: '90%',
         height: 50,
         borderWidth: 2,
         borderRadius: 10,
@@ -455,7 +455,7 @@ const styles = StyleSheet.create({
     },
     imagecontainer: {
         alignContent: 'center',
-        width: '39%',
+        width: '35%',
         // width: width * 0.40, // Use 40% of screen width dynamically
         marginTop: 5,
         marginBottom: 6,
@@ -516,11 +516,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row', // Arrange items in a row
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{ translateX: -101 }],// Align badges to the left
+        transform: [{ translateX: -90 }],// Align badges to the left
     },
 
     team: {
-        width: '45%',  // Each team takes up 45% of the container width
+        width: '40%',  // Each team takes up 45% of the container width
         marginBottom: 10,  // Adds space between rows
         alignItems: 'center', // Centers the content
         justifyContent: 'center',  // Centers the content inside each team box
