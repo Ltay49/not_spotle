@@ -6,9 +6,10 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
-    ImageBackground
+    ImageBackground,
+    Animated, Easing
 } from "react-native"
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import axios from "axios"
 const Alan = require('../../../assets/images/shearer.png')
 const Football = require('../../../assets/images/Football.png')
@@ -33,7 +34,7 @@ type Player = {
 };
 
 export default function () {
-
+    
     const [fontsLoaded] = useFonts({
         Chewy_400Regular,
         Fredoka_700Bold,
@@ -56,6 +57,46 @@ export default function () {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];
     };
+
+    const [fadeAnims, setFadeAnims] = useState<Animated.Value[]>([]); // Explicitly type the state as an array of Animated.Values
+    const [translateXAnims, setTranslateXAnims] = useState<Animated.Value[]>([]); // For X translation
+    const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]); 
+
+  useEffect(() => {
+    if (footballImages.length > 0) {
+        // Create new animations for the new ball
+        const lastFadeAnim = new Animated.Value(0); // Fade animation
+        const lastTranslateX = new Animated.Value(0); // Start position for X axis (e.g., off-screen to the left)
+        const lastTranslateY = new Animated.Value(200); // Start position for Y axis (e.g., off-screen down)
+
+        // Animate the fade-in and translation at the same time
+        Animated.parallel([
+            Animated.timing(lastFadeAnim, {
+                toValue: 1, // Fade to full opacity
+                duration: 1500,
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }),
+            Animated.timing(lastTranslateX, {
+                toValue: 0, // Move to normal position on the X axis
+                duration: 1500,
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }),
+            Animated.timing(lastTranslateY, {
+                toValue: 0, // Move to normal position on the Y axis
+                duration: 1500,
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }),
+        ]).start();
+
+        // Append the new animations to the state arrays
+        setFadeAnims(prev => [...prev, lastFadeAnim]);
+        setTranslateXAnims(prev => [...prev, lastTranslateX]);
+        setTranslateYAnims(prev => [...prev, lastTranslateY]);
+    }
+}, [footballImages])
 
     const handleGuess = (playerName: string) => {
         if (!guesses.includes(playerName)) {
@@ -113,11 +154,25 @@ export default function () {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.innerContainer}>
-                    <View style={styles.chances}>
-                        {footballImages.map((image, index) => (
-                            <Image key={index} source={Football} style={styles.football} />
-                        ))}
-                    </View>
+                <View style={styles.chances}>
+            {footballImages.map((image, index) => (
+                 <Animated.View 
+                key={index} 
+                style={[
+                    styles.football, 
+                    { 
+                        opacity: fadeAnims[index], // Apply fade-in animation
+                        transform: [
+                            { translateX: translateXAnims[index] }, // Apply X translation
+                            { translateY: translateYAnims[index] }, // Apply Y translation
+                        ]
+                    }
+                ]}
+            >
+                    <Image source={Football} style={styles.football} />
+                </Animated.View>
+            ))}
+        </View>
 
                     <View style={styles.guesses}>
                         <Text style={[styles.guessText, (gameComplete || gameLost) && { opacity: 0 }]}>
@@ -632,7 +687,7 @@ const styles = StyleSheet.create({
     },
     gameCompleteContainer: {
         position: 'absolute',
-        top: 359,
+        top: 348,
         left: 0,
         right: 0,
         bottom: 0,
@@ -661,6 +716,7 @@ const styles = StyleSheet.create({
         opacity: 1,
     },
     completionBox: {
+        position:"relative",
         alignItems: 'center', // Horizontally center the content
         justifyContent: 'center', // Center the content vertically within the box
         // backgroundColor: 'rgba(0, 0, 0, 0.65)', 
@@ -669,9 +725,8 @@ const styles = StyleSheet.create({
         overflow: 'hidden', // Hide any overflow
         textAlign: 'center', // Ensure text is centered within the box
         height: 90, // Optional: Set a fixed height if needed
-        bottom: 300,
-        zIndex: 5
-
+        zIndex: 5,
+        transform: [{ translateY: -288 }],
 
     },
 });
