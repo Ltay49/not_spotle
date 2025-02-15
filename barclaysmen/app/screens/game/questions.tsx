@@ -9,7 +9,7 @@ import {
     ImageBackground,
     Animated, Easing
 } from "react-native"
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"
 const Alan = require('../../../assets/images/shearer.png')
 const Football = require('../../../assets/images/Football.png')
@@ -34,7 +34,7 @@ type Player = {
 };
 
 export default function () {
-    
+
     const [fontsLoaded] = useFonts({
         Chewy_400Regular,
         Fredoka_700Bold,
@@ -60,43 +60,43 @@ export default function () {
 
     const [fadeAnims, setFadeAnims] = useState<Animated.Value[]>([]); // Explicitly type the state as an array of Animated.Values
     const [translateXAnims, setTranslateXAnims] = useState<Animated.Value[]>([]); // For X translation
-    const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]); 
+    const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]);
 
-  useEffect(() => {
-    if (footballImages.length > 0) {
-        // Create new animations for the new ball
-        const lastFadeAnim = new Animated.Value(0); // Fade animation
-        const lastTranslateX = new Animated.Value(0); // Start position for X axis (e.g., off-screen to the left)
-        const lastTranslateY = new Animated.Value(0); // Start position for Y axis (e.g., off-screen down)
+    useEffect(() => {
+        if (footballImages.length > 0) {
+            // Create new animations for the new ball
+            const lastFadeAnim = new Animated.Value(0); // Fade animation
+            const lastTranslateX = new Animated.Value(0); // Start position for X axis (e.g., off-screen to the left)
+            const lastTranslateY = new Animated.Value(0); // Start position for Y axis (e.g., off-screen down)
 
-        // Animate the fade-in and translation at the same time
-        Animated.parallel([
-            Animated.timing(lastFadeAnim, {
-                toValue: 1, // Fade to full opacity
-                duration: 500,
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }),
-            Animated.timing(lastTranslateX, {
-                toValue: 0, // Move to normal position on the X axis
-                duration: 500,
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }),
-            Animated.timing(lastTranslateY, {
-                toValue: 0, // Move to normal position on the Y axis
-                duration: 500,
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }),
-        ]).start();
+            // Animate the fade-in and translation at the same time
+            Animated.parallel([
+                Animated.timing(lastFadeAnim, {
+                    toValue: 1, // Fade to full opacity
+                    duration: 500,
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(lastTranslateX, {
+                    toValue: 0, // Move to normal position on the X axis
+                    duration: 500,
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(lastTranslateY, {
+                    toValue: 0, // Move to normal position on the Y axis
+                    duration: 500,
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+            ]).start();
 
-        // Append the new animations to the state arrays
-        setFadeAnims(prev => [...prev, lastFadeAnim]);
-        setTranslateXAnims(prev => [...prev, lastTranslateX]);
-        setTranslateYAnims(prev => [...prev, lastTranslateY]);
-    }
-}, [footballImages])
+            // Append the new animations to the state arrays
+            setFadeAnims(prev => [...prev, lastFadeAnim]);
+            setTranslateXAnims(prev => [...prev, lastTranslateX]);
+            setTranslateYAnims(prev => [...prev, lastTranslateY]);
+        }
+    }, [footballImages])
 
     const handleGuess = (playerName: string) => {
         if (!guesses.includes(playerName)) {
@@ -115,7 +115,7 @@ export default function () {
         }
         if (guessCount === 10 && !gameComplete) {
             setGameLost(true); // Set the game to fail
-            setGuesses(prevGuesses => [...prevGuesses, chosenPlayer?.name || '']); // Add the correct player to the guesses
+            // setGuesses(prevGuesses => [...prevGuesses, chosenPlayer?.name || '']); // Add the correct player to the guesses
         }
     };
 
@@ -155,25 +155,25 @@ export default function () {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}
                 keyboardShouldPersistTaps="handled">
                 <View style={styles.innerContainer}>
-                <View style={styles.chances}>
-            {footballImages.map((image, index) => (
-                 <Animated.View 
-                key={index} 
-                style={[
-                    styles.football, 
-                    { 
-                        opacity: fadeAnims[index], // Apply fade-in animation
-                        transform: [
-                            { translateX: translateXAnims[index] }, // Apply X translation
-                            { translateY: translateYAnims[index] }, // Apply Y translation
-                        ]
-                    }
-                ]}
-            >
-                    <Image source={Football} style={styles.football} />
-                </Animated.View>
-            ))}
-        </View>
+                    <View style={styles.chances}>
+                        {footballImages.map((image, index) => (
+                            <Animated.View
+                                key={index}
+                                style={[
+                                    styles.football,
+                                    {
+                                        opacity: fadeAnims[index], // Apply fade-in animation
+                                        transform: [
+                                            { translateX: translateXAnims[index] }, // Apply X translation
+                                            { translateY: translateYAnims[index] }, // Apply Y translation
+                                        ]
+                                    }
+                                ]}
+                            >
+                                <Image source={Football} style={styles.football} />
+                            </Animated.View>
+                        ))}
+                    </View>
 
                     <View style={styles.guesses}>
                         <Text style={[styles.guessText, (gameComplete || gameLost) && { opacity: 0 }]}>
@@ -221,6 +221,8 @@ export default function () {
                                 </ImageBackground>
                             </View>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={styles.playerimageComplete} />
+                            <Text style={
+                                styles.playerNameTextComplete}>{chosenPlayer?.name}</Text>
                         </View>
                     )}
 
@@ -411,11 +413,11 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 2,
         borderRadius: 10,
-        padding:5,
-        fontSize:18,
+        padding: 5,
+        fontSize: 18,
         alignSelf: 'center',
-    },listtext:{
-        color:'beige'
+    }, listtext: {
+        color: 'beige'
     },
     chances: {
         flexDirection: 'row',        // Arrange children (images) in a row
@@ -441,7 +443,7 @@ const styles = StyleSheet.create({
     },
     listItem: {
         padding: 10,
-        borderRadius:8,
+        borderRadius: 8,
         borderBottomWidth: 1,
         borderBottomColor: "#ddd",
         height: 'auto',
@@ -492,17 +494,17 @@ const styles = StyleSheet.create({
     },
     playerimageComplete: {
         // borderWidth: 1,
-       marginTop:90, // Adjust the position to match the image
+        marginTop: 90, // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
         height: 267,  // Set the size of the overlay image
         width: 180,
-        shadowColor: 'red',
-        shadowOffset: { width: 1, height: 0 }, // X and Y shadow
+        shadowColor: 'green',
+        shadowOffset: { width: 2, height: 0 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
-        shadowRadius:1,
-        resizeMode:"contain"
+        shadowRadius: 1,
+        resizeMode: "contain"
     },
     playerName: {
         position: 'absolute',
@@ -524,6 +526,18 @@ const styles = StyleSheet.create({
         textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
 
+    },
+    playerNameTextComplete:{
+        marginTop: 120,
+        marginRight:130,
+        fontFamily: 'LuckiestGuy_400Regular',
+        color: 'green',
+        textAlign: 'center',  // Centers text inside the text component
+        fontSize: 34.5,
+        transform: [{ rotate: '-90deg' }],
+        textShadowColor: 'black',  // Shadow color
+        textShadowOffset: { width: 2, height: 3 },  // Shadow position
+        textShadowRadius: 1,
     },
     teams: {
         // borderWidth: 1,
@@ -713,7 +727,7 @@ const styles = StyleSheet.create({
         bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.85)', // Gray overlay
         zIndex: 10,
-        width: '98%',
+        width: '100%',
         borderRadius: 9,
         // height:'100%'
     },
@@ -736,7 +750,7 @@ const styles = StyleSheet.create({
         opacity: 1,
     },
     completionBox: {
-        position:"relative",
+        position: "relative",
         alignItems: 'center', // Horizontally center the content
         justifyContent: 'center', // Center the content vertically within the box
         // backgroundColor: 'rgba(0, 0, 0, 0.65)', 
