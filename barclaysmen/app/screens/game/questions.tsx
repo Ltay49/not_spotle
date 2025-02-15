@@ -220,9 +220,8 @@ export default function () {
                                     </Text>
                                 </ImageBackground>
                             </View>
-                            <Image source={{ uri: chosenPlayer?.playerUrl }} style={styles.playerimageComplete} />
-                            <Text style={
-                                styles.playerNameTextComplete}>{chosenPlayer?.name}</Text>
+                            <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
+                            <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
                         </View>
                     )}
 
