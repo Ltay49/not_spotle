@@ -220,6 +220,7 @@ export default function () {
                                     </Text>
                                 </ImageBackground>
                             </View>
+                            <Image source={{ uri: chosenPlayer?.playerUrl }} style={styles.playerimageComplete} />
                         </View>
                     )}
 
@@ -489,6 +490,20 @@ const styles = StyleSheet.create({
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1, // Blur effect
     },
+    playerimageComplete: {
+        // borderWidth: 1,
+       marginTop:90, // Adjust the position to match the image
+        // left: '49%', // Adjust based on where you want the player image to be positioned
+        position: 'absolute', // Position it relative to the image container
+        alignSelf: "center", // Adjust horizontal position if necessary
+        height: 267,  // Set the size of the overlay image
+        width: 180,
+        shadowColor: 'red',
+        shadowOffset: { width: 1, height: 0 }, // X and Y shadow
+        shadowOpacity: .8, // Adjust for darkness
+        shadowRadius:1,
+        resizeMode:"contain"
+    },
     playerName: {
         position: 'absolute',
         alignSelf: 'center', // Centers container horizontally
@@ -692,14 +707,14 @@ const styles = StyleSheet.create({
     },
     gameCompleteContainer: {
         position: 'absolute',
-        top: 355,
+        top: 1,
         left: 0,
         right: 0,
         bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.85)', // Gray overlay
         zIndex: 10,
-        width: '99%',
-        borderRadius: 9
+        width: '98%',
+        borderRadius: 9,
         // height:'100%'
     },
     gameCompleteText: {
@@ -731,7 +746,7 @@ const styles = StyleSheet.create({
         textAlign: 'center', // Ensure text is centered within the box
         height: 90, // Optional: Set a fixed height if needed
         zIndex: 5,
-        transform: [{ translateY: -295 }],
+        // transform: [{ translateY: -295 }],
 
     },
 });
