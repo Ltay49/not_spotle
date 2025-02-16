@@ -556,10 +556,9 @@ const styles = StyleSheet.create({
         
     },
     completionCard:{
-            borderWidth:1,
             position:'relative',
             width:'96%',
-            height:257,
+           height:"74%",
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
