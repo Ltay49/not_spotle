@@ -499,12 +499,13 @@ const styles = StyleSheet.create({
         shadowRadius: 1, // Blur effect
     },
     playerimageComplete: {
-        // borderWidth: 1,
+        borderWidth: 1,
+        borderColor:'white',
         // marginTop: 90, // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'relative', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 225,  // Set the size of the overlay image
+        height: 235,  // Set the size of the overlay image
         width: 180,
         shadowColor: 'green',
         shadowOffset: { width: 2, height: 0 }, // X and Y shadow
