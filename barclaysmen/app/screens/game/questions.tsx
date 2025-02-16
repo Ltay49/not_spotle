@@ -221,7 +221,9 @@ export default function () {
                                 </ImageBackground>
                             </View>
                             <Animated.View style={styles.completionCard}>
+                            <Animated.View style={styles.completionImageCard}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
+                            </Animated.View>
                             <Animated.View style={styles.completionTextBox}>
                             <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
                             </Animated.View>
@@ -499,19 +501,25 @@ const styles = StyleSheet.create({
         shadowRadius: 1, // Blur effect
     },
     playerimageComplete: {
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor:'white',
         // marginTop: 90, // Adjust the position to match the image
-        // left: '49%', // Adjust based on where you want the player image to be positioned
-        position: 'relative', // Position it relative to the image container
+        // left: '49%', // Adjust based on where you want the player image to be positioned // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 235,  // Set the size of the overlay image
+        height: 225,  // Set the size of the overlay image
         width: 180,
         shadowColor: 'green',
         shadowOffset: { width: 2, height: 0 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1,
-        resizeMode: "contain"
+        resizeMode: "contain",
+        // position: 'relative',
+    },  
+    completionImageCard:{
+        position:'relative', 
+        borderWidth: 1,
+        borderColor:'white',
+        transform: [{ translateX: 0 }],
     },
     playerName: {
         position: 'absolute',
@@ -559,11 +567,11 @@ const styles = StyleSheet.create({
     completionCard:{
             position:'relative',
             width:'96%',
-            // height:230,
+            height:254,
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
-            transform: [{ translateX: 10 }, { translateY: 25 }],
+            transform: [{ translateX: 8 }, { translateY: 5 }],
             backgroundColor:'black',
             borderRadius:5
     },
