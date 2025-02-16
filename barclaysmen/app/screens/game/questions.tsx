@@ -502,7 +502,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         // marginTop: 90, // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
-        position: 'absolute', // Position it relative to the image container
+        position: 'relative', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
         height: 225,  // Set the size of the overlay image
         width: 180,
