@@ -220,8 +220,12 @@ export default function () {
                                     </Text>
                                 </ImageBackground>
                             </View>
+                            <Animated.View style={styles.completionCard}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
+                            <Animated.View style={styles.completionTextBox}>
                             <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
+                            </Animated.View>
+                            </Animated.View>
                         </View>
                     )}
 
@@ -393,6 +397,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         // flex: 1, 
         justifyContent: "center",
+        
     },
     guesses: {
         width: '100%',
@@ -456,13 +461,15 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: "grey",
         width: '99%',
-        position: 'relative',  // Necessary for absolute positioning of child elements
+        position: 'relative', 
+         // Necessary for absolute positioning of child elements
     },
     imagecontainer: {
         alignContent: 'center',
         width: '35%',
         // width: width * 0.40, // Use 40% of screen width dynamically
         marginTop: 5,
+        marginLeft: 5,
         marginBottom: 6,
         marginRight: 1,
         shadowColor: 'blue', // Shadow color
@@ -493,11 +500,11 @@ const styles = StyleSheet.create({
     },
     playerimageComplete: {
         // borderWidth: 1,
-        marginTop: 90, // Adjust the position to match the image
+        // marginTop: 90, // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 267,  // Set the size of the overlay image
+        height: 260,  // Set the size of the overlay image
         width: 180,
         shadowColor: 'green',
         shadowOffset: { width: 2, height: 0 }, // X and Y shadow
@@ -525,18 +532,40 @@ const styles = StyleSheet.create({
         textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
 
+    },completionTextBox:{
+        justifyContent:'center',
+        alignContent:'center',
+        borderWidth:1,
+        borderColor:'white',
+        width: 150,
+        height:257,
+        position:'absolute',
+        transform: [{ translateX: -40 }]
     },
     playerNameTextComplete:{
-        marginTop: 120,
-        marginRight:130,
+        // marginTop: 120,
+        // marginRight:130,
         fontFamily: 'LuckiestGuy_400Regular',
         color: 'green',
         textAlign: 'center',  // Centers text inside the text component
-        fontSize: 34.5,
+        fontSize: 30,
         transform: [{ rotate: '-90deg' }],
         textShadowColor: 'black',  // Shadow color
         textShadowOffset: { width: 2, height: 3 },  // Shadow position
         textShadowRadius: 1,
+        
+    },
+    completionCard:{
+            borderWidth:1,
+            position:'relative',
+            width:'96%',
+            height:257,
+            flexDirection:'row',
+            justifyContent:'center',
+            alignContent:'center',
+            transform: [{ translateX: 9 }],
+            backgroundColor:'black',
+            borderRadius:5
     },
     teams: {
         // borderWidth: 1,
@@ -594,7 +623,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5, // Shadow blur radius
         backgroundColor: 'rgba(50, 0, 0, 0.3)',
         borderColor: 'grey',
-        width: '60%'
+        width: '61%'
 
         // Optional: space between the image and stats
     },
@@ -728,7 +757,7 @@ const styles = StyleSheet.create({
         zIndex: 10,
         width: '100%',
         borderRadius: 9,
-        // height:'100%'
+        alignContent:'center',
     },
     gameCompleteText: {
         marginTop: 30,
