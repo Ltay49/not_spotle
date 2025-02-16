@@ -520,6 +520,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor:'white',
         transform: [{ translateX: 0 }],
+        height: 400,
     },
     playerName: {
         position: 'absolute',
