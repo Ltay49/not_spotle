@@ -538,7 +538,7 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderColor:'white',
         width: 150,
-        height:257,
+        height:260,
         position:'absolute',
         transform: [{ translateX: -40 }]
     },
@@ -562,7 +562,7 @@ const styles = StyleSheet.create({
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
-            transform: [{ translateX: 9 }],
+            transform: [{ translateX: 10 }, { translateY: 0 }],
             backgroundColor:'black',
             borderRadius:5
     },
