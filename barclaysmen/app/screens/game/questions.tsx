@@ -504,7 +504,7 @@ const styles = StyleSheet.create({
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 260,  // Set the size of the overlay image
+        height: 225,  // Set the size of the overlay image
         width: 180,
         shadowColor: 'green',
         shadowOffset: { width: 2, height: 0 }, // X and Y shadow
@@ -558,11 +558,11 @@ const styles = StyleSheet.create({
     completionCard:{
             position:'relative',
             width:'96%',
-            height:257,
+            height:230,
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
-            transform: [{ translateX: 10 }, { translateY: 0 }],
+            transform: [{ translateX: 10 }, { translateY: 25 }],
             backgroundColor:'black',
             borderRadius:5
     },
