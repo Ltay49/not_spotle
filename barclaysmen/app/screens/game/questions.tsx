@@ -63,7 +63,7 @@ export default function () {
     const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]);
 
     // Add new Animated.Value for translateY
-const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(100)); 
+const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(300)); 
 const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // 
 
 const [cardPositionAnimationCompleted, setCardPositionAnimationCompleted] = useState(false); 
@@ -78,13 +78,13 @@ useEffect(() => {
         Animated.parallel([
             Animated.timing(completionCardTranslateY, {
                 toValue: 0, // Move to normal position on Y
-                duration: 1500,
+                duration: 2000,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
             Animated.timing(completionCardTranslateX, {
                 toValue: 8, // Nudge the card 50 units to the right
-                duration: 1500,
+                duration: 2000,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
@@ -103,11 +103,11 @@ useEffect(() => {
             // Animate the image opacity to make it fade in
             Animated.timing(imageOpacity, {
                 toValue: 1, // Full opacity (fade-in)
-                duration: 500, // Duration for the fade-in
+                duration: 1000, // Duration for the fade-in
                 easing: Easing.ease,
                 useNativeDriver: true,
             }).start();
-        }, 500); // 2000ms = 2 seconds delay for the image
+        }, 1000); // 2000ms = 2 seconds delay for the image
 
         // Cleanup timeout if the component is unmounted or before the animation triggers
         return () => clearTimeout(timeoutId);
@@ -273,6 +273,7 @@ useEffect(() => {
                                     </Text>
                                 </ImageBackground>
                             </View>
+                            <View style={styles.compContainer}>
                             <Animated.View 
             style={[
                 styles.completionCard,
@@ -283,14 +284,26 @@ useEffect(() => {
                     ]
                 }
             ]}
-        >
-                           <Animated.View style={[styles.completionImageCard, { opacity: imageOpacity }]}>
+        >             
+                           <Animated.View style={styles.completionImageCard}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
                             </Animated.View>
-                            <Animated.View style={[styles.completionTextBox, { opacity: imageOpacity }]}>
+                            {/* , { opacity: imageOpacity }] */}
+                            <Animated.View style={styles.completionTextBox}>
                             <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
                             </Animated.View>
+                            <Animated.View>
+
                             </Animated.View>
+                            <Image style={styles.flagC} source={{uri: chosenPlayer?.flagUrl}}/>
+                            <Animated.View style={styles.statsComplete}>
+                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Assists: {chosenPlayer?.assists}</Text>
+                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Goals: {chosenPlayer?.goals}</Text>
+                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Games: {chosenPlayer?.games}</Text>
+                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Position: {chosenPlayer?.position}</Text>
+                            </Animated.View>
+                            </Animated.View>
+                            </View>
                         </View>
                     )}
 
@@ -583,7 +596,7 @@ const styles = StyleSheet.create({
         position:'relative', 
         // borderWidth: 1,
         borderColor:'white',
-        transform: [{ translateX: 0 }],
+        transform: [{ translateX: 120 }],
         // height: 400,
     },
     playerName: {
@@ -611,10 +624,10 @@ const styles = StyleSheet.create({
         alignContent:'center',
         // borderWidth:1,
         borderColor:'white',
-        width: 190,
+        width: 200,
         height:260,
         position:'absolute',
-        transform: [{ translateX: -40 }]
+        transform: [{ translateX: -60 }]
     },
     playerNameTextComplete:{
         // marginTop: 120,
@@ -624,8 +637,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',  // Centers text inside the text component
         fontSize: 30,
         transform: [{ rotate: '-90deg' }],
-        textShadowColor: 'black',  // Shadow color
-        textShadowOffset: { width: 2, height: 3 },  // Shadow position
+        textShadowColor: 'beige',  // Shadow color
+        textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
         
     },
@@ -639,7 +652,7 @@ const styles = StyleSheet.create({
             alignContent:'center',
             // transform: [{ translateX: 18 }],
             backgroundColor:'black',
-            borderRadius:5
+            borderRadius:5,
     },
     teams: {
         // borderWidth: 1,
@@ -667,7 +680,14 @@ const styles = StyleSheet.create({
         width: 50,
         borderRadius: 5,
         alignSelf: 'center'
-    }, flagText:
+    }, 
+    flagC:{
+        borderRadius: 5,
+        height: 60,  // Set the size of the overlay image
+        width: 80,
+        transform: [{ translateX: -150 },{ translateY: 10 } ],
+    },
+    flagText:
     {
         justifyContent: 'center',
         textAlign: 'center',
@@ -740,14 +760,26 @@ const styles = StyleSheet.create({
     },
     stats: {
         marginTop: 50,
+        alignContent: 'flex-end',
+        justifyContent: 'flex-end',
+        alignSelf: 'center',
+        // borderWidth: 2,
+        marginBottom: 5,
+        alignItems: 'flex-end',
+        width: '100%'
+        // Optional: space between each stat text
+    },
+    statsComplete: {
+        // marginTop: 50,
+        position:'relative',
         alignContent: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
         // borderWidth: 2,
         marginBottom: 5,
-        alignItems: 'center',
-        width: '100%'
-        // Optional: space between each stat text
+        // alignItems: 'flex-end',
+        width: '40%',
+        transform: [{ translateX: -10 }]
     },
     stext: {
         justifyContent: 'center',
@@ -762,6 +794,22 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         color: 'white',
         backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    stextC: {
+        // justifyContent: 'center',
+        // textAlign: 'center',
+        marginHorizontal: 5,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 1,
+        padding: 5,
+        fontSize: 20,
+        lineHeight: 20,
+        color: 'green',
+        // backgroundColor: 'white',
         fontFamily: 'LuckiestGuy_400Regular',
         // Adjust font size as needed
     },
@@ -866,4 +914,7 @@ const styles = StyleSheet.create({
         // transform: [{ translateY: -295 }],
 
     },
+    compContainer:{
+        overflow:'hidden'
+    }
 });
