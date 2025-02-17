@@ -566,13 +566,14 @@ const styles = StyleSheet.create({
         
     },
     completionCard:{
+            marginTop:5,
             position:'relative',
             width:'96%',
-            height:254,
+            height:265,
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
-            transform: [{ translateX: 8 }, { translateY: 5 }],
+            transform: [{ translateX: 8 }],
             backgroundColor:'black',
             borderRadius:5
     },
