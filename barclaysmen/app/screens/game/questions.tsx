@@ -103,11 +103,11 @@ useEffect(() => {
             // Animate the image opacity to make it fade in
             Animated.timing(imageOpacity, {
                 toValue: 1, // Full opacity (fade-in)
-                duration: 1000, // Duration for the fade-in
+                duration: 3000, // Duration for the fade-in
                 easing: Easing.ease,
                 useNativeDriver: true,
             }).start();
-        }, 1000); // 2000ms = 2 seconds delay for the image
+        }, 0); // 2000ms = 2 seconds delay for the image
 
         // Cleanup timeout if the component is unmounted or before the animation triggers
         return () => clearTimeout(timeoutId);
@@ -285,11 +285,11 @@ useEffect(() => {
                 }
             ]}
         >             
-                           <Animated.View style={styles.completionImageCard}>
+                           <Animated.View style={[styles.completionImageCard, {opacity: gameLost ? imageOpacity : 1}]}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
                             </Animated.View>
                             {/* , { opacity: imageOpacity }] */}
-                            <Animated.View style={styles.completionTextBox}>
+                            <Animated.View style={[styles.completionTextBox,{opacity: gameLost ? imageOpacity : 1}]}>
                             <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
                             </Animated.View>
                             <Animated.View>
@@ -302,6 +302,24 @@ useEffect(() => {
                                 <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Games: {chosenPlayer?.games}</Text>
                                 <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Position: {chosenPlayer?.position}</Text>
                             </Animated.View>
+                                <Animated.View style={styles.teamsComplete}>
+                            {chosenPlayer?.teamUrl.map((teamUrl, index) => {
+                                            // Ensure both arrays (teamUrl and team) have the same length
+                                            const team = chosenPlayer.team[index];
+                                            return (
+                                
+                                                <View key={index} style={styles.teamC}>
+                                                    <Image
+                                                        source={{ uri: teamUrl }}
+                                                        style={
+                                                            styles.teamBadgec
+                                                        }
+                                                    />
+                                                </View>
+                                            );
+
+                                        })}
+                                </Animated.View>
                             </Animated.View>
                             </View>
                         </View>
@@ -596,7 +614,7 @@ const styles = StyleSheet.create({
         position:'relative', 
         // borderWidth: 1,
         borderColor:'white',
-        transform: [{ translateX: 120 }],
+        transform: [{ translateX: 185 }],
         // height: 400,
     },
     playerName: {
@@ -627,7 +645,7 @@ const styles = StyleSheet.create({
         width: 200,
         height:260,
         position:'absolute',
-        transform: [{ translateX: -60 }]
+        transform: [{ translateX: -61 }]
     },
     playerNameTextComplete:{
         // marginTop: 120,
@@ -655,23 +673,48 @@ const styles = StyleSheet.create({
             borderRadius:5,
     },
     teams: {
-        // borderWidth: 1,
+        borderWidth: 1,
         height: '75%',
         width: 55,
         position: 'absolute',
         flexWrap: 'wrap', // Allows wrapping to new lines
         flexDirection: 'row', // Arrange items in a row
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        transform: [{ translateX: -83 }],// Align badges to the left
+    },
+    teamsComplete: {
+        borderWidth: 1,
+        borderColor:'white',
+        height: '55%',
+        width: 100,
+        position: 'relative',
+        flexWrap: 'wrap', // Allows wrapping to new lines
+        flexDirection: 'row', // Arrange items in a row
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{ translateX: -90 }],// Align badges to the left
+        transform: [{ translateX: -344 }, {translateY:60}],// Align badges to the left
     },
-
     team: {
+        width: '40%',  // Each team takes up 45% of the container width
+        marginBottom: 10,  // Adds space between rows
+        // alignItems: 'center', // Centers the content
+        justifyContent: 'flex-start',  // Centers the content inside each team box
+        marginRight: '1%', // Add left margin
+    },
+    teamC: {
+        borderWidth: 1,
+        borderColor:'white',
         width: '40%',  // Each team takes up 45% of the container width
         marginBottom: 10,  // Adds space between rows
         alignItems: 'center', // Centers the content
         justifyContent: 'center',  // Centers the content inside each team box
-        marginRight: '1%', // Add left margin
+        marginRight: '10%', // Add left margin
+    },
+    teamBadgec: {
+        height: 25,
+        width: 25,
+        marginTop: 10,
     },
     flag: {
         // position: 'absolute',
@@ -685,7 +728,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: 60,  // Set the size of the overlay image
         width: 80,
-        transform: [{ translateX: -150 },{ translateY: 10 } ],
+        transform: [{ translateX: -110 },{ translateY: 10 } ],
     },
     flagText:
     {
@@ -779,7 +822,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         // alignItems: 'flex-end',
         width: '40%',
-        transform: [{ translateX: -10 }]
+        transform: [{ translateX:50 }]
     },
     stext: {
         justifyContent: 'center',
