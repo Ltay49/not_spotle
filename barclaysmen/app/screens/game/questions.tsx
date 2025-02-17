@@ -769,7 +769,7 @@ const styles = StyleSheet.create({
         alignContent:'center',
     },
     gameCompleteText: {
-        marginTop: 30,
+        marginTop: 35,
         fontFamily: 'LuckiestGuy_400Regular',
         fontSize: 20,
         color: 'white',
