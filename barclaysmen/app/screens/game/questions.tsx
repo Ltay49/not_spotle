@@ -62,6 +62,32 @@ export default function () {
     const [translateXAnims, setTranslateXAnims] = useState<Animated.Value[]>([]); // For X translation
     const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]);
 
+    // Add new Animated.Value for translateY
+const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(100)); 
+const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // Start from below the screen
+
+// Animate the completion card when the game ends
+useEffect(() => {
+    if (gameComplete || gameLost) {
+        // Animate the Y and X position of the completion card
+        Animated.parallel([
+            Animated.timing(completionCardTranslateY, {
+                toValue: 0, // Move to normal position on Y
+                duration: 500,
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }),
+            Animated.timing(completionCardTranslateX, {
+                toValue: 8, // Nudge the card 50 units to the right
+                duration: 500,
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }),
+        ]).start();
+    }
+}, [gameComplete, gameLost]);
+
+
     useEffect(() => {
         if (footballImages.length > 0) {
             // Create new animations for the new ball
@@ -220,7 +246,17 @@ export default function () {
                                     </Text>
                                 </ImageBackground>
                             </View>
-                            <Animated.View style={styles.completionCard}>
+                            <Animated.View 
+            style={[
+                styles.completionCard,
+                { 
+                    transform: [
+                        { translateY: completionCardTranslateY },
+                        { translateX: completionCardTranslateX } // Nudge the card to the right
+                    ]
+                }
+            ]}
+        >
                             <Animated.View style={styles.completionImageCard}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
                             </Animated.View>
@@ -502,8 +538,8 @@ const styles = StyleSheet.create({
     },
     playerimageComplete: {
         // borderWidth: 1,
-        borderColor:'white',
-        // marginTop: 90, // Adjust the position to match the image
+        // borderColor:'white',
+        marginTop: 10, // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
         height: 225,  // Set the size of the overlay image
@@ -516,11 +552,12 @@ const styles = StyleSheet.create({
         // position: 'relative',
     },  
     completionImageCard:{
+        marginTop: 10, // Adjust the position to match the image
         position:'relative', 
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor:'white',
         transform: [{ translateX: 0 }],
-        height: 400,
+        // height: 400,
     },
     playerName: {
         position: 'absolute',
@@ -545,9 +582,9 @@ const styles = StyleSheet.create({
     },completionTextBox:{
         justifyContent:'center',
         alignContent:'center',
-        borderWidth:1,
+        // borderWidth:1,
         borderColor:'white',
-        width: 150,
+        width: 190,
         height:260,
         position:'absolute',
         transform: [{ translateX: -40 }]
@@ -573,7 +610,7 @@ const styles = StyleSheet.create({
             flexDirection:'row',
             justifyContent:'center',
             alignContent:'center',
-            transform: [{ translateX: 8 }],
+            // transform: [{ translateX: 18 }],
             backgroundColor:'black',
             borderRadius:5
     },
@@ -768,6 +805,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderRadius: 9,
         alignContent:'center',
+        overflow: 'hidden',
     },
     gameCompleteText: {
         marginTop: 35,
