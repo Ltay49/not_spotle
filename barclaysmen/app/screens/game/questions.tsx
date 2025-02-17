@@ -64,7 +64,12 @@ export default function () {
 
     // Add new Animated.Value for translateY
 const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(100)); 
-const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // Start from below the screen
+const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // 
+
+const [cardPositionAnimationCompleted, setCardPositionAnimationCompleted] = useState(false); 
+
+const [imageVisible, setImageVisible] = useState(false); // Controls when the image appears
+const [imageOpacity, setImageOpacity] = useState(new Animated.Value(0)); // For fade-in effect
 
 // Animate the completion card when the game ends
 useEffect(() => {
@@ -73,19 +78,41 @@ useEffect(() => {
         Animated.parallel([
             Animated.timing(completionCardTranslateY, {
                 toValue: 0, // Move to normal position on Y
-                duration: 500,
+                duration: 1500,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
             Animated.timing(completionCardTranslateX, {
                 toValue: 8, // Nudge the card 50 units to the right
-                duration: 500,
+                duration: 1500,
                 easing: Easing.ease,
                 useNativeDriver: true,
             }),
-        ]).start();
+        ]).start(() => {
+            // Set flag to true once the card has finished animating
+            setCardPositionAnimationCompleted(true); // Indicates animation is completed
+        });
     }
 }, [gameComplete, gameLost]);
+
+useEffect(() => {
+    if (cardPositionAnimationCompleted) {
+        // Wait 2 seconds after the card animation
+        const timeoutId = setTimeout(() => {
+            setImageVisible(true); // Show the image
+            // Animate the image opacity to make it fade in
+            Animated.timing(imageOpacity, {
+                toValue: 1, // Full opacity (fade-in)
+                duration: 500, // Duration for the fade-in
+                easing: Easing.ease,
+                useNativeDriver: true,
+            }).start();
+        }, 500); // 2000ms = 2 seconds delay for the image
+
+        // Cleanup timeout if the component is unmounted or before the animation triggers
+        return () => clearTimeout(timeoutId);
+    }
+}, [cardPositionAnimationCompleted]);
 
 
     useEffect(() => {
@@ -257,10 +284,10 @@ useEffect(() => {
                 }
             ]}
         >
-                            <Animated.View style={styles.completionImageCard}>
+                           <Animated.View style={[styles.completionImageCard, { opacity: imageOpacity }]}>
                             <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
                             </Animated.View>
-                            <Animated.View style={styles.completionTextBox}>
+                            <Animated.View style={[styles.completionTextBox, { opacity: imageOpacity }]}>
                             <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
                             </Animated.View>
                             </Animated.View>
