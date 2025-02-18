@@ -587,7 +587,7 @@ const styles = StyleSheet.create({
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 178,  // Set the size of the overlay image
+        height: 190,  // Set the size of the overlay image
         width: 90,
         shadowColor: 'black',
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
@@ -727,8 +727,8 @@ const styles = StyleSheet.create({
     flagC:{
         borderRadius: 5,
         height: 60,  // Set the size of the overlay image
-        width: 80,
-        transform: [{ translateX: -110 },{ translateY: 10 } ],
+        width: 100,
+        transform: [{ translateX: -90 },{ translateY: 10 } ],
     },
     flagText:
     {
@@ -822,7 +822,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         // alignItems: 'flex-end',
         width: '40%',
-        transform: [{ translateX:50 }]
+        transform: [{ translateX:40 }]
     },
     stext: {
         justifyContent: 'center',

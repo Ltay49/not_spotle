@@ -1,6 +1,6 @@
 import {
     playerStats
-  } from './data/testdata/playerStats';
+  } from './data/devdata/playerStats';
 
   import { seeding } from "./db/seed";
   import { MongoClient } from "mongodb";
@@ -12,7 +12,6 @@ import {
   const port: number = 8080;
   
   const bootstrap = async () => {
-    // await seeding( italianWords, frenchWords, germanWords, spanishWords, urkainianWords )
     await initializeConnection(MONGODB_URI, DATABASE_NAME);
     await seeding(
       playerStats

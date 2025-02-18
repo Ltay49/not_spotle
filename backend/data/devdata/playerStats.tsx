@@ -43,28 +43,3 @@ export const playerStats: Stats[] =
     position:'Goalkeeper'
 }]
 
-// Edwin van der Sar - GK - Netherlands - Fulham,ManchesterUnited
-// Steve Finan
-// Steed Malbranque
-// Luis Boa Morte
-// Louis Saha
-// Ian Walker
-// Robbie Savage
-// Dennis Wise
-// Jussi Jääskeläinen
-// Kevin Nolan
-// Kevin Dvies
-// Rory Delap
-// Mark Schwarzer
-// Gareth Southgate
-// Jonathon Greening 
-// Stuart Dowing
-// Kevin Phillips
-// Julio Arca
-// Damien Duff
-// David Dunn
-// Carlo Cudicini
-// John Terry
-// Robert Huth
-// William Gallas
-// Ivan Campo

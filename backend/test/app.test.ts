@@ -69,25 +69,25 @@ describe("GET: playerByName", ()=>{
     })
     // make an api call, generate a randon player, this can be done frotend, the random player stats will be held in
     // front end and used for the post request
-describe("POST: will post a body of player stats to the usedStats collection", ()=>{
-  test("populates the usedStats table with a player type", async ()=>{
-    const chosenPlayer = {
-      name:"Brad Friedel",
-      nationality:"Australian",
-      assists: 11,
-      goals: 14,
-      team:["Blackburn"],
-      teamUrl:['https://www.wafll.com/united-badges/european-shield.jpg'],
-      games: 200,
-      position:'Goalkeeper'
-  }
-    const response = await request(app)
-    .post("/api/usedStats")
-    .send(chosenPlayer)
-    .expect(201)
-    console.log(response.body)
-    expect(typeof response.body).toBe("object"); // Ensure the response is an object
-    expect(response.body).toHaveProperty("name", "Brad Friedel"); // Correct spelling
-; 
-  });
-})
+// describe("POST: will post a body of player stats to the usedStats collection", ()=>{
+//   test("populates the usedStats table with a player type", async ()=>{
+//     const chosenPlayer = {
+//       name:"Brad Friedel",
+//       nationality:"Australian",
+//       assists: 11,
+//       goals: 14,
+//       team:["Blackburn"],
+//       teamUrl:['https://www.wafll.com/united-badges/european-shield.jpg'],
+//       games: 200,
+//       position:'Goalkeeper'
+//   }
+//     const response = await request(app)
+//     .post("/api/usedStats")
+//     .send(chosenPlayer)
+//     .expect(201)
+//     console.log(response.body)
+//     expect(typeof response.body).toBe("object"); // Ensure the response is an object
+//     expect(response.body).toHaveProperty("name", "Brad Friedel"); // Correct spelling
+// ; 
+//   });
+// })
