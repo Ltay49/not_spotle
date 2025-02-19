@@ -503,7 +503,7 @@ const styles = StyleSheet.create({
         fontFamily: 'LuckiestGuy_400Regular',
         marginTop: 20,
         marginBottom: 10,
-        fontSize: 17,
+        fontSize: 16,
         textAlign: 'center',
         fontWeight: 'bold'
     },
@@ -659,6 +659,7 @@ const styles = StyleSheet.create({
         textShadowColor: 'beige',  // Shadow color
         textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
+        opacity:.9
         
     },
     completionCard:{
@@ -694,7 +695,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', // Arrange items in a row
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{ translateX: -344 }, {translateY:60}],// Align badges to the left
+        transform: [{ translateX: -344 }, {translateY:90}],// Align badges to the left
     },
     team: {
         width: '99%',  // Each team takes up 45% of the container width
@@ -704,18 +705,18 @@ const styles = StyleSheet.create({
         // marginRight: '1%', // Add left margin
     },
     teamC: {
-        // borderWidth: 1,
-        // borderColor:'white',
+        borderWidth: 1,
+        borderColor:'white',
         width: '40%',  // Each team takes up 45% of the container width
-        marginBottom: 10,  // Adds space between rows
+        marginBottom: 4,  // Adds space between rows
         alignItems: 'center', // Centers the content
         justifyContent: 'center',  // Centers the content inside each team box
-        marginRight: '10%', // Add left margin
+        marginRight: '5%', // Add left margin
     },
     teamBadgec: {
-        height: 30,
-        width: 30,
-        marginTop: 10,
+        height: 28,
+        width: 28,
+        marginTop: 5,
     },
     flag: {
         // position: 'absolute',
@@ -726,10 +727,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }, 
     flagC:{
+        opacity:.9,
         borderRadius: 5,
         height: 60,  // Set the size of the overlay image
-        width: 100,
-        transform: [{ translateX: -90 },{ translateY: 10 } ],
+        width: 90,
+        transform: [{ translateX: -96 },{ translateY: 30 } ],
     },
     flagText:
     {
