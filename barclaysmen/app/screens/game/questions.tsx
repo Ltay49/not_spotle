@@ -592,7 +592,8 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
-        shadowRadius: 1, // Blur effect
+        shadowRadius: 1, 
+        transform: [{ translateX: 9 }],// Blur effect
     },
     playerimageComplete: {
         // borderWidth: 1,
@@ -669,23 +670,23 @@ const styles = StyleSheet.create({
             justifyContent:'center',
             alignContent:'center',
             // transform: [{ translateX: 18 }],
-            backgroundColor:'black',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
             borderRadius:5,
     },
     teams: {
-        borderWidth: 1,
-        height: '75%',
-        width: 55,
+        // borderWidth: 1,
+        height: '99%',
+        width: 30,
         position: 'absolute',
         flexWrap: 'wrap', // Allows wrapping to new lines
-        flexDirection: 'row', // Arrange items in a row
+        // flexDirection: 'row', // Arrange items in a row
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        transform: [{ translateX: -83 }],// Align badges to the left
+        justifyContent: 'center',
+        transform: [{ translateX: -105 }],// Align badges to the left
     },
     teamsComplete: {
-        borderWidth: 1,
-        borderColor:'white',
+        // borderWidth: 1,
+        // borderColor:'white',
         height: '55%',
         width: 100,
         position: 'relative',
@@ -696,15 +697,15 @@ const styles = StyleSheet.create({
         transform: [{ translateX: -344 }, {translateY:60}],// Align badges to the left
     },
     team: {
-        width: '40%',  // Each team takes up 45% of the container width
-        marginBottom: 10,  // Adds space between rows
-        // alignItems: 'center', // Centers the content
-        justifyContent: 'flex-start',  // Centers the content inside each team box
-        marginRight: '1%', // Add left margin
+        width: '99%',  // Each team takes up 45% of the container width
+        // marginBottom: 5,  // Adds space between rows
+        alignItems: 'center', // Centers the content
+        justifyContent: 'center',  // Centers the content inside each team box
+        // marginRight: '1%', // Add left margin
     },
     teamC: {
-        borderWidth: 1,
-        borderColor:'white',
+        // borderWidth: 1,
+        // borderColor:'white',
         width: '40%',  // Each team takes up 45% of the container width
         marginBottom: 10,  // Adds space between rows
         alignItems: 'center', // Centers the content
@@ -712,8 +713,8 @@ const styles = StyleSheet.create({
         marginRight: '10%', // Add left margin
     },
     teamBadgec: {
-        height: 25,
-        width: 25,
+        height: 30,
+        width: 30,
         marginTop: 10,
     },
     flag: {
