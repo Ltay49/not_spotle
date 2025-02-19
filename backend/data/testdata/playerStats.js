@@ -23,7 +23,7 @@ exports.playerStats = [{
   goals: 92,
   team:["LEE",'MID','NEW'],
   playerUrl:"https://i.ibb.co/C3D3jMHC/Mark-Viduka.png",
-  teamUrl:['https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/1200px-Leeds_United_F.C._logo.svg.png',
+  teamUrl:["https://i.ibb.co/s9DVzpxc/lufc.png",
           'https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png',
           'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/400px-Newcastle_United_Logo.svg.png'],
   games: 240,
@@ -38,9 +38,9 @@ exports.playerStats = [{
   goals: 54,
   team:['ARS','WBA','POR'],
   playerUrl:"https://i.ibb.co/dJz2TnSD/Kanu.png",
-  teamUrl:['https://p7.hiclipart.com/preview/677/409/91/arsenal-f-c-efl-cup-premier-league-emirates-stadium-dream-league-soccer-arsenal-f-c-thumbnail.jpg',
+  teamUrl:["https://i.ibb.co/Kz5VSfQP/Ars.png",
           'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/West_Bromwich_Albion.svg/310px-West_Bromwich_Albion.svg.png',
-          'https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Portsmouth_FC_logo.svg/370px-Portsmouth_FC_logo.svg.png'],
+          "https://i.ibb.co/hJhSxL1s/pompy.png"],
   games: 203,
   position:'FOR'
 },
@@ -54,8 +54,8 @@ exports.playerStats = [{
   team:["BLB",'AVL','TOT'],
   playerUrl:"https://i.ibb.co/3mH9wzWs/BradF.png",
   teamUrl:['https://www.wafll.com/united-badges/european-shield.jpg',
-            "",
-            "https://i.ibb.co/SD340FYv/spurs.png"],
+            "https://i.ibb.co/G47n716D/Villa.png",
+            "https://i.ibb.co/XxtYgzc7/spurs.png"],
   games: 450,
   position:'GK'
 },
@@ -68,9 +68,9 @@ exports.playerStats = [{
   goals: 39,
   team:["FUL",'TOT','SUN'],
   playerUrl:"https://i.ibb.co/Mx5HW0D1/Steed.png",
-  teamUrl:['https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Fulham_FC_%28shield%29.svg/548px-Fulham_FC_%28shield%29.svg.png?20180527194031',
-          'https://i.ibb.co/SD340FYv/spurs.png',
-          'https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/380px-FC_Southampton.svg.png'
+  teamUrl:["https://i.ibb.co/Df2DWnf6/fulham.png",
+            "https://i.ibb.co/XxtYgzc7/spurs.png",
+          "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
 ],
   games: 336,
   position:'MID'
@@ -84,9 +84,9 @@ exports.playerStats = [{
   goals: 39,
   team:["FUL",'WHU','TOT'],
   playerUrl:"https://i.ibb.co/99674sfr/Luis-Boa-Morte.png",
-  teamUrl:['https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Fulham_FC_%28shield%29.svg/548px-Fulham_FC_%28shield%29.svg.png?20180527194031'
-          ,'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/350px-West_Ham_United_FC_logo.svg.png',
-            'https://i.ibb.co/SD340FYv/spurs.png'],
+  teamUrl:["https://i.ibb.co/Df2DWnf6/fulham.png",
+            "https://i.ibb.co/XrNW4xFk/WestHam.png",
+            "https://i.ibb.co/XxtYgzc7/spurs.png"],
   games: 278,
   position:'MID'
 },
@@ -100,7 +100,7 @@ exports.playerStats = [{
   team:["MID",'SUN'],
   playerUrl:"https://i.ibb.co/xtdpWBBn/Julio-Arca.png",
   teamUrl:['https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png',
-            'https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/380px-FC_Southampton.svg.png'],
+          "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"],
   games: 122,
   position:'MID'
 },
@@ -115,8 +115,8 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/213cNM4D/Kevin-Phillips.png",
   teamUrl:['https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png',
           'https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/380px-FC_Southampton.svg.png',
-          'https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Aston_Villa_FC_new_crest.svg/300px-Aston_Villa_FC_new_crest.svg.png',
-          'https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Birmingham_City_FC_logo.svg/300px-Birmingham_City_FC_logo.svg.png',
+          "https://i.ibb.co/G47n716D/Villa.png",
+          "https://i.ibb.co/NXny8GS/birm.png",
           'https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/Crystal_Palace_FC_logo_%282022%29.svg/350px-Crystal_Palace_FC_logo_%282022%29.svg.png'
         ],
   games: 122,
@@ -131,7 +131,7 @@ exports.playerStats = [{
   goals: 8,
   team:['AVL'],
   playerUrl:"https://i.ibb.co/GQkYBGYr/Olof.png",
-  teamUrl:['https://www.wafll.com/united-badges/european-shield.jpg'],
+  teamUrl:["https://i.ibb.co/G47n716D/Villa.png"],
   games: 232,
   position:'DEF'
 },
@@ -145,7 +145,7 @@ exports.playerStats = [{
   team:['CHE','TOT'],
   playerUrl:"https://i.ibb.co/GvqgVFfr/carlocudicini.png",
   teamUrl:['https://www.wafll.com/united-badges/european-shield.jpg',
-            "https://i.ibb.co/SD340FYv/spurs.png"],
+            "https://i.ibb.co/XxtYgzc7/spurs.png"],
   games: 135,
   position:'GK'
 },
@@ -172,8 +172,8 @@ exports.playerStats = [{
   team: ["ARS", "POR", "NEW"],
   playerUrl:"https://i.ibb.co/mFJHsNJV/sol.png",
   teamUrl: [
-    "https://p7.hiclipart.com/preview/677/409/91/arsenal-f-c-efl-cup-premier-league-emirates-stadium-dream-league-soccer-arsenal-f-c-thumbnail.jpg",
-    "https://upload.wikimedia.org/wikipedia/en/4/43/Portsmouth_FC.svg",
+    "https://i.ibb.co/Kz5VSfQP/Ars.png",
+    "https://i.ibb.co/hJhSxL1s/pompy.png",
     "https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg"
   ],
   games: 246,
@@ -188,7 +188,7 @@ exports.playerStats = [{
   goals: 39,
   team: ["CHE"],
   playerUrl:"https://i.ibb.co/YFmXxXXn/John-Terry.png",
-  teamUrl: ["https://i.ibb.co/YFmXxXXn/John-Terry.png"],
+  teamUrl: [ "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"],
   games: 492,
   position: "DEF"
 },
@@ -196,12 +196,12 @@ exports.playerStats = [{
   name: "Iván Campo",
   nationality: "SPA",
   seasons:['02','03','04','05','06','07'],
-  flagUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_Nigeria.svg/510px-Flag_of_Nigeria.svg.png",
+  flagUrl:"https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg",
   assists: 3,
   goals: 10,
   team: ["BOL"],
   playerUrl:"https://i.ibb.co/S7JfWCJF/Ivan-Campo.png",
-  teamUrl: ["https://upload.wikimedia.org/wikipedia/en/2/2d/Bolton_Wanderers_FC_logo.svg"],
+  teamUrl: ['https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png'],
   games: 143,
   position: "DEF"
 },
@@ -234,8 +234,8 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/FqgvPZQh/William-Gallas.png",
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-    "https://p7.hiclipart.com/preview/677/409/91/arsenal-f-c-efl-cup-premier-league-emirates-stadium-dream-league-soccer-arsenal-f-c-thumbnail.jpg",
-    "https://i.ibb.co/SD340FYv/spurs.png"
+    "https://i.ibb.co/Kz5VSfQP/Ars.png",
+    "https://i.ibb.co/XxtYgzc7/spurs.png"
   ],
   games: 321,
   position: "DEF"
@@ -253,7 +253,7 @@ exports.playerStats = [{
     "https://upload.wikimedia.org/wikipedia/en/0/0f/Blackburn_Rovers.svg",
     "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
     "https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg",
-    "https://upload.wikimedia.org/wikipedia/en/2/2e/Fulham_FC_%28shield%29.svg"
+    "https://i.ibb.co/Df2DWnf6/fulham.png"
   ],
   games: 392,
   position: "MID"
@@ -269,7 +269,7 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/YFmXxXXn/John-Terry.png",
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/0/0f/Blackburn_Rovers.svg",
-    "https://upload.wikimedia.org/wikipedia/en/6/68/Birmingham_City_FC_logo.svg"
+    "https://i.ibb.co/NXny8GS/birm.png"
   ],
   games: 290,
   position: "MID"
@@ -285,10 +285,10 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/TB7F2BgH/Louis-Saha.png",
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/2/2e/Fulham_FC_%28shield%29.svg",
-    "https://p7.hiclipart.com/preview/683/25/87/5bbc0c4261030-thumbnail.jpg",
+    "https://i.ibb.co/jPHT27qY/Manu.png",
     "https://upload.wikimedia.org/wikipedia/en/7/7c/Everton_FC_logo.svg",
-    "https://i.ibb.co/SD340FYv/spurs.png",
-    "https://upload.wikimedia.org/wikipedia/en/6/60/Sunderland_AFC_logo.svg"
+    "https://i.ibb.co/XxtYgzc7/spurs.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
   ],
   games: 289,
   position: "FOR"
@@ -304,7 +304,7 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/YFmXxXXn/John-Terry.png",
   teamUrl: [
     "https://i.ibb.co/3mTnRnLr/Leic.png",
-    "https://i.ibb.co/SD340FYv/spurs.png"
+    "https://i.ibb.co/XxtYgzc7/spurs.png"
   ],
   games: 86,
   position: "GK"
@@ -320,7 +320,7 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/Q3mBQyv3/Robbie-Sav.png",
   teamUrl: [
     "https://i.ibb.co/3mTnRnLr/Leic.png",
-    "https://upload.wikimedia.org/wikipedia/en/6/68/Birmingham_City_FC_logo.svg",
+    "https://i.ibb.co/NXny8GS/birm.png",
     "https://upload.wikimedia.org/wikipedia/en/0/0f/Blackburn_Rovers.svg",
     "https://upload.wikimedia.org/wikipedia/en/4/49/Derby_County_crest.svg"
   ],
@@ -354,7 +354,7 @@ exports.playerStats = [{
   playerUrl:"https://i.ibb.co/vxVqszcZ/Jussi.png",
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/2/2d/Bolton_Wanderers_FC_logo.svg",
-    "https://upload.wikimedia.org/wikipedia/en/c/c2/West_Ham_United_FC_logo.svg"
+    "https://i.ibb.co/XrNW4xFk/WestHam.png"
   ],
   games: 436,
   position: "GK"
@@ -369,9 +369,9 @@ exports.playerStats = [{
   team: ["POR", "MCI", "WHU"],  // List of teams he played for (Portsmouth, Manchester City, West Ham United)
   playerUrl: "https://i.ibb.co/WptHDP4F/David-James.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Portsmouth_FC_logo_2016.svg/1200px-Portsmouth_FC_logo_2016.svg.png",  // Portsmouth logo
+    "https://i.ibb.co/hJhSxL1s/pompy.png",  // Portsmouth logo
     "https://i.ibb.co/pBh2G3xv/ManC.png",  // Manchester City logo
-    "https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/West_Ham_United_FC_logo_2016.svg/1200px-West_Ham_United_FC_logo_2016.svg.png"  // West Ham United logo
+    "https://i.ibb.co/XrNW4xFk/WestHam.png" // West Ham United logo
   ],
   games: 572,  // Total appearances in the Premier League
   position: 'GK'  // Position: Goalkeeper
@@ -386,7 +386,7 @@ exports.playerStats = [{
   team: ["MUFC"],  // Only played for Manchester United in the Premier League
   playerUrl: "https://i.ibb.co/YFmXxXXn/John-Terry.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Manchester_United_FC_crest_2016.svg/1200px-Manchester_United_FC_crest_2016.svg.png"  // Manchester United logo
+    "https://i.ibb.co/jPHT27qY/Manu.png" // Manchester United logo
   ],
   games: 632,  // Total appearances in the Premier League
   position: 'MID'  // Position: Midfielder
@@ -401,7 +401,7 @@ exports.playerStats = [{
   team: ["ARS", "MCI"],  // Teams he played for (Arsenal and Manchester City)
   playerUrl: "https://i.ibb.co/r2QCNCBL/PatrickV.png",  // Player's image
   teamUrl: [
-    "https://p7.hiclipart.com/preview/677/409/91/arsenal-f-c-efl-cup-premier-league-emirates-stadium-dream-league-soccer-arsenal-f-c-thumbnail.jpg",  // Arsenal logo
+    "https://i.ibb.co/Kz5VSfQP/Ars.png",  // Arsenal logo
     "https://i.ibb.co/pBh2G3xv/ManC.png"  // Manchester City logo
   ],
   games: 307,  // Total appearances in the Premier League
@@ -417,7 +417,7 @@ exports.playerStats = [{
   team: ["POR", "MID", "EVE", "BLA"],  // Teams he played for (Portsmouth, Middlesbrough, Everton, Blackburn Rovers)
   playerUrl: "https://i.ibb.co/d05ykCK7/yakubu.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/8/84/Portsmouth_FC_logo.png",  // Portsmouth logo
+    "https://i.ibb.co/hJhSxL1s/pompy.png",  // Portsmouth logo
     "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png",  // Middlesbrough logo
     "https://upload.wikimedia.org/wikipedia/commons/c/c8/Everton_FC_logo.svg",  // Everton logo
     "https://upload.wikimedia.org/wikipedia/commons/a/a9/Blackburn_Rovers_logo.svg"  // Blackburn Rovers logo
@@ -448,8 +448,8 @@ exports.playerStats = [{
   team: ["WIG", "MUFC"],  // Teams he played for (Wigan Athletic, Manchester United)
   playerUrl: "https://i.ibb.co/sdSVChXN/Antonio-Valencia.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/d/da/Wigan_Athletic_FC_logo.svg",  // Wigan Athletic logo
-    "https://upload.wikimedia.org/wikipedia/commons/0/06/Manchester_United_FC_logo.svg"  // Manchester United logo
+    "https://i.ibb.co/GfXSchkX/Wigan.png",  // Wigan Athletic logo
+    "https://i.ibb.co/jPHT27qY/Manu.png" // Manchester United logo
   ],
   games: 325,  // Total Premier League appearances
   position: 'DEF'  // Position: Defender
@@ -464,7 +464,7 @@ exports.playerStats = [{
   team: ["ARS"],  // Teams he played for (Arsenal)
   playerUrl: "https://i.ibb.co/BHrBKsTK/reyes.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/5/53/Arsenal_FC.svg"  // Arsenal logo
+    "https://i.ibb.co/Kz5VSfQP/Ars.png"  // Arsenal logo
   ],
   games: 69,  // Total Premier League appearances
   position: 'MID'  // Position: Midfielder
@@ -482,7 +482,7 @@ exports.playerStats = [{
     "https://upload.wikimedia.org/wikipedia/commons/5/5c/Watford_FC_logo.svg",  // Watford logo
     "https://upload.wikimedia.org/wikipedia/commons/7/7c/West_Bromwich_Albion_FC_logo_2017.svg",  // West Brom logo
     "https://upload.wikimedia.org/wikipedia/commons/3/3f/Manchester_United_FC_logo.svg",  // Manchester United logo
-    "https://upload.wikimedia.org/wikipedia/commons/4/4b/Birmingham_City_FC_logo.svg"  // Birmingham City logo
+    "https://i.ibb.co/NXny8GS/birm.png" // Birmingham City logo
   ],
   games: 390,  // Total Premier League appearances
   position: 'GK'  // Position: Goalkeeper
@@ -497,11 +497,11 @@ exports.playerStats = [{
   playerUrl: "https://i.ibb.co/MD4Jz9xg/tel-haim.png",  // Player's image
   teamUrl: [
     'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png',  // Bolton Wanderers logo
-    'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png',
+    "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
     'https://i.ibb.co/pBh2G3xv/ManC.png',
-    'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png',// Sunderland logo
-    'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png', // Portsmouth logo
-    'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png', // West Ham United logo
+    "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png",// Sunderland logo
+    "https://i.ibb.co/hJhSxL1s/pompy.png", // Portsmouth logo
+    "https://i.ibb.co/XrNW4xFk/WestHam.png",
     'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png',// QPR logo
   ],
   games: 147,  // Total Premier League appearances
@@ -516,10 +516,10 @@ exports.playerStats = [{
   team: ["CHA", "TOT", "SUN", "AVL"],  // Teams he played for (Charlton, Tottenham, Sunderland, Aston Villa)
   playerUrl: "https://i.ibb.co/v628sR3P/Darren-Bent.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/e/e9/Charlton_Athletic_FC_logo.svg",  // Charlton Athletic logo
-    "https://i.ibb.co/SD340FYv/spurs.png",  // Tottenham Hotspur logo
-    "https://upload.wikimedia.org/wikipedia/commons/f/f3/Sunderland_AFC_logo_2016.svg",  // Sunderland logo
-    "https://upload.wikimedia.org/wikipedia/commons/f/f6/Aston_Villa_FC_Logo_2020.svg"  // Aston Villa logo
+    "https://i.ibb.co/4nMJYk5K/charlton.png",  // Charlton Athletic logo
+    "https://i.ibb.co/XxtYgzc7/spurs.png",  // Tottenham Hotspur logo
+    "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png", // Sunderland logo
+    "https://i.ibb.co/G47n716D/Villa.png" // Aston Villa logo
   ],
   games: 276,  // Total Premier League appearances
   position: 'FOR'  // Position: Forward
@@ -530,16 +530,16 @@ exports.playerStats = [{
   flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",  // URL for England flag
   assists: 14,  // Total assists
   goals: 40,  // Total goals
-  team: ["IPT", "BLA", "EVE", "CHA", "WIG", "BIR", "WOL"],  // Teams he played for (Ipswich Town, Blackburn, Everton, Charlton, Wigan, Birmingham, Wolves)
+  team: ["IPS", "BLA", "EVE", "CHA", "WIG", "BIR", "WOL"],  // Teams he played for (Ipswich Town, Blackburn, Everton, Charlton, Wigan, Birmingham, Wolves)
   playerUrl: "https://i.ibb.co/qMByMHnJ/Marcus-Bent.png",  // Player's image
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/commons/a/a4/Ipswich_Town_FC_logo.svg",  // Ipswich Town logo
     "https://upload.wikimedia.org/wikipedia/commons/c/cd/Blackburn_Rovers_FC_logo.svg",  // Blackburn Rovers logo
     "https://upload.wikimedia.org/wikipedia/commons/4/48/Everton_FC_logo_2018.svg",  // Everton logo
-    "https://upload.wikimedia.org/wikipedia/commons/2/22/Charlton_Athletic_FC_logo.svg",  // Charlton Athletic logo
-    "https://upload.wikimedia.org/wikipedia/commons/3/36/Wigan_Athletic_FC_logo_2019.svg",  // Wigan Athletic logo
-    "https://upload.wikimedia.org/wikipedia/commons/3/3b/Birmingham_City_FC_logo_2020.svg",  // Birmingham City logo
-    "https://upload.wikimedia.org/wikipedia/commons/5/57/Wolverhampton_Wanderers_FC_logo_2018.svg"  // Wolverhampton Wanderers logo
+    "https://i.ibb.co/4nMJYk5K/charlton.png",  // Charlton Athletic logo
+    "https://i.ibb.co/GfXSchkX/Wigan.png",  // Wigan Athletic logo
+    "https://i.ibb.co/NXny8GS/birm.png",  // Birmingham City logo
+    "https://i.ibb.co/x0MN85C/Wolves.png"  // Wolverhampton Wanderers logo
   ],
   games: 215,  // Total Premier League appearances
   position: 'FOR'  // Position: Forward
@@ -554,8 +554,8 @@ exports.playerStats = [{
   team: ["FUL", "TOT"],  // Teams he played for: Fulham, Tottenham Hotspur
   playerUrl: "https://i.ibb.co/XN74vfX/clintdempsy.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/c/c2/Fulham_FC_logo_2013.svg",  // Fulham logo
-    "https://i.ibb.co/SD340FYv/spurs.png"  // Tottenham Hotspur logo
+    "https://i.ibb.co/Df2DWnf6/fulham.png",  // Fulham logo
+    "https://i.ibb.co/XxtYgzc7/spurs.png"  // Tottenham Hotspur logo
   ],
   games: 218,  // Total Premier League appearances
   position: 'MID'  // Position: Midfielder
@@ -569,7 +569,7 @@ exports.playerStats = [{
   goals: 1,  // Total goals
   team: ["TOT"],  // Team he played for: Tottenham Hotspur
   playerUrl: "https://i.ibb.co/YFmXxXXn/John-Terry.png",  // Player's image
-  teamUrl: ["https://i.ibb.co/SD340FYv/spurs.png"],  // Tottenham Hotspur logo
+  teamUrl: ["https://i.ibb.co/XxtYgzc7/spurs.png"],  // Tottenham Hotspur logo
   games: 40,  // Total Premier League appearances
   position: 'MID'  // Position: Midfielder
 },
@@ -583,7 +583,7 @@ exports.playerStats = [{
   team: ["LUFC"],  // Teams he played for (Leeds United)
   playerUrl: "https://i.ibb.co/YFmXxXXn/John-Terry.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/2/2c/Leeds_United_FC_logo.svg"
+    "https://i.ibb.co/s9DVzpxc/lufc.png"
   ],  // Logos for the teams he played for
   games: 266,  // Total Premier League appearances
   position: 'MID'  // Position: Midfielder
@@ -598,7 +598,7 @@ exports.playerStats = [{
   team: ["MUFC"],  // Teams he played for (Manchester United)
   playerUrl: "https://i.ibb.co/TMqvtRMn/Beckham.png",  // Player's image
   teamUrl: [
-    "https://p7.hiclipart.com/preview/683/25/87/5bbc0c4261030-thumbnail.jpg"
+    "https://i.ibb.co/jPHT27qY/Manu.png"
   ],  // Logos for the teams he played for
   games: 265,  // Total Premier League appearances
   position: 'MID',  // Position: Midfielder
@@ -615,7 +615,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Ipswich_Town_FC_logo.svg/800px-Ipswich_Town_FC_logo.svg.png",
     "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/400px-Newcastle_United_Logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Sunderland_AFC_logo.svg/800px-Sunderland_AFC_logo.svg.png"
+    "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
   ],
   games: 264,
   position: "DEF"
@@ -630,9 +630,9 @@ exports.playerStats = [{
   team: ["FUL", "LIV", "POR"],
   playerUrl: "https://i.ibb.co/YFmXxXXn/John-Terry.png",
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Fulham_FC_logo.svg/800px-Fulham_FC_logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Liverpool_FC_logo_2012.svg/800px-Liverpool_FC_logo_2012.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Portsmouth_FC_logo.svg/800px-Portsmouth_FC_logo.svg.png"
+    "https://i.ibb.co/Df2DWnf6/fulham.png",
+    "https://i.ibb.co/k2vjcCzB/lfc.png",
+    "https://i.ibb.co/hJhSxL1s/pompy.png"
   ],
   games: 318,
   position: "DEF"
@@ -644,15 +644,15 @@ exports.playerStats = [{
   flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",
   assists: 27,
   goals: 105,
-  team: ["QPR", "AST", "POR", "STK", "TOT", "LIV"],
+  team: ["QPR", "AVL", "POR", "STK", "TOT", "LIV"],
   playerUrl: "https://i.ibb.co/RTsn1Ysm/crouch.png",
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Queens_Park_Rangers_FC_logo.svg/800px-Queens_Park_Rangers_FC_logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Aston_Villa_FC_logo_2016.svg/800px-Aston_Villa_FC_logo_2016.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Portsmouth_FC_logo.svg/800px-Portsmouth_FC_logo.svg.png",
+    "https://i.ibb.co/G47n716D/Villa.png",
+    "https://i.ibb.co/hJhSxL1s/pompy.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png",
-    "https://i.ibb.co/SD340FYv/spurs.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Liverpool_FC_logo_2012.svg/800px-Liverpool_FC_logo_2012.svg.png"
+    "https://i.ibb.co/XxtYgzc7/spurs.png",
+    "https://i.ibb.co/k2vjcCzB/lfc.png"
   ],
   games: 469,
   position: "FOR"
@@ -679,11 +679,11 @@ exports.playerStats = [{
   flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_Ireland.svg/510px-Flag_of_Ireland.svg.png",
   assists: 19,
   goals: 19,
-  team: ["MCI", "AST", "STK", "AFC"],
+  team: ["MCI", "AVL", "STK", "NEW"],
   playerUrl: "https://i.ibb.co/vxGZkhqt/stephen-Ireland.png",
   teamUrl: [
     "https://i.ibb.co/pBh2G3xv/ManC.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Aston_Villa_FC_logo.svg/800px-Aston_Villa_FC_logo.svg.png",
+    "https://i.ibb.co/G47n716D/Villa.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Arsenal_FC_logo_2011.svg/800px-Arsenal_FC_logo_2011.svg.png"
   ],
@@ -699,8 +699,8 @@ exports.playerStats = [{
   team: ["POR", "MCI", "STK"],
   playerUrl:"https://i.ibb.co/5xzqjnHV/Benjani.png",
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Portsmouth_FC_logo.svg/800px-Portsmouth_FC_logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Manchester_City_FC_logo.svg/800px-Manchester_City_FC_logo.svg.pnghttps://i.ibb.co/pBh2G3xv/ManC.png",
+    "https://i.ibb.co/hJhSxL1s/pompy.png",
+    "https://i.ibb.co/pBh2G3xv/ManC.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png"
   ],
   games: 118,
@@ -731,7 +731,8 @@ goals: 4,
 team: ["ARS", "POR"],
 playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
 teamUrl: [
-  "https://i.ibb.co/jPHT27qY/Manu.png"
+  "https://i.ibb.co/Kz5VSfQP/Ars.png",
+  "https://i.ibb.co/hJhSxL1s/pompy.png"
 ],
 games: 166,
 position: "FOR"
@@ -744,9 +745,13 @@ position: "FOR"
   assists: 4,
   goals: 9,
   team: ["ARS", "BIR", "WHU", "STK", "LEI"],
-  playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
+  playerUrl: "https://i.ibb.co/xSn2Yt1F/Matt-Upson.png",
   teamUrl: [
-    "https://i.ibb.co/jPHT27qY/Manu.png"
+    "https://i.ibb.co/Kz5VSfQP/Ars.png",
+    "https://i.ibb.co/NXny8GS/birm.png",
+    "https://i.ibb.co/XrNW4xFk/WestHam.png",
+    "",
+    ""
   ],
   games: 268,
   position: "DEF"
@@ -755,13 +760,15 @@ position: "FOR"
     name: "Kolo Toure",
     nationality: "IVO",
     seasons: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13","14", "15"],
-    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/510px-Flag_of_the_Netherlands.svg.png",
+    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg/250px-Flag_of_C%C3%B4te_d%27Ivoire.svg.png",
     assists: 10,
     goals: 12,
     team: ["ARS", "LIV", "MCI",],
-    playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
-    teamUrl: [
-      "https://i.ibb.co/jPHT27qY/Manu.png"
+    playerUrl: "https://i.ibb.co/mCX69zP2/Kolo-Toure.png",
+    teamUrl: ["https://i.ibb.co/Kz5VSfQP/Ars.png",
+              "https://i.ibb.co/k2vjcCzB/lfc.png",
+              "https://i.ibb.co/pBh2G3xv/ManC.png"
+
     ],
     games: 352,
     position: "DEF"
@@ -774,10 +781,10 @@ position: "FOR"
       assists: 31,
       goals: 12,
       team: ["ARS", "CHE"],
-      playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
+      playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png",
       teamUrl: [
-        "https://i.ibb.co/jPHT27qY/Manu.png",
-        "https://i.ibb.co/jPHT27qY/Manu.png"
+        "https://i.ibb.co/Kz5VSfQP/Ars.png",
+        "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
       ],
       games: 366,
       position: "DEF"
@@ -790,9 +797,9 @@ position: "FOR"
         assists: 2,
         goals: 2,
         team: ["ARS"],
-        playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
+        playerUrl: "https://i.ibb.co/Kcrc4nrQ/GioVanB.png",
         teamUrl: [
-          "https://i.ibb.co/jPHT27qY/Manu.png",
+          "https://i.ibb.co/Kz5VSfQP/Ars.png"
         ],
         games: 41,
         position: "DEF"
@@ -805,9 +812,9 @@ position: "FOR"
           assists: 4,
           goals: 7,
           team: ["ARS"],
-          playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
+          playerUrl:"https://i.ibb.co/whFKR8yY/Edu.png",
           teamUrl: [
-            "https://i.ibb.co/jPHT27qY/Manu.png",
+            "https://i.ibb.co/Kz5VSfQP/Ars.png",
           ],
           games: 74,
           position: "MID"
@@ -816,13 +823,13 @@ position: "FOR"
             name: "Freddie Ljunberg",
             nationality: "SWE",
             seasons: ["01", "02", "03","04", "05", "06","07"],
-            flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/510px-Flag_of_the_Netherlands.svg.png",
+            flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/510px-Flag_of_Sweden.svg.png",
             assists: 24,
             goals: 30,
             team: ["ARS"],
-            playerUrl: "https://i.ibb.co/XfygRHGs/Ruud.png",
+            playerUrl: "https://i.ibb.co/YBx1Gqyd/Freddie-Lung.png",
             teamUrl: [
-              "https://i.ibb.co/jPHT27qY/Manu.png",
+              "https://i.ibb.co/Kz5VSfQP/Ars.png",
             ],
             games: 169,
             position: "MID"
@@ -835,10 +842,10 @@ position: "FOR"
               assists: 41,
               goals: 58,
               team: ["ARS", "AVL"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl:"https://i.ibb.co/LmHCwdQ/Pires.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/3/3a/Arsenal_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Aston_Villa_FC_logo.svg"
+                "https://i.ibb.co/Kz5VSfQP/Ars.png",
+                "https://i.ibb.co/G47n716D/Villa.png"
               ],
               games: 165,
               position: "MID"
@@ -851,9 +858,9 @@ position: "FOR"
               assists: 16,
               goals: 23,
               team: ["ARS"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/yL5sG1P/Wiltord.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/3/3a/Arsenal_FC.svg"
+                "https://i.ibb.co/Kz5VSfQP/Ars.png"
               ],
               games: 79,
               position: "FOR"
@@ -868,22 +875,22 @@ position: "FOR"
               team: ["ARS"],
               playerUrl: "https://i.ibb.co/B5RyQrX8/Thenry.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/3/3a/Arsenal_FC.svg"
+                "https://i.ibb.co/Kz5VSfQP/Ars.png"
               ],
               games: 189,
               position: "FOR"
             },
             {
               name: "Clinton Morrison",
-              nationality: "IRL",
+              nationality: "IRE",
               seasons: ["02", "03", "04", "05"],
               flagUrl: "https://upload.wikimedia.org/wikipedia/commons/4/47/Flag_of_Ireland.svg",
               assists: 7,
               goals: 14,
               team: ["BIR"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl:"https://i.ibb.co/7dShb4r0/Clinton-Morr.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/6/69/Birmingham_City_FC.svg"
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 87,
               position: "FOR"
@@ -896,11 +903,11 @@ position: "FOR"
               assists: 11,
               goals: 6,
               team: ["CHE", "BIR", "WIG"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl:"https://i.ibb.co/wZ37wBtL/Melchiot.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/5/5c/Chelsea_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/69/Birmingham_City_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/9/9d/Wigan_Athletic_FC_logo.svg"
+                "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://i.ibb.co/GfXSchkX/Wigan.png"
               ],
               games: 214,
               position: "DEF"
@@ -909,16 +916,16 @@ position: "FOR"
               name: "Dwight Yorke",
               nationality: "TRT",
               seasons: ["01", "02", "03", "04", "05", "07", "08"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Flag_of_Trinidad_and_Tobago.svg/510px-Flag_of_Trinidad_and_Tobago.svg.png",
               assists: 0,
               goals: 16,
-              team: ["MAN", "BIR", "BLK", "SUN"],
+              team: ["MUFC", "BIR", "BLK", "SUN"],
               playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0a/Manchester_United_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/5/5f/Birmingham_City_FC_logo.svg",
+                "https://i.ibb.co/jPHT27qY/Manu.png",
+                "https://i.ibb.co/NXny8GS/birm.png",
                 "https://upload.wikimedia.org/wikipedia/commons/4/4b/Blackburn_Rovers_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/8/88/Sunderland_AFC_logo.svg"
+                "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
               ],
               games: 110,
               position: "FOR"
@@ -933,10 +940,10 @@ position: "FOR"
               team: ["LIV", "BIR", "WIG", "AVL"],
               playerUrl: "https://i.ibb.co/cK51tkHd/Emile-Hesky.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0a/Liverpool_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/d/d4/Wigan_Athletic_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/8/8f/Aston_Villa_FC_logo.svg"
+                "https://i.ibb.co/k2vjcCzB/lfc.png",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://i.ibb.co/GfXSchkX/Wigan.png",
+                "https://i.ibb.co/G47n716D/Villa.png"
               ],
               games: 384,
               position: "FOR"
@@ -948,12 +955,12 @@ position: "FOR"
               flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",
               assists: 24,
               goals: 10,
-              team: ["MAN", "NEW", "BIR"],
+              team: ["MUFC", "NEW", "BIR"],
               playerUrl: "https://i.ibb.co/GfZkMDs8/Nicky-Butt.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0a/Manchester_United_FC_logo.svg",
+                "https://i.ibb.co/jPHT27qY/Manu.png",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/400px-Newcastle_United_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg"
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 205,
               position: "MID"
@@ -968,7 +975,7 @@ position: "FOR"
               team: ["BIR"],
               playerUrl: "https://i.ibb.co/CshyMywb/stan.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg"
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 97,
               position: "MID"
@@ -977,31 +984,31 @@ position: "FOR"
               name: "Sebastian Larsson",
               nationality: "SWE",
               seasons: ["04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Flag_of_Sweden.svg",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Flag_of_Sweden.svg/510px-Flag_of_Sweden.svg.png",
               assists: 26,
               goals: 30,
               team: ["ARS", "BIR", "SUN"],
               playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0a/Arsenal_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/2/23/Sunderland_AFC_logo.svg"
+                "https://i.ibb.co/Kz5VSfQP/Ars.png",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
               ],
               games: 327,
               position: "MID"
             },
             {
               name: "Fabrice Muamba",
-              nationality: "ENG",
+              nationality: "DRC",
               seasons: ["05", "06", "07", "08", "09", "10", "11"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Flag_of_England.svg",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/250px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
               assists: 2,
               goals: 7,
               team: ["ARS", "BIR", "BOL"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/1YnXXRx4/Fabrice.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0a/Arsenal_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg",
+                "https://i.ibb.co/Kz5VSfQP/Ars.png",
+                "https://i.ibb.co/NXny8GS/birm.png",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png"
               ],
               games: 193,
@@ -1011,15 +1018,15 @@ position: "FOR"
               name: "Wilson Palacios",
               nationality: "HON",
               seasons: ["07", "08", "09", "10", "11", "12", "13"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Flag_of_Honduras.svg/800px-Flag_of_Honduras.svg.png",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/250px-Flag_of_Honduras.svg.png",
               assists: 2,
               goals: 1,
               team: ["BIR", "WIG", "TOT", "STO"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/V0gtqDFQ/Hondouros.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/0/01/Wigan_Athletic_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/0/0f/Tottenham_Hotspur_FC_logo.svg",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://i.ibb.co/GfXSchkX/Wigan.png",
+                "https://i.ibb.co/XxtYgzc7/spurs.png",
                 "https://upload.wikimedia.org/wikipedia/commons/d/d3/Stoke_City_FC_logo.svg"
               ],
               games: 147,
@@ -1029,14 +1036,14 @@ position: "FOR"
               name: "Johan Djourou",
               nationality: "SWI",
               seasons: ["04", "05", "06", "07", "08", "09", "10", "11"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Switzerland.svg/800px-Flag_of_Switzerland.svg.png",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Switzerland_%28Pantone%29.svg/250px-Flag_of_Switzerland_%28Pantone%29.svg.png",
               assists: 1,
               goals: 2,
               team: ["ARS", "BIR"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/JRCDCnCt/jd.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/0/0f/Arsenal_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/6e/Birmingham_City_FC_logo.svg"
+                "https://i.ibb.co/Kz5VSfQP/Ars.png",
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 121,
               position: "DEF"
@@ -1048,13 +1055,13 @@ position: "FOR"
               flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",
               assists: 38,
               goals: 31,
-              team: ["BIR", "WHA", "NEW", "LEE"],
+              team: ["BIR", "WHU", "NEW", "LEE"],
               playerUrl: "https://i.ibb.co/SwSBjHr0/Lee-Bowyer.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/5/59/Birmingham_City_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/42/West_Ham_United_FC_logo.svg",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://i.ibb.co/XrNW4xFk/WestHam.png",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/400px-Newcastle_United_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/1200px-Leeds_United_F.C._logo.svg.png"
+                "https://i.ibb.co/s9DVzpxc/lufc.png"
               ],
               games: 243,
               position: "MID"
@@ -1067,10 +1074,10 @@ position: "FOR"
               assists: 1,
               goals: 0,
               team: ["MCI", "BIR"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/KpPSGd8M/JoeHart.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/4/42/Manchester_City_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/5/59/Birmingham_City_FC_logo.svg"
+                "https://i.ibb.co/pBh2G3xv/ManC.png",
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 303,
               position: "GK"
@@ -1079,15 +1086,15 @@ position: "FOR"
               name: "Curtis Davies",
               nationality: "SIL",
               seasons: ["05", "06", "07", "08", "09", "10"],
-              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Flag_of_Sierra_Leone.svg",
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Flag_of_Sierra_Leone.svg/250px-Flag_of_Sierra_Leone.svg.png",
               assists: 4,
               goals: 7,
               team: ["WBA", "AVL", "BIR"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/fzCxzqdj/Curtis-Davies.png",
               teamUrl: [
                 "https://upload.wikimedia.org/wikipedia/commons/1/1b/West_Bromwich_Albion_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/44/Aston_Villa_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/5/59/Birmingham_City_FC_logo.svg"
+                "https://i.ibb.co/G47n716D/Villa.png",
+                "https://i.ibb.co/NXny8GS/birm.png"
               ],
               games: 139,
               position: "DEF"
@@ -1099,15 +1106,15 @@ position: "FOR"
               flagUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319",
               assists: 24,
               goals: 18,
-              team: ["ARS", "NOR", "BLB", "TOT","BIR","WHU"],
+              team: ["ARS","NOR","BLB","TOT","BIR","WHU"],
               playerUrl: "https://i.ibb.co/jvy8QdV3/Dbently.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/a/a2/Arsenal_FC.svg",
+                "https://i.ibb.co/Kz5VSfQP/Ars.png",
                 "https://upload.wikimedia.org/wikipedia/commons/5/56/Birmingham_City_FC_logo.svg",
                 "https://upload.wikimedia.org/wikipedia/commons/5/59/Blackburn_Rovers_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/2/29/Tottenham_Hotspur_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/a/a9/West_Ham_United_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/9/99/Norwich_City_FC_logo.svg"
+                "https://i.ibb.co/XxtYgzc7/spurs.png",
+                "https://i.ibb.co/NXny8GS/birm.png",
+                "https://i.ibb.co/XrNW4xFk/WestHam.png"
               ],
               games: 184,
               position: "MID"
@@ -1122,7 +1129,7 @@ position: "FOR"
               team: ["CHA", "WBA", "WAT", "BOL", "QPR"],
               playerUrl: "https://i.ibb.co/Pv4DtzPk/Danny-Shitu.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
                 "https://upload.wikimedia.org/wikipedia/commons/0/0d/West_Bromwich_Albion_FC_logo.svg",
                 "https://upload.wikimedia.org/wikipedia/commons/5/5d/Watford_FC_logo.svg",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png",
@@ -1139,9 +1146,9 @@ position: "FOR"
               assists: 11,
               goals: 2,
               team: ["CHA", "WAT"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/7dxQmg38/Chris-Powell.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
                 "https://upload.wikimedia.org/wikipedia/commons/5/5d/Watford_FC_logo.svg"
               ],
               games: 131, // Correct total from the provided data
@@ -1155,10 +1162,10 @@ position: "FOR"
               assists: 2,
               goals: 0,
               team: ["CHA", "POR", "WBA"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/N6DBzS8m/Kiely.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/3/3f/Portsmouth_FC_logo.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
+                "https://i.ibb.co/hJhSxL1s/pompy.png",
                 "https://upload.wikimedia.org/wikipedia/commons/0/0d/West_Bromwich_Albion_FC_logo.svg"
               ],
               games: 195,
@@ -1172,13 +1179,13 @@ position: "FOR"
               assists: 22,
               goals: 9,
               team: ["CHA", "TOT", "WHU", "FUL", "LIV", "LEI"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl:"https://i.ibb.co/ccBS6K36/PaulK.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/7/72/Tottenham_Hotspur_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/45/West_Ham_United_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/5/5d/Fulham_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/4e/Liverpool_FC_logo.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
+                "https://i.ibb.co/XxtYgzc7/spurs.png",
+                "https://i.ibb.co/XrNW4xFk/WestHam.png",
+                "https://i.ibb.co/Df2DWnf6/fulham.png",
+                "https://i.ibb.co/k2vjcCzB/lfc.png",
                 "https://upload.wikimedia.org/wikipedia/commons/d/d3/Leicester_City_FC_logo.svg"
               ],
               games: 323, // Correct total
@@ -1192,11 +1199,11 @@ position: "FOR"
               assists: 8,
               goals: 9,
               team: ["CHA", "MID", "AVL", "QPR"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
+              playerUrl: "https://i.ibb.co/qF74Fv3F/Luke-Young.png",
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/6/64/Aston_Villa_FC_logo.svg",
+                "https://i.ibb.co/G47n716D/Villa.png",
                 "https://upload.wikimedia.org/wikipedia/commons/c/c6/Queens_Park_Rangers_FC_logo.svg"
               ],
               games: 320,
@@ -1210,46 +1217,580 @@ position: "FOR"
               assists: 21,
               goals: 28,
               team: ["CHA", "CHE", "NEW", "WHU", "TOT", "FUL"],
-              playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",  // Replace with player's image URL if available
+              playerUrl: "https://i.ibb.co/G39xrBnz/Scott-Parker.png",  // Replace with player's image URL if available
               teamUrl: [
-                "https://upload.wikimedia.org/wikipedia/commons/d/d8/Charlton_Athletic_FC.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/43/Chelsea_FC_logo.svg",
+                "https://i.ibb.co/4nMJYk5K/charlton.png",
+                "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/400px-Newcastle_United_Logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/4/45/West_Ham_United_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/6/64/Tottenham_Hotspur_FC_logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/5/5d/Fulham_FC_logo.svg"
+                "https://i.ibb.co/XrNW4xFk/WestHam.png",
+                "https://i.ibb.co/XxtYgzc7/spurs.png",
+                "https://i.ibb.co/Df2DWnf6/fulham.png"
               ],
               games: 373,  // Correct total appearances
               position: "MID"
-            }
-            
-            
-            
-
-            
-            
-
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-
-            
-
-            
+            },
+            {
+              name: "Wayne Rooney",
+              nationality: "ENG", // England
+              seasons: ["04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17"], // List of seasons based on the years of play
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_England.svg/1024px-Flag_of_England.svg.png", // England flag URL
+              assists: 103, // Total assists from the data provided
+              goals: 210, // Total goals calculated from his Premier League record
+              team: ["MUFC", "EVE"], // Manchester United (MNU) and Everton (EVE)
+              playerUrl: "https://i.ibb.co/CpBNHTk0/Wayne.png", // Wayne Rooney image URL (a popular public image)
+              teamUrl: [
+                "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Everton_FC_logo.svg/1024px-Everton_FC_logo.svg.png" // Everton logo
+              ],
+              games: 463, // Total appearances based on the data provided
+              position: "FOR" // Forward (as given in the data)
+            },
+            {
+              name: "Park Ji-Sung",
+              nationality: "KOR", // South Korea
+              seasons: ["06", "07", "08", "09", "10", "11", "12", "13"], // Seasons based on his playing years
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Flag_of_South_Korea.svg/1024px-Flag_of_South_Korea.svg.png", // South Korea flag URL
+              assists: 21, // Total assists from the data provided
+              goals: 19, // Total goals from the data provided
+              team: ["MUFC", "QPR"], // Manchester United (MNU) and Queens Park Rangers (QPR)
+              playerUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Park_Ji-sung.jpg", // Park Ji-Sung image URL
+              teamUrl: [
+                "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
+                "https://upload.wikimedia.org/wikipedia/commons/1/1c/QPR_logo.svg" // Queens Park Rangers logo
+              ],
+              games: 154, // Total appearances in the Premier League
+              position: "MID" // Midfielder
+            },
+            {
+              name: "Edwin van der Sar",
+              nationality: "NLD", // Netherlands
+              seasons: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"], // Seasons based on his playing years
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/510px-Flag_of_the_Netherlands.svg.png", // Netherlands flag URL
+              assists: 1, // Total assists from the data provided
+              goals: 0, // Total goals as mentioned in the data
+              team: ["MUFC", "FUL"], // Manchester United (MNU) and Fulham (FUL)
+              playerUrl: "https://i.ibb.co/WNbfKdk5/Edwin.png", // Edwin van der Sar image URL
+              teamUrl: [
+                "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
+                "https://i.ibb.co/Df2DWnf6/fulham.png"// Fulham logo
+              ],
+              games: 313, // Total appearances in the Premier League
+              position: "GK" // Goalkeeper
+            },
+            {
+              name: "John Arne Riise",
+              nationality: "NOR", // Norway
+              seasons: ["02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"], // Seasons based on his playing years
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/1024px-Flag_of_Norway.svg.png", // Norway flag URL
+              assists: 30, // Total assists from the data provided
+              goals: 21, // Total goals from the data provided
+              team: ["LIV", "FUL"], // Liverpool (LIV) and Fulham (FUL)
+              playerUrl: "https://i.ibb.co/39NX0Q6t/JohnAnre.png", // John Arne Riise image URL
+              teamUrl: [
+                "https://i.ibb.co/k2vjcCzB/lfc.png", // Liverpool logo
+                "https://i.ibb.co/Df2DWnf6/fulham.png" // Fulham logo
+              ],
+              games: 321, // Total appearances in the Premier League
+              position: "DEF" // Defender
+            },
+            {
+              name: "El Hadji Diouf",
+              nationality: "SEN", // Senegal
+              seasons: ["02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"], // Seasons based on his playing years
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/3/33/Flag_of_Senegal.svg", // Senegal flag URL
+              assists: 25, // Total assists from the data provided
+              goals: 28, // Total goals from the data provided
+              team: ["LIV", "BOL", "SUN", "BLB"], // Liverpool (LIV), Bolton Wanderers (BOL), Sunderland (SUN), Blackburn Rovers (BKR)
+              playerUrl: "https://i.ibb.co/4RLxzgGM/Diouf.png", // El Hadji Diouf image URL
+              teamUrl: [
+                "https://i.ibb.co/k2vjcCzB/lfc.png", // Liverpool logo
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Bolton_Wanderers_Logo.svg/1024px-Bolton_Wanderers_Logo.svg.png", // Bolton Wanderers logo
+                "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png",
+                "https://upload.wikimedia.org/wikipedia/commons/d/d7/Blackburn_Rovers_FC_logo_2016.png" // Blackburn Rovers logo
+              ],
+              games: 242, // Total appearances in the Premier League
+              position: "MID" // Midfielder
+            },
+            {
+              name: "Fábio Rochemback",
+              nationality: "BRA", // Brazil
+              seasons: ["05", "06", "07"], // Seasons based on his playing years
+              flagUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg", // Brazil flag URL
+              assists: 10, // Total assists from the data provided
+              goals: 5, // Total goals from the data provided
+              team: ["MID"], // Middlesbrough (MID)
+              playerUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/F%C3%A1bio_Rochemback.jpg", // Fábio Rochemback image URL
+              teamUrl: [
+                "https://upload.wikimedia.org/wikipedia/commons/a/a3/Middlesbrough_FC_logo.svg" // Middlesbrough logo
+              ],
+              games: 68, // Total appearances in the Premier League
+              position: "MID" // Midfielder
+            },
+              {
+                name: "Anderson",
+                nationality: "BRA", // Brazil
+                seasons: ["07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg", // Brazil flag URL
+                assists: 7, // Total assists from the data provided
+                goals: 5, // Total goals from the data provided
+                team: ["MUFC"], // Manchester United (MNU)
+                playerUrl: "https://upload.wikimedia.org/wikipedia/commons/6/68/Anderson_FC_2013.jpg", // Anderson image URL
+                teamUrl: [
+                  "https://i.ibb.co/jPHT27qY/Manu.png" // Manchester United logo
+                ],
+                games: 105, // Total appearances in the Premier League
+                position: "MID" // Midfielder
+              },
+              {
+                name: "Robin van Persie",
+                nationality: "NED", // Netherlands
+                seasons: ["04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg", // Netherlands flag URL
+                assists: 53, // Total assists from the data provided
+                goals: 144, // Total goals from the data provided
+                team: ["ARS", "MUFC"], // Arsenal (ARS), Manchester United (MNU)
+                playerUrl: "https://i.ibb.co/pSr69Gm/RVP.png", // Robin van Persie image URL
+                teamUrl: [
+                  "https://i.ibb.co/Kz5VSfQP/Ars.png", // Arsenal logo
+                  "https://i.ibb.co/jPHT27qY/Manu.png" // Manchester United logo
+                ],
+                games: 280, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                name: "Didier Drogba",
+                nationality: "CIV", // Cote D'Ivoire
+                seasons: ["04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/76/Flag_of_C%C3%B4te_d%27Ivoire.svg", // Cote D'Ivoire flag URL
+                assists: 55, // Total assists from the data provided
+                goals: 104, // Total goals from the data provided
+                team: ["CHE"], // Chelsea (CHE)
+                playerUrl: "https://i.ibb.co/KcpD0549/Drogba.png", // Didier Drogba image URL
+                teamUrl: [
+                  "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg" // Chelsea logo
+                ],
+                games: 254, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                name: "Arjen Robben",
+                nationality: "NED", // Netherlands
+                seasons: ["04", "05", "06"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg", // Netherlands flag URL
+                assists: 16, // Total assists from the data provided
+                goals: 15, // Total goals from the data provided
+                team: ["CHE"], // Chelsea (CHE)
+                playerUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Arjen_Robben_2014.jpg", // Arjen Robben image URL
+                teamUrl: [
+                  "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"// Chelsea logo
+                ],
+                games: 67, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                name: "Andrey Arshavin",
+                nationality: "RUS", // Russia
+                seasons: ["08", "09", "10", "11", "12"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg", // Russia flag URL
+                assists: 20, // Total assists from the data provided
+                goals: 23, // Total goals from the data provided
+                team: ["ARS"], // Arsenal (ARS)
+                playerUrl: "https://i.ibb.co/jBDS6ng/Arshavin.png", // Andrey Arshavin image URL
+                teamUrl: [
+                  "https://upload.wikimedia.org/wikipedia/commons/7/7a/Arsenal_FC.svg" // Arsenal logo
+                ],
+                games: 105, // Total appearances in the Premier League
+                position: "MID" // Midfielder
+              },
+              {
+                name: "Andrew Johnson",
+                nationality: "ENG", // England
+                seasons: ["04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                assists: 17, // Total assists from the data provided
+                goals: 51, // Total goals from the data provided
+                team: ["CRY", "QPR", "FUL", "EVE"], // Crystal Palace (CPFC), Queens Park Rangers (QPR), Fulham (FUL), Everton (EVE)
+                playerUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Andrew_Johnson_2011.jpg", // Andrew Johnson image URL
+                teamUrl: [
+                  "https://upload.wikimedia.org/wikipedia/commons/2/2d/Crystal_Palace_FC.svg", // Crystal Palace logo
+                  "https://upload.wikimedia.org/wikipedia/commons/4/4d/QPR_FC_logo.svg", // Queens Park Rangers logo
+                  "https://i.ibb.co/Df2DWnf6/fulham.png",// Fulham logo
+                  "https://upload.wikimedia.org/wikipedia/commons/6/63/Everton_FC_logo.svg" // Everton logo
+                ],
+                games: 187, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                name: "Dirk Kuijt",
+                nationality: "NED", // Netherlands
+                seasons: ["06", "07", "08", "09", "10", "11", "12"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg", // Netherlands flag URL
+                assists: 27, // Total assists from the data provided
+                goals: 51, // Total goals from the data provided
+                team: ["LIV"], // Liverpool (LIV)
+                playerUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Dirk_Kuyt_2011.jpg", // Dirk Kuijt image URL
+                teamUrl: [
+                  "https://i.ibb.co/k2vjcCzB/lfc.png" // Liverpool logo
+                ],
+                games: 208, // Total appearances in the Premier League
+                position: "MID" // Midfielder
+              },
+              {
+                name: "Kevin Doyle",
+                nationality: "IRL", // Ireland
+                seasons: ["06", "07", "08", "09", "10", "11", "12", "14"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg", // Ireland flag URL
+                assists: 15, // Total assists from the data provided
+                goals: 37, // Total goals from the data provided
+                team: ["RED", "WOL", "CRY"], // Teams: Reading, Wolverhampton Wanderers, Crystal Palace
+                playerUrl: "https://i.ibb.co/39CWkjxj/Doyle.png", // Kevin Doyle image URL
+                teamUrl: [
+                  "https://upload.wikimedia.org/wikipedia/commons/c/c1/Reading_FC_logo.svg", // Reading logo
+                  "https://i.ibb.co/x0MN85C/Wolves.png",// Wolverhampton Wanderers logo
+                  "https://upload.wikimedia.org/wikipedia/commons/2/23/Crystal_Palace_FC_logo.svg" // Crystal Palace logo
+                ],
+                games: 164, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                name: "Dimitar Berbatov",
+                nationality: "BUL", // Bulgaria
+                seasons: ["06", "07", "08", "09", "10", "11", "12", "13"], // Seasons based on his playing years
+                flagUrl: "https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Bulgaria.svg", // Bulgaria flag URL
+                assists: 40, // Total assists from the data provided
+                goals: 94, // Total goals from the data provided
+                team: ["TOT", "MUFC", "FUL"], // Teams: Tottenham Hotspur, Manchester United, Fulham
+                playerUrl: "https://i.ibb.co/4n0xXwqD/Berbatov.png", // Dimitar Berbatov image URL
+                teamUrl: [
+                  "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
+                  "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
+                  "https://i.ibb.co/Df2DWnf6/fulham.png" // Fulham logo
+                ],
+                games: 229, // Total appearances in the Premier League
+                position: "FOR" // Forward
+              },
+              {
+                  name: "Benni McCarthy",
+                  nationality: "ZAF", // South Africa
+                  seasons: ["06", "07", "08", "09", "10"], // Seasons based on his playing years
+                  flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Flag_of_South_Africa.svg", // South Africa flag URL
+                  assists: 6, // Total assists from the data provided
+                  goals: 37, // Total goals from the data provided
+                  team: ["BLB", "WHU"], // Teams: Blackburn Rovers, West Ham United
+                  playerUrl: "https://upload.wikimedia.org/wikipedia/commons/9/97/Benni_McCarthy_%28cropped%29.jpg", // Benni McCarthy image URL
+                  teamUrl: [
+                    "https://upload.wikimedia.org/wikipedia/commons/a/a5/Blackburn_Rovers_FC_logo.svg", // Blackburn Rovers logo
+                    "https://i.ibb.co/XrNW4xFk/WestHam.png"// West Ham United logo
+                  ],
+                  games: 120, // Total appearances in the Premier League
+                  position: "FOR" // Forward
+                },
+                  {
+                    name: "Roque Santa Cruz",
+                    nationality: "PRY", // Paraguay
+                    seasons: ["07", "08", "09", "10", "11"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Flag_of_Paraguay.svg", // Paraguay flag URL
+                    assists: 7, // Total assists from the data provided
+                    goals: 26, // Total goals from the data provided
+                    team: ["BLB", "MCI"], // Teams: Blackburn Rovers (BLA), Manchester City (MCI)
+                    playerUrl: "https://i.ibb.co/Pv1MDzsy/santa-CRUZ.png", // Roque Santa Cruz image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/a/a3/Blackburn_Rovers_FC_logo.svg", // Blackburn Rovers logo
+                      "https://i.ibb.co/pBh2G3xv/ManC.png" // Manchester City logo
+                    ],
+                    games: 86, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Robinho",
+                    nationality: "BRA", // Brazil
+                    seasons: ["08", "09", "10"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg", // Brazil flag URL
+                    assists: 8, // Total assists from the data provided
+                    goals: 14, // Total goals from the data provided
+                    team: ["MCI"], // Team: Manchester City (MCI)
+                    playerUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Robinho_2010.jpg", // Robinho image URL
+                    teamUrl: [
+                      "https://i.ibb.co/pBh2G3xv/ManC.png"// Manchester City logo
+                    ],
+                    games: 41, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Gabriel Agbonlahor",
+                    nationality: "ENG", // England
+                    seasons: ["05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                    assists: 34, // Total assists from the data provided
+                    goals: 74, // Total goals from the data provided
+                    team: ["AVL"], // Team: Aston Villa FC (AVFC)
+                    playerUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Gabriel_Agbonlahor.jpg", // Gabriel Agbonlahor image URL
+                    teamUrl: [
+                      "https://i.ibb.co/G47n716D/Villa.png"// Aston Villa logo
+                    ],
+                    games: 322, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Florent Malouda",
+                    nationality: "FRA", // France
+                    seasons: ["07", "08", "09", "10", "11", "12"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg", // France flag URL
+                    assists: 20, // Total assists from the data provided
+                    goals: 35, // Total goals from the data provided
+                    team: ["CHE"], // Team: Chelsea FC (CFC)
+                    playerUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Florent_Malouda_2012.jpg", // Florent Malouda image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/a/a5/Chelsea_FC.svg" // Chelsea logo
+                    ],
+                    games: 149, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Demba Ba",
+                    nationality: "SEN", // Senegal
+                    seasons: ["10", "11", "12", "13"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/6/64/Flag_of_Senegal.svg", // Senegal flag URL
+                    assists: 3, // Total assists from the data provided
+                    goals: 43, // Total goals from the data provided
+                    team: ["CHE", "NEW", "WHU"], // Teams: Chelsea FC (CFC), Newcastle United (NEW), West Ham United (WHU)
+                    playerUrl: "https://i.ibb.co/7dxFW7Ns/DembaBa.png", // Demba Ba image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg", // Chelsea logo
+                      "https://upload.wikimedia.org/wikipedia/commons/a/a4/Newcastle_United_FC.svg", // Newcastle United logo
+                      "https://i.ibb.co/XrNW4xFk/WestHam.png"
+                    ],
+                    games: 99, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Micah Richards",
+                    nationality: "ENG", // England
+                    seasons: ["05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                    assists: 10, // Total assists from the data provided
+                    goals: 8, // Total goals from the data provided
+                    team: ["MCI", "AVL"], // Teams: Manchester City (MCI), Aston Villa (AVL)
+                    playerUrl: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Micah_Richards_2015.jpg", // Micah Richards image URL
+                    teamUrl: ["https://i.ibb.co/pBh2G3xv/ManC.png", 
+                    "https://i.ibb.co/G47n716D/Villa.png"], // Manchester City and Aston Villa logos
+                    games: 203, // Total appearances in the Premier League
+                    position: "DEF" // Defender
+                  },
+                  {
+                    name: "Fabricio Coloccini",
+                    nationality: "ARG", // Argentina
+                    seasons: ["08", "09", "10", "11", "12", "13", "14", "15", "16"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg", // Argentina flag URL
+                    assists: 1, // Total assists from the data provided
+                    goals: 4, // Total goals from the data provided
+                    team: ["NEW"], // Team: Newcastle United (NEW)
+                    playerUrl: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Fabricio_Coloccini_2014.jpg", // Fabricio Coloccini image URL
+                    teamUrl: ["https://upload.wikimedia.org/wikipedia/commons/a/a5/Newcastle_United_FC_logo_2010.png"], // Newcastle United logo
+                    games: 211, // Total appearances in the Premier League
+                    position: "DEF" // Defender
+                  },
+                  {
+                    name: "Álvaro Arbeloa",
+                    nationality: "SPA", // Spain
+                    seasons: ["07", "08", "09"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg", // Spain flag URL
+                    assists: 3, // Total assists from the data provided
+                    goals: 2, // Total goals from the data provided// Clean sheets from the data provided
+                    team: ["LIV", "WHU"], // Teams: Liverpool (LIV), West Ham United (WHU)
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Álvaro Arbeloa image URL
+                    teamUrl: [
+                      "https://i.ibb.co/k2vjcCzB/lfc.png", // Liverpool logo
+                      "https://i.ibb.co/XrNW4xFk/WestHam.png"// West Ham United logo
+                    ],
+                    games: 66, // Total appearances in the Premier League
+                    position: "DEF" // Defender
+                  },
+                  {
+                    name: "Jerzy Dudek",
+                    nationality: "POL", // Poland
+                    seasons: ["01", "02", "03", "04", "05", "06"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg", // Poland flag URL
+                    assists: 0, // No assists mentioned
+                    goals: 0, // No goals mentioned
+                    cleanSheets: 49, // Clean sheets total
+                    team: ["LIV"], // Team: Liverpool (LIV)
+                    playerUrl: "https://i.ibb.co/qLZFsqL8/Dudek.png", // Jerzy Dudek image URL
+                    teamUrl: [
+                      "https://i.ibb.co/k2vjcCzB/lfc.png" // Liverpool logo
+                    ],
+                    games: 127, // Total appearances in the Premier League
+                    position: "GK" // Goalkeeper
+                  },
+                  {
+                    name: "Niko Kranjčar",
+                    nationality: "CRO", // Croatia
+                    seasons: ["06", "07", "08", "09", "10", "11", "14"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/1/11/Flag_of_Croatia.svg", // Croatia flag URL
+                    assists: 15, // Total assists from the data provided
+                    goals: 20, // Total goals from the data provided
+                    cleanSheets: 0, // Clean sheets are not mentioned in the data
+                    team: ["TOT", "QPR", "POR"], // Teams: Tottenham Hotspur (TOT), Queens Park Rangers (QPR), Portsmouth (POR)
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Niko Kranjčar image URL
+                    teamUrl: [
+                      "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
+                      "https://upload.wikimedia.org/wikipedia/commons/4/42/Queens_Park_Rangers_FC_logo.svg", // QPR logo
+                      "https://i.ibb.co/hJhSxL1s/pompy.png"// Portsmouth logo
+                    ],
+                    games: 154, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Jonás Gutiérrez",
+                    nationality: "ARG", // Argentina
+                    seasons: ["10", "11", "12", "13", "14"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/1/1e/Flag_of_Argentina.svg", // Argentina flag URL
+                    assists: 11, // Assists in Premier League
+                    goals: 7, // Goals in Premier League
+                    cleanSheets: 0, // Clean sheets not applicable for a midfielder
+                    team: ["NEW", "NOR"], // Teams: Newcastle United (NU), Norwich City (NC)
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Jonás Gutiérrez image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/2/20/Newcastle_United_FC_logo.svg", // Newcastle United logo
+                      "https://upload.wikimedia.org/wikipedia/commons/c/c0/Norwich_City_FC_logo.svg" // Norwich City logo
+                    ],
+                    games: 154, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Obafemi Martins",
+                    nationality: "NGA", // Nigeria
+                    seasons: ["07", "08", "09", "10"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg", // Nigeria flag URL
+                    assists: 7, // Assists in Premier League
+                    goals: 28, // Goals in Premier League
+                    team: ["BIR", "NEW"], // Teams: Birmingham City (BC), Newcastle United (NU)
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Obafemi Martins image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/3/36/Birmingham_City_FC_logo.svg", // Birmingham City logo
+                      "https://upload.wikimedia.org/wikipedia/commons/1/18/Newcastle_United_FC_logo.svg" // Newcastle United logo
+                    ],
+                    games: 92, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Alex",
+                    nationality: "BRA", // Brazil
+                    seasons: ["07", "08", "09", "11"], // Seasons based on his playing years in ascending order
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg", // Brazil flag URL
+                    assists: 2, // Assists in Premier League
+                    goals: 7, // Goals in Premier League
+                    cleanSheets: 38, // Clean sheets in Premier League
+                    team: ["CHE"], // Team: Chelsea FC (CFC)
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Alex image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg" // Chelsea FC logo
+                    ],
+                    games: 86, // Total appearances in the Premier League
+                    position: "DEF" // Defender
+                  },                  
+                  {
+                    name: "Boudewijn Zenden",
+                    nationality: "NLD", // Netherlands
+                    seasons: ["02", "03", "04", "04", "05", "06", "07", "10", "11"], // Seasons based on his playing years in ascending order
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg", // Netherlands flag URL
+                    assists: 16, // Assists in Premier League
+                    goals: 19, // Goals in Premier League
+                    team: ["CHE", "MID", "LIV", "SUN"], // Teams: Chelsea, Middlesbrough, Liverpool, Sunderland
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Boudewijn Zenden image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg", // Chelsea logo
+                      "https://upload.wikimedia.org/wikipedia/commons/0/0f/Middlesbrough_FC_logo.svg", // Middlesbrough logo
+                      "https://i.ibb.co/k2vjcCzB/lfc.png", // Liverpool logo
+                      "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"// Sunderland logo
+                    ],
+                    games: 180, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Leroy Lita",
+                    nationality: "ENG", // England
+                    seasons: ["07","08","11","12","13","14"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                    assists: 5, // Assists in Premier League
+                    goals: 10, // Goals in Premier League
+                    team: ["SWA", "BIR", "REA"], // Teams: Swansea City, Birmingham City, Reading
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Leroy Lita image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/1/1d/Swansea_City_AFC_logo.svg", // Swansea City logo
+                      "https://i.ibb.co/NXny8GS/birm.png", // Birmingham City logo
+                      "https://upload.wikimedia.org/wikipedia/commons/7/7f/Reading_FC_logo.svg" // Reading logo
+                    ],
+                    games: 65, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Nigel Reo-Coker",
+                    nationality: "ENG", // England
+                    seasons: ["06","07","08", "09", "10", "11","12"], // Seasons based on his playing years
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                    assists: 8, // Assists in Premier League
+                    goals: 10, // Goals in Premier League
+                    team: ["BOL", "AVL", "WHU"], // Teams: Bolton Wanderers, Aston Villa, West Ham United
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Nigel Reo-Coker image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/f/f9/Bolton_Wanderers_crest.svg", // Bolton Wanderers logo
+                      "https://i.ibb.co/G47n716D/Villa.png", // Aston Villa logo
+                      "https://i.ibb.co/XrNW4xFk/WestHam.png" // West Ham United logo
+                    ],
+                    games: 205, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Bobby Zamora",
+                    nationality: "ENG", // England
+                    seasons: ["05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years in ascending order
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_England.svg", // England flag URL
+                    assists: 34, // Assists in Premier League
+                    goals: 47, // Goals in Premier League
+                    team: ["TOT", "WHU", "FUL", "QPR"], // Teams: Tottenham Hotspur, West Ham United, Fulham, Queens Park Rangers in ascending order
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Bobby Zamora image URL
+                    teamUrl: [
+                      "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
+                      "https://i.ibb.co/XrNW4xFk/WestHam.png", // West Ham United logo
+                      "https://i.ibb.co/Df2DWnf6/fulham.png", // Fulham logo
+                      "https://upload.wikimedia.org/wikipedia/commons/a/ae/Queens_Park_Rangers_FC_logo.svg" // QPR logo
+                    ],
+                    games: 252, // Total appearances in the Premier League
+                    position: "FOR" // Forward
+                  },
+                  {
+                    name: "Adel Taarabt",
+                    nationality: "MCO", // Morocco
+                    seasons: ["06", "07", "08", "09", "10", "11", "12", "13", "14", "15"], // Seasons based on his playing years in ascending order
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Morocco.svg", // Morocco flag URL
+                    assists: 8, // Assists in Premier League
+                    goals: 7, // Goals in Premier League
+                    team: ["TOT", "QPR", "FUL"], // Teams: Tottenham Hotspur, Queens Park Rangers, Fulham in ascending order
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Adel Taarabt image URL
+                    teamUrl: [
+                      "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
+                      "https://upload.wikimedia.org/wikipedia/commons/f/f1/West_Ham_United_FC_logo.svg", // QPR logo
+                      "https://i.ibb.co/Df2DWnf6/fulham.png"// Fulham logo
+                    ],
+                    games: 86, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  },
+                  {
+                    name: "Hatem Ben Arfa",
+                    nationality: "FRA", // France
+                    seasons: ["10", "11", "12", "13", "14"], // Seasons based on his playing years in ascending order
+                    flagUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg", // France flag URL
+                    assists: 10, // Assists in Premier League
+                    goals: 13, // Goals in Premier League
+                    team: ["NEW", "HUL"], // Teams: Newcastle United, Hull City
+                    playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Hatem Ben Arfa image URL
+                    teamUrl: [
+                      "https://upload.wikimedia.org/wikipedia/commons/c/c2/Newcastle_United_FC_logo.svg", // Newcastle United logo
+                      "https://upload.wikimedia.org/wikipedia/commons/0/00/Hull_City_AFC_logo.svg" // Hull City logo
+                    ],
+                    games: 84, // Total appearances in the Premier League
+                    position: "MID" // Midfielder
+                  }
 ]
 console.log(exports.playerStats.length);
