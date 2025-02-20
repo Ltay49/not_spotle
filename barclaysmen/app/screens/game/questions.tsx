@@ -608,6 +608,7 @@ const styles = StyleSheet.create({
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1,
         resizeMode: "contain",
+        transform: [{ translateX: -8 }]
         // position: 'relative',
     },  
     completionImageCard:{
@@ -686,8 +687,8 @@ const styles = StyleSheet.create({
         transform: [{ translateX: -105 }],// Align badges to the left
     },
     teamsComplete: {
-        // borderWidth: 1,
-        // borderColor:'white',
+        borderWidth: 1,
+        borderColor:'white',
         height: '55%',
         width: 100,
         position: 'relative',
@@ -695,7 +696,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', // Arrange items in a row
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{ translateX: -344 }, {translateY:90}],// Align badges to the left
+        transform: [{ translateX: -344 }, {translateY:80}],// Align badges to the left
     },
     team: {
         width: '99%',  // Each team takes up 45% of the container width
@@ -729,9 +730,9 @@ const styles = StyleSheet.create({
     flagC:{
         opacity:.9,
         borderRadius: 5,
-        height: 60,  // Set the size of the overlay image
-        width: 90,
-        transform: [{ translateX: -96 },{ translateY: 30 } ],
+        height: 50,  // Set the size of the overlay image
+        width: 80,
+        transform: [{ translateX: -105 },{ translateY: 30 } ],
     },
     flagText:
     {
@@ -811,7 +812,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         // borderWidth: 2,
         marginBottom: 5,
-        alignItems: 'flex-end',
+        alignItems: 'center',
         width: '100%'
         // Optional: space between each stat text
     },
@@ -825,7 +826,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         // alignItems: 'flex-end',
         width: '40%',
-        transform: [{ translateX:40 }]
+        transform: [{ translateX:45}]
     },
     stext: {
         justifyContent: 'center',
