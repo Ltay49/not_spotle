@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     overlay: {
         flex: 1,
         width: '100%',
-        backgroundColor: 'rgba(255, 255, 255, 0.7)', // Optional: Add a translucent overlay
+        backgroundColor: 'rgba(255, 255, 255, 0.3)', // Optional: Add a translucent overlay
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     inputContainer: {
         // width: '50%',
         // padding: 20,
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: '#ccc',
         borderRadius: 10,
         // backgroundColor: 'black',
         shadowColor: '#000',
-        shadowOpacity: 0.4,
+        shadowOpacity: 0.7,
         shadowOffset: { width: 3, height: 3 },
         shadowRadius: 3,
         elevation: 10,
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         fontFamily: 'LuckiestGuy_400Regular',
         color: '#0063A1',
         marginTop: 15,
-        opacity:0.8
+        opacity:1
     },
     loadingContainer: {
         flex: 1,

@@ -573,7 +573,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 }, // Shadow offset
         shadowOpacity: 0.2, // Shadow opacity (0 to 1)
         shadowRadius: 5, // Shadow blur radius
-        backgroundColor: 'rgba(0, 0, 1, 0.15)',
+        backgroundColor: 'rgba(0, 0, 1, 0.35)',
         borderColor: 'grey',
         position: 'relative',
         overflow: 'hidden',
@@ -763,7 +763,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2, // Shadow opacity (0 to 1)
         shadowRadius: 5, // Shadow blur radius
         backgroundColor: 'rgba(50, 0, 0, 0.3)',
-        borderColor: 'grey',
+        borderColor: '#ccc',
         width: '61%'
 
         // Optional: space between the image and stats
@@ -785,8 +785,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 5,
-        backgroundColor: 'rgba(90, 45, 50, 0.3)',
-        borderColor: 'grey',
+        backgroundColor: 'rgba(50, 95, 50, 0.3)',
+        borderColor: '#ccc',
         width: '25%', // Adjust width as needed
         height: 100,
     },
@@ -801,7 +801,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 5,
         backgroundColor: 'rgba(50, 95, 50, 0.3)',
-        borderColor: 'grey',
+        borderColor: '#ccc',
         width: '76%', // Adjust width as needed
         height: 100,
     },

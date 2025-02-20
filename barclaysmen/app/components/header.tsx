@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     // borderBottomWidth:2,
     borderColor:'black',
     backgroundColor:'black',
-    opacity:0.8,
+    opacity:1,
   },
   header: {
     // borderWidth:1,
