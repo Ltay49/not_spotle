@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        borderWidth: 2,
+        // borderWidth: 2,
         justifyContent: "center",
         borderRadius: 10,
         width: "50%",

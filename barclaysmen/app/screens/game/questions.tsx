@@ -582,7 +582,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     playerimage: {
-        borderWidth: 1,
+        // borderWidth: 1,
         top: '5%', // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
