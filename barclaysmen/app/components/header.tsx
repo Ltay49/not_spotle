@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   header: {
     // borderWidth:1,
     // borderColor:'white',
+    width:'98%',
     color: '#0063A1',
     marginTop:36,
     fontSize: 60,
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     textAlign: 'center', // Ensures text is centered in its container
   },
   loadingContainer: {
+    display:'none',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

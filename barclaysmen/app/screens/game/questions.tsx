@@ -50,7 +50,7 @@ export default function () {
     const [guesses, setGuesses] = useState<string[]>([]);
     const [gameComplete, setGameComplete] = useState(false);
     const [gameLost, setGameLost] = useState(false)
-    const greeting = `You have ${10-guessCount} shots at bagging the Barclaysman!`
+    const greeting = `You have ${10-guessCount} shots remaining!`
     const randomPlayer = (array: Player[]): Player => {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];

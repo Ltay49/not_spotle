@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        // borderWidth: 2,
+        borderWidth: 2,
         justifyContent: "center",
         borderRadius: 10,
         width: "50%",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     inputContainer: {
-        width: '50%',
+        // width: '50%',
         // padding: 20,
         borderWidth: 1,
         borderColor: '#ccc',
