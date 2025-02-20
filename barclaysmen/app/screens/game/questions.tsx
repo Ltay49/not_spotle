@@ -890,7 +890,7 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         marginTop: 5,
-        borderWidth:1
+        // borderWidth:1
     },
     seasonsContainer: {
         flexDirection: 'row',
