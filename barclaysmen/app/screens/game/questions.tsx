@@ -302,24 +302,28 @@ useEffect(() => {
                                 <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Games: {chosenPlayer?.games}</Text>
                                 <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Position: {chosenPlayer?.position}</Text>
                             </Animated.View>
-                                <Animated.View style={styles.teamsComplete}>
-                            {chosenPlayer?.teamUrl.map((teamUrl, index) => {
-                                            // Ensure both arrays (teamUrl and team) have the same length
-                                            const team = chosenPlayer.team[index];
-                                            return (
-                                
-                                                <View key={index} style={styles.teamC}>
-                                                    <Image
-                                                        source={{ uri: teamUrl }}
-                                                        style={
-                                                            styles.teamBadgec
-                                                        }
-                                                    />
-                                                </View>
-                                            );
+                            <Animated.View style={styles.teamsComplete}>
+    {chosenPlayer?.teamUrl.map((teamUrl, index) => {
+        // Ensure both arrays (teamUrl and team) have the same length
+        const team = chosenPlayer.team[index];
 
-                                        })}
-                                </Animated.View>
+        // Determine the size of the badge based on the number of teams
+        const badgeSize = chosenPlayer.teamUrl.length <= 4 ? 45 : 28;  // Increase size if there are 3 or more teams
+        
+        return (
+            <View key={index} style={styles.teamC}>
+                <Image
+                    source={{ uri: teamUrl }}
+                    style={[
+                        styles.teamBadgec,
+                        { width: badgeSize, height: badgeSize } // Dynamically set the width and height
+                    ]}
+                />
+            </View>
+        );
+    })}
+</Animated.View>
+
                             </Animated.View>
                             </View>
                         </View>
@@ -593,7 +597,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1, 
-        transform: [{ translateX: 9 },{ translateY: -10 }],// Blur effect
+        transform: [{ translateX: 14 },{ translateY: -10 }],// Blur effect
     },
     playerimageComplete: {
         // borderWidth: 1,
@@ -672,7 +676,7 @@ const styles = StyleSheet.create({
             justifyContent:'center',
             alignContent:'center',
             // transform: [{ translateX: 18 }],
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
             borderRadius:5,
     },
     teams: {
@@ -709,7 +713,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         // borderColor:'white',
         width: '40%',  // Each team takes up 45% of the container width
-        marginBottom: 4,  // Adds space between rows
+        marginBottom: 0,  // Adds space between rows
         alignItems: 'center', // Centers the content
         justifyContent: 'center',  // Centers the content inside each team box
         marginRight: '5%', // Add left margin
@@ -717,7 +721,8 @@ const styles = StyleSheet.create({
     teamBadgec: {
         height: 28,
         width: 28,
-        marginTop: 5,
+        marginTop: 1,
+        opacity:.9
     },
     flag: {
         // position: 'absolute',
@@ -856,6 +861,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 20,
         color: 'green',
+        opacity:0.8,
         // backgroundColor: 'white',
         fontFamily: 'LuckiestGuy_400Regular',
         // Adjust font size as needed
