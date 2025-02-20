@@ -555,7 +555,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',  // Layout children in a row (side by side)
         borderBottomWidth: 2,
-        borderBottomColor: "grey",
+        borderBottomColor: "black",
         width: '99%',
         position: 'relative', 
          // Necessary for absolute positioning of child elements
@@ -573,7 +573,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 }, // Shadow offset
         shadowOpacity: 0.2, // Shadow opacity (0 to 1)
         shadowRadius: 5, // Shadow blur radius
-        backgroundColor: 'rgba(0, 0, 1, 0.35)',
+        backgroundColor: 'rgba(0, 0, 1, 0.2)',
         borderColor: 'grey',
         position: 'relative',
         overflow: 'hidden',
@@ -588,7 +588,7 @@ const styles = StyleSheet.create({
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
         height: 246,  // Set the size of the overlay image
-        width: 110,
+        width: 100,
         shadowColor: 'black',
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
@@ -687,7 +687,7 @@ const styles = StyleSheet.create({
         transform: [{ translateX: -105 }],// Align badges to the left
     },
     teamsComplete: {
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor:'white',
         height: '55%',
         width: 100,
@@ -706,8 +706,8 @@ const styles = StyleSheet.create({
         // marginRight: '1%', // Add left margin
     },
     teamC: {
-        borderWidth: 1,
-        borderColor:'white',
+        // borderWidth: 1,
+        // borderColor:'white',
         width: '40%',  // Each team takes up 45% of the container width
         marginBottom: 4,  // Adds space between rows
         alignItems: 'center', // Centers the content
