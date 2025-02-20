@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         fontFamily: 'LuckiestGuy_400Regular',
         color: '#0063A1',
         marginTop: 15,
+        opacity:0.8
     },
     loadingContainer: {
         flex: 1,
