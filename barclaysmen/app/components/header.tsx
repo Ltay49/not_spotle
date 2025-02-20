@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 // Custom Header Component
 const Header = ({ title }: { title: string }) => {
   return (
-    <View>
+    <View style={styles.headerContainer}>
       <Text style={styles.header}>{title}</Text>
     </View>
   );
@@ -11,13 +11,17 @@ const Header = ({ title }: { title: string }) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flex: 1,
+    width:'100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:1 , // Optional: Add margin to the top if needed
+    borderBottomWidth:2,
+    borderColor:'grey',
+    // backgroundColor:'grey'
   },
   header: {
-    color:'white',
+    // borderWidth:1,
+    // borderColor:'white',
+    color: '#0063A1',
     marginTop:36,
     fontSize: 60,
     fontWeight: 'bold',

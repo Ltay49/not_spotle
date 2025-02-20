@@ -7,10 +7,11 @@ export default function Layout() {
         headerStyle: {
           backgroundColor: 'black',
         },
-        headerTintColor: 'black',
+        headerTintColor: 'white',
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontWeight: 'bold'
         },
+         headerShown: false, 
       }}>
       {/* Optionally configure static options outside the route.*/}
       <Stack.Screen name="login" options={{}} />

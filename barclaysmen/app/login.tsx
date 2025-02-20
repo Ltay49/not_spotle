@@ -1,123 +1,109 @@
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ImageBackground } from "react-native";
 import { useState } from "react";
-import {auth} from './firebase'
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth'
+import { useFonts, Chewy_400Regular } from '@expo-google-fonts/chewy';
+const Lua = require('./../assets/images/LuaLua.png'); 
+import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
 import Game from './screens/game/game'
 
 export default function Login() {
-    const [passwordInput, setPasswordInput] = useState('');
-    const [validated, setValidated] = useState<boolean | null>(null); // Initially null to avoid showing a message immediately
-    
-    if (validated === true) {
+    const [gameStart, setGameStart] = useState<boolean | null>(null); 
+    // Initially null to avoid showing a message immediately
+    const [fontsLoaded] = useFonts({
+      Chewy_400Regular,
+      LuckiestGuy_400Regular,
+  });
+    if (gameStart === true) {
         return <Game />;
       }
-    // Correct Password
-    const correctPassword = '123';
-  
-    // Handle Submit
     const handleSubmit = (): void => {
-      if (passwordInput === correctPassword) {
-        setValidated(true);
-        console.log('Password Correct ✅');
-      } else {
-        setValidated(false);
-        console.log('Password Incorrect ❌');
-      }
+    setGameStart(true)
     };
+
   return (
-    <View style={styles.container}>
-    <Text style={styles.title}>Login</Text>
-
+    <ImageBackground source={Lua} style={styles.background} resizeMode="cover" blurRadius={5}>
+    <View style={styles.overlay}> 
+<View style={styles.container}>
+  <View style={styles.innerContainer}>
     <View style={styles.inputContainer}>
-      <View style={styles.inputRow}>
-        <Text style={styles.label}>Username:</Text>
-        <TextInput style={styles.input} placeholder="Enter username" />
-      </View>
-
-      <View style={styles.inputRow}>
-        <Text style={styles.label}>Password:</Text>
-        <TextInput
-          style={styles.input}
-          secureTextEntry={true}
-          placeholder="Enter password"
-          onChangeText={(text) => setPasswordInput(text)} // Store input in state
-        />
-      </View>
-
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Submit</Text>
+        <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
      
-      {validated === false && <Text style={styles.errorText}>❌ Incorrect Password</Text>}
     </View>
     </View>
+    </View>
+    </View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
-    container: {
-      marginBottom:300,
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+  background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+overlay: {
+  flex: 1,
+  width: '100%',
+  backgroundColor: 'rgba(255, 255, 255, 0.7)', // Optional: Add a translucent overlay
+  justifyContent: 'center',
+  alignItems: 'center',
+},
     title: {
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 20,
     },
+    container: {
+      flex: 1,
+      borderWidth: 2,
+      justifyContent: "center",
+      borderRadius: 10,
+      width:340
+  },
+  innerContainer: {
+       borderWidth: 2,
+      // flex: 1, 
+      justifyContent: "center",
+      
+  },
     inputContainer: {
-      width: '100%',
+      // flex: 1, 
+      width: '50%',
       padding: 20,
       borderWidth: 1,
       borderColor: '#ccc',
       borderRadius: 10,
-      backgroundColor: '#fff',
+      backgroundColor: 'black',
       shadowColor: '#000',
       shadowOpacity: 0.2,
-      shadowOffset: { width: 0, height: 2 },
+      shadowOffset: { width: 0, height: 5 },
       shadowRadius: 4,
       elevation: 3,
-    },
-    inputRow: {
-      width: '100%',
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: 15,
-    },
-    label: {
-      fontSize: 16,
-      width: 80,
-    },
-    input: {
-      flex: 1,
-      height: 40,
-      fontSize:20,
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      paddingHorizontal: 10,
-      backgroundColor: '#f9f9f9',
+      alignSelf:'center',
+      justifyContent: "center",
     },
     button: {
-      marginTop: 10,
-      backgroundColor: '#007AFF',
+      justifyContent: "center",
+      width:'100%',
+      borderWidth:1,
+      borderColor:'white',
+      backgroundColor: 'black',
       padding: 10,
       borderRadius: 5,
       alignItems: 'center',
     },
     buttonText: {
-      color: '#fff',
-      fontWeight: 'bold',
-    },
-    successText: {
-      marginTop: 10,
-      fontSize: 16,
-      color: 'green',
-    },
-    errorText: {
-      marginTop: 10,
-      fontSize: 16,
-      color: 'red',
+      // borderColor:'white',
+      // borderWidth:1,
+      fontSize:22,
+      fontFamily: 'LuckiestGuy_400Regular',
+      color: 'lightblue',
+      alignContent:'center',
+      marginTop:8
+
     },
   });
   

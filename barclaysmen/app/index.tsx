@@ -9,7 +9,9 @@ export default function Home() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    navigation.setOptions({ headerShown: false });
+    navigation.setOptions({
+      headerShown: false, // This disables the header
+    });
   }, [navigation]);
 
   return (
@@ -24,6 +26,8 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'black',
+      backgroundColor: 'white',
+      borderWidth:1,
+      borderColor:'black'
     },
 })
