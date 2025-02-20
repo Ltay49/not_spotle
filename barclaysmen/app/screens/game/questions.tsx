@@ -15,9 +15,8 @@ const Alan = require('../../../assets/images/shearer.png')
 const Football = require('../../../assets/images/Football.png')
 const slip = require('../../../assets/images/slip.png')
 import { useFonts, Chewy_400Regular } from '@expo-google-fonts/chewy';
-import { Fredoka_700Bold } from '@expo-google-fonts/fredoka';
 import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
-import { Merriweather_700Bold } from '@expo-google-fonts/merriweather';
+import { VarelaRound_400Regular } from '@expo-google-fonts/varela-round';
 
 type Player = {
     name: string;
@@ -37,9 +36,9 @@ export default function () {
 
     const [fontsLoaded] = useFonts({
         Chewy_400Regular,
-        Fredoka_700Bold,
+        VarelaRound_400Regular,
         LuckiestGuy_400Regular,
-        Merriweather_700Bold
+       
     });
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
@@ -501,7 +500,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     guessText: {
-        fontFamily: 'LuckiestGuy_400Regular',
+        fontFamily: 'VarelaRound_400Regular',
         marginTop: 20,
         marginBottom: 10,
         fontSize: 16,
