@@ -43,8 +43,7 @@ export default function () {
     });
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
-    const greeting = "You have 10 shots at bagging the Barclaysman!"
-    const [guessCount, setGuessCount] = useState(1)
+    const [guessCount, setGuessCount] = useState(0)
     const [footballImages, setFootballImages] = useState<string[]>([]);
     const [playerStats, setPlayerStats] = useState<Player[]>([]);
     const [chosenPlayer, setChosenPlayer] = useState<Player | null>(null);
@@ -52,7 +51,7 @@ export default function () {
     const [guesses, setGuesses] = useState<string[]>([]);
     const [gameComplete, setGameComplete] = useState(false);
     const [gameLost, setGameLost] = useState(false)
-
+    const greeting = `You have ${10-guessCount} shots at bagging the Barclaysman!`
     const randomPlayer = (array: Player[]): Player => {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];
@@ -153,24 +152,26 @@ useEffect(() => {
 
     const handleGuess = (playerName: string) => {
         if (!guesses.includes(playerName)) {
-            setGuesses([...guesses, playerName]);
-            // setGuessCount() 
-            setFootballImages(prev => [...prev, 'footballImage']); // Add new player gues
-            setGuessCount(prevCount => prevCount + 1)
+            setGuesses((prev) => [...prev, playerName]);
+            setFootballImages((prev) => [...prev, 'footballImage']); // Add new player guess
+            setGuessCount((prevCount) => prevCount + 1);
         }
         setSearchText("");
-
-        const guessedPlayer = playerStats.find(player => player.name.toLowerCase() === playerName.toLowerCase());
+    
+        const guessedPlayer = playerStats.find((player) => player.name.toLowerCase() === playerName.toLowerCase());
         if (guessedPlayer && chosenPlayer) {
-            if (guessedPlayer.name.toLowerCase() === chosenPlayer.name.toLowerCase()) { // Optionally, you can update the correctGuess state too
+            if (guessedPlayer.name.toLowerCase() === chosenPlayer.name.toLowerCase()) {
                 setGameComplete(true);  // Set the gameComplete state to true
             }
         }
+    };
+    
+    // useEffect to check if the game should be lost
+    useEffect(() => {
         if (guessCount === 10 && !gameComplete) {
             setGameLost(true); // Set the game to fail
-            // setGuesses(prevGuesses => [...prevGuesses, chosenPlayer?.name || '']); // Add the correct player to the guesses
         }
-    };
+    }, [guessCount, gameComplete]);
 
 
     useEffect(() => {

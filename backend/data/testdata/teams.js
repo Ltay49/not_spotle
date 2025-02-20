@@ -50,5 +50,20 @@ southhampton: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampt
 },
 {
     lfc:"https://i.ibb.co/k2vjcCzB/lfc.png"
+},
+{
+    leic: "https://i.ibb.co/SX6H3p3G/Leic.png"
+},
+{
+    EFC: "https://i.ibb.co/zhwLGkj3/EFC.png"
+},
+{
+    qpr: "https://i.ibb.co/YFv6C91y/qpr.png"
+},
+{
+    stk: "https://i.ibb.co/Dfcmm5Mb/stk.png"
+},
+{
+    swn: "https://i.ibb.co/NdJpmkCP/swn.png"
 }
 ]

@@ -217,8 +217,8 @@ exports.playerStats = [{
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
     "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png",
-    "https://upload.wikimedia.org/wikipedia/en/2/29/Stoke_City_FC.svg",
-    "https://i.ibb.co/3mTnRnLr/Leic.png"
+    "https://i.ibb.co/Dfcmm5Mb/stk.png",
+    "https://i.ibb.co/SX6H3p3G/Leic.png"
   ],
   games: 322,
   position: "DEF"
@@ -286,7 +286,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/en/2/2e/Fulham_FC_%28shield%29.svg",
     "https://i.ibb.co/jPHT27qY/Manu.png",
-    "https://upload.wikimedia.org/wikipedia/en/7/7c/Everton_FC_logo.svg",
+    "https://i.ibb.co/zhwLGkj3/EFC.png",
     "https://i.ibb.co/XxtYgzc7/spurs.png",
     "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png"
   ],
@@ -303,7 +303,7 @@ exports.playerStats = [{
   team: ["LEI", "TOT"],
   playerUrl:"https://i.ibb.co/YFmXxXXn/John-Terry.png",
   teamUrl: [
-    "https://i.ibb.co/3mTnRnLr/Leic.png",
+    "https://i.ibb.co/SX6H3p3G/Leic.png",
     "https://i.ibb.co/XxtYgzc7/spurs.png"
   ],
   games: 86,
@@ -419,7 +419,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://i.ibb.co/hJhSxL1s/pompy.png",  // Portsmouth logo
     "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png",  // Middlesbrough logo
-    "https://upload.wikimedia.org/wikipedia/commons/c/c8/Everton_FC_logo.svg",  // Everton logo
+    "https://i.ibb.co/zhwLGkj3/EFC.png",  // Everton logo
     "https://upload.wikimedia.org/wikipedia/commons/a/a9/Blackburn_Rovers_logo.svg"  // Blackburn Rovers logo
   ],
   games: 252,  // Total appearances in the Premier League
@@ -434,7 +434,7 @@ exports.playerStats = [{
   team: ["SWN"],  // Team he played for (Swansea City)
   playerUrl: "https://i.ibb.co/TDfpcw7Q/Michu.png",  // Player's image
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/5/57/Swansea_City_AFC_logo.svg"  // Swansea City logo
+    "https://i.ibb.co/NdJpmkCP/swn.png"  // Swansea City logo
   ],
   games: 52,  // Total appearances in the Premier League
   position: 'FOR'  // Position: Forward
@@ -502,7 +502,7 @@ exports.playerStats = [{
     "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/500px-Logo_Sunderland.svg.png",// Sunderland logo
     "https://i.ibb.co/hJhSxL1s/pompy.png", // Portsmouth logo
     "https://i.ibb.co/XrNW4xFk/WestHam.png",
-    'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png',// QPR logo
+    "https://i.ibb.co/YFv6C91y/qpr.png",// QPR logo
   ],
   games: 147,  // Total Premier League appearances
   position: 'DEF'  // Position: Defender
@@ -535,7 +535,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://upload.wikimedia.org/wikipedia/commons/a/a4/Ipswich_Town_FC_logo.svg",  // Ipswich Town logo
     "https://upload.wikimedia.org/wikipedia/commons/c/cd/Blackburn_Rovers_FC_logo.svg",  // Blackburn Rovers logo
-    "https://upload.wikimedia.org/wikipedia/commons/4/48/Everton_FC_logo_2018.svg",  // Everton logo
+    "https://i.ibb.co/zhwLGkj3/EFC.png",  // Everton logo
     "https://i.ibb.co/4nMJYk5K/charlton.png",  // Charlton Athletic logo
     "https://i.ibb.co/GfXSchkX/Wigan.png",  // Wigan Athletic logo
     "https://i.ibb.co/NXny8GS/birm.png",  // Birmingham City logo
@@ -647,10 +647,10 @@ exports.playerStats = [{
   team: ["QPR", "AVL", "POR", "STK", "TOT", "LIV"],
   playerUrl: "https://i.ibb.co/RTsn1Ysm/crouch.png",
   teamUrl: [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Queens_Park_Rangers_FC_logo.svg/800px-Queens_Park_Rangers_FC_logo.svg.png",
+    "https://i.ibb.co/YFv6C91y/qpr.png",
     "https://i.ibb.co/G47n716D/Villa.png",
     "https://i.ibb.co/hJhSxL1s/pompy.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png",
+    "https://i.ibb.co/Dfcmm5Mb/stk.png",
     "https://i.ibb.co/XxtYgzc7/spurs.png",
     "https://i.ibb.co/k2vjcCzB/lfc.png"
   ],
@@ -684,7 +684,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://i.ibb.co/pBh2G3xv/ManC.png",
     "https://i.ibb.co/G47n716D/Villa.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png",
+    "https://i.ibb.co/Dfcmm5Mb/stk.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Arsenal_FC_logo_2011.svg/800px-Arsenal_FC_logo_2011.svg.png"
   ],
   games: 182,
@@ -701,7 +701,7 @@ exports.playerStats = [{
   teamUrl: [
     "https://i.ibb.co/hJhSxL1s/pompy.png",
     "https://i.ibb.co/pBh2G3xv/ManC.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Stoke_City_FC_logo.svg/800px-Stoke_City_FC_logo.svg.png"
+    "https://i.ibb.co/Dfcmm5Mb/stk.png"
   ],
   games: 118,
   position: "FOR"
@@ -735,7 +735,7 @@ teamUrl: [
   "https://i.ibb.co/hJhSxL1s/pompy.png"
 ],
 games: 166,
-position: "FOR"
+position: "DEF"
 },
 {
   name: "Matt Upson",
@@ -750,8 +750,8 @@ position: "FOR"
     "https://i.ibb.co/Kz5VSfQP/Ars.png",
     "https://i.ibb.co/NXny8GS/birm.png",
     "https://i.ibb.co/XrNW4xFk/WestHam.png",
-    "",
-    ""
+    "https://i.ibb.co/Dfcmm5Mb/stk.png",
+    "https://i.ibb.co/SX6H3p3G/Leic.png"
   ],
   games: 268,
   position: "DEF"
@@ -919,7 +919,7 @@ position: "FOR"
               flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Flag_of_Trinidad_and_Tobago.svg/510px-Flag_of_Trinidad_and_Tobago.svg.png",
               assists: 0,
               goals: 16,
-              team: ["MUFC", "BIR", "BLK", "SUN"],
+              team: ["MUFC", "BIR", "BLB", "SUN"],
               playerUrl: "https://i.ibb.co/B2DpBdmy/Laurent.png",
               teamUrl: [
                 "https://i.ibb.co/jPHT27qY/Manu.png",
@@ -1021,13 +1021,13 @@ position: "FOR"
               flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Flag_of_Honduras.svg/250px-Flag_of_Honduras.svg.png",
               assists: 2,
               goals: 1,
-              team: ["BIR", "WIG", "TOT", "STO"],
+              team: ["BIR", "WIG", "TOT", "STK"],
               playerUrl: "https://i.ibb.co/V0gtqDFQ/Hondouros.png",
               teamUrl: [
                 "https://i.ibb.co/NXny8GS/birm.png",
                 "https://i.ibb.co/GfXSchkX/Wigan.png",
                 "https://i.ibb.co/XxtYgzc7/spurs.png",
-                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Stoke_City_FC_logo.svg"
+                "https://i.ibb.co/Dfcmm5Mb/stk.png"
               ],
               games: 147,
               position: "MID"
@@ -1133,7 +1133,7 @@ position: "FOR"
                 "https://upload.wikimedia.org/wikipedia/commons/0/0d/West_Bromwich_Albion_FC_logo.svg",
                 "https://upload.wikimedia.org/wikipedia/commons/5/5d/Watford_FC_logo.svg",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Bolton_Wanderers_FC_logo.svg/340px-Bolton_Wanderers_FC_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c6/Queens_Park_Rangers_FC_logo.svg"
+                "https://i.ibb.co/YFv6C91y/qpr.png"
               ],
               games: 40,
               position: "DEF"
@@ -1186,7 +1186,7 @@ position: "FOR"
                 "https://i.ibb.co/XrNW4xFk/WestHam.png",
                 "https://i.ibb.co/Df2DWnf6/fulham.png",
                 "https://i.ibb.co/k2vjcCzB/lfc.png",
-                "https://upload.wikimedia.org/wikipedia/commons/d/d3/Leicester_City_FC_logo.svg"
+                "https://i.ibb.co/SX6H3p3G/Leic.png"
               ],
               games: 323, // Correct total
               position: "DEF"
@@ -1204,7 +1204,7 @@ position: "FOR"
                 "https://i.ibb.co/4nMJYk5K/charlton.png",
                 "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/380px-Middlesbrough_FC_crest.svg.png",
                 "https://i.ibb.co/G47n716D/Villa.png",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c6/Queens_Park_Rangers_FC_logo.svg"
+                "https://i.ibb.co/YFv6C91y/qpr.png"
               ],
               games: 320,
               position: "DEF"
@@ -1240,7 +1240,7 @@ position: "FOR"
               playerUrl: "https://i.ibb.co/CpBNHTk0/Wayne.png", // Wayne Rooney image URL (a popular public image)
               teamUrl: [
                 "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Everton_FC_logo.svg/1024px-Everton_FC_logo.svg.png" // Everton logo
+                "https://i.ibb.co/zhwLGkj3/EFC.png" // Everton logo
               ],
               games: 463, // Total appearances based on the data provided
               position: "FOR" // Forward (as given in the data)
@@ -1256,7 +1256,7 @@ position: "FOR"
               playerUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Park_Ji-sung.jpg", // Park Ji-Sung image URL
               teamUrl: [
                 "https://i.ibb.co/jPHT27qY/Manu.png", // Manchester United logo
-                "https://upload.wikimedia.org/wikipedia/commons/1/1c/QPR_logo.svg" // Queens Park Rangers logo
+                "https://i.ibb.co/YFv6C91y/qpr.png"// Queens Park Rangers logo
               ],
               games: 154, // Total appearances in the Premier League
               position: "MID" // Midfielder
@@ -1413,9 +1413,9 @@ position: "FOR"
                 playerUrl: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Andrew_Johnson_2011.jpg", // Andrew Johnson image URL
                 teamUrl: [
                   "https://upload.wikimedia.org/wikipedia/commons/2/2d/Crystal_Palace_FC.svg", // Crystal Palace logo
-                  "https://upload.wikimedia.org/wikipedia/commons/4/4d/QPR_FC_logo.svg", // Queens Park Rangers logo
+                  "https://i.ibb.co/YFv6C91y/qpr.png",
                   "https://i.ibb.co/Df2DWnf6/fulham.png",// Fulham logo
-                  "https://upload.wikimedia.org/wikipedia/commons/6/63/Everton_FC_logo.svg" // Everton logo
+                  "https://i.ibb.co/zhwLGkj3/EFC.png" 
                 ],
                 games: 187, // Total appearances in the Premier League
                 position: "FOR" // Forward
@@ -1634,7 +1634,7 @@ position: "FOR"
                     playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Niko Kranjčar image URL
                     teamUrl: [
                       "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
-                      "https://upload.wikimedia.org/wikipedia/commons/4/42/Queens_Park_Rangers_FC_logo.svg", // QPR logo
+                      "https://i.ibb.co/YFv6C91y/qpr.png", // QPR logo
                       "https://i.ibb.co/hJhSxL1s/pompy.png"// Portsmouth logo
                     ],
                     games: 154, // Total appearances in the Premier League
@@ -1717,7 +1717,7 @@ position: "FOR"
                     team: ["SWA", "BIR", "REA"], // Teams: Swansea City, Birmingham City, Reading
                     playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Leroy Lita image URL
                     teamUrl: [
-                      "https://upload.wikimedia.org/wikipedia/commons/1/1d/Swansea_City_AFC_logo.svg", // Swansea City logo
+                      "https://i.ibb.co/NdJpmkCP/swn.png", // Swansea City logo
                       "https://i.ibb.co/NXny8GS/birm.png", // Birmingham City logo
                       "https://upload.wikimedia.org/wikipedia/commons/7/7f/Reading_FC_logo.svg" // Reading logo
                     ],
@@ -1754,7 +1754,7 @@ position: "FOR"
                       "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
                       "https://i.ibb.co/XrNW4xFk/WestHam.png", // West Ham United logo
                       "https://i.ibb.co/Df2DWnf6/fulham.png", // Fulham logo
-                      "https://upload.wikimedia.org/wikipedia/commons/a/ae/Queens_Park_Rangers_FC_logo.svg" // QPR logo
+                      "https://i.ibb.co/YFv6C91y/qpr.png"// QPR logo
                     ],
                     games: 252, // Total appearances in the Premier League
                     position: "FOR" // Forward
@@ -1770,7 +1770,7 @@ position: "FOR"
                     playerUrl: "https://i.ibb.co/fz4qPg7q/Acole.png", // Adel Taarabt image URL
                     teamUrl: [
                       "https://i.ibb.co/XxtYgzc7/spurs.png", // Tottenham Hotspur logo
-                      "https://upload.wikimedia.org/wikipedia/commons/f/f1/West_Ham_United_FC_logo.svg", // QPR logo
+                      "https://i.ibb.co/YFv6C91y/qpr.png", // QPR logo
                       "https://i.ibb.co/Df2DWnf6/fulham.png"// Fulham logo
                     ],
                     games: 86, // Total appearances in the Premier League
