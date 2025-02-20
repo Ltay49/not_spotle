@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     width:'98%',
     color: '#0063A1',
     marginTop:36,
-    fontSize: 60,
+    fontSize: 55,
     fontFamily:'VarelaRound_400Regular',
     fontWeight: 'bold',
     textAlign: 'center', // Ensures text is centered in its container
