@@ -583,18 +583,18 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
     },
     playerimage: {
-        // borderWidth: 1,
+        borderWidth: 1,
         top: '5%', // Adjust the position to match the image
         // left: '49%', // Adjust based on where you want the player image to be positioned
         position: 'absolute', // Position it relative to the image container
         alignSelf: "center", // Adjust horizontal position if necessary
-        height: 190,  // Set the size of the overlay image
-        width: 90,
+        height: 246,  // Set the size of the overlay image
+        width: 110,
         shadowColor: 'black',
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1, 
-        transform: [{ translateX: 9 }],// Blur effect
+        transform: [{ translateX: 9 },{ translateY: -10 }],// Blur effect
     },
     playerimageComplete: {
         // borderWidth: 1,
