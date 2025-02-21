@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "tsx app.ts",
-    "start": "NODE_ENV=test tsx listen.ts",
+    "start": "tsx listen.ts",
     "seed": "NODE_ENV=test tsx db/seed.ts",
     "tsx": "tsx bootstrap.ts",
     "test": "NODE_ENV=test jest"

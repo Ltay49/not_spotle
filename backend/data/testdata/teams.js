@@ -65,5 +65,8 @@ southhampton: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampt
 },
 {
     swn: "https://i.ibb.co/NdJpmkCP/swn.png"
+},
+{
+    newc: "https://i.ibb.co/1fN8r2Qp/Newc.png"
 }
 ]
