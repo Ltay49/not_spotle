@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, ActivityIndicator } from "react-native";
 import { useState } from "react";
-import { useFonts, VarelaRound_400Regular } from '@expo-google-fonts/varela-round';
+import { useFonts, VarelaRound_400Regular, } from '@expo-google-fonts/varela-round';
 import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
 import Game from './screens/game/game';
 

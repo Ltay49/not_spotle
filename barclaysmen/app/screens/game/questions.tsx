@@ -175,7 +175,7 @@ useEffect(() => {
 
     useEffect(() => {
         axios
-            .get<Player[]>("https://not-spotle.onrender.com/api/playerstats")
+            .get<Player[]>("https://notspotle-production.up.railway.app/api/playerstats")
             .then((response) => {
                 setPlayerStats(response.data);
             })
