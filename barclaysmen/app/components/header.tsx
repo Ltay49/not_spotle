@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     // borderColor:'white',
     width:'98%',
     color: '#0063A1',
-    marginTop:36,
+    // marginTop:30,
     fontSize: 55,
     fontFamily:'VarelaRound_400Regular',
     fontWeight: 'bold',

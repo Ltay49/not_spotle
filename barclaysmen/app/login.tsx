@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, ActivityIndicator } from "react-native";
 import { useState } from "react";
+import HowToPlay from "./screens/game/howtoplay";
 import { useFonts, VarelaRound_400Regular, } from '@expo-google-fonts/varela-round';
 import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
 import Game from './screens/game/game';
@@ -39,8 +40,8 @@ export default function Login() {
                 <View style={styles.container}>
                     <View style={styles.innerContainer}>
                       <View style={styles.textbox}>
-                        <Text style={styles.text}>Will you bag the barclaysman today?</Text>
-                        <Text style={styles.text}>10 shots, 100s of players!</Text>
+                        {/* <Text style={styles.text}>Will you bag the barclaysman today?</Text>
+                        <Text style={styles.text}>10 shots, 100s of players!</Text> */}
                       </View>
                         <View style={styles.inputContainer}>
                             <TouchableOpacity onPress={handleSubmit} style={styles.button}>
@@ -49,9 +50,12 @@ export default function Login() {
                         </View>
                         <View style={styles.inputContainer1}>
                         <TouchableOpacity onPress={handleHowToPlay} style={styles.button1}>
-                                <Text style={styles.button1Text}>How to Play(not done yet)</Text>
+                                <Text style={styles.button1Text}>How to Play</Text>
                         </TouchableOpacity>
                         </View>
+                        {howToPlay ? (
+                       <HowToPlay setHowToPlay={setHowToPlay} />
+                    ) : null}  {/* If `howToPlay` is false, render nothing */}
                     </View>
                 </View>
             </View>
@@ -76,24 +80,28 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        marginTop:'25%',
         // position:'absolute',
-        // borderWidth: 2,
-        // justifyContent: "center",
-        alignItems: 'center',
-        borderRadius: 10,
-        width: "80%",
-    },
-    innerContainer: {
-      width: '98%',
-        // borderWidth: 2,
-        justifyContent: "center",
-        textAlign:"center",
-        backgroundColor: 'rgba(255, 255, 255, 0.3)',
-        shadowRadius: 23,
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        shadowRadius: 20,
         elevation: 10,
         shadowColor: '#000',
         shadowOpacity: 1,
+        // borderWidth: 2,
+        // justifyContent: "center",
+        alignItems: 'center',
+        // borderRadius: 10,
+        width: 340,
+    },
+    innerContainer: {
+      width: '99%',
+        // borderWidth: 2,
+        justifyContent: "center",
+        textAlign:"center",
+        // backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        // shadowRadius: 23,
+        // elevation: 10,
+        // shadowColor: '#000',
+        // shadowOpacity: 1,
         paddingBottom:5,
         // borderRadius: 10,
     },
@@ -131,10 +139,10 @@ const styles = StyleSheet.create({
     inputContainer1: {
       // width: '50%',
       marginTop: 5,
-      borderBottomWidth: 2,
-      borderColor: 'black',
-      borderRadius: 3,
-      // backgroundColor: 'black',
+      borderWidth: 2,
+      borderColor: '#ccc',
+      borderRadius: 5,
+      backgroundColor: 'black',
       // shadowColor: '#000',
       // shadowOpacity: 0.7,
       // shadowOffset: { width: 3, height: 3 },
@@ -173,8 +181,7 @@ const styles = StyleSheet.create({
   button1Text: {
       fontSize: 19,
       fontFamily: 'VarelaRound_400Regular',
-      color: 'black',
-      marginTop: 0,
+      color: 'white',
       opacity:1
   },
     loadingContainer: {
