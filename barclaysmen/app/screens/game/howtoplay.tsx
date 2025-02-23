@@ -7,6 +7,8 @@ const JulioArca = require('../../../assets/images/JulioArca.png')
 const WrongNation = require('../../../assets/images/wrongNation.png')
 const CorrectNation = require('../../../assets/images/correctNation.png')
 
+import { useState } from "react"
+
 const Lua = require('../../../assets/images/LuaLua.png');
 import Icon from 'react-native-vector-icons/FontAwesome';
 "https://i.ibb.co/NXny8GS/birm.png"
@@ -22,6 +24,11 @@ type HowToPlayProps = {
         const handleSubmit = () => {
           setHowToPlay(false);
         };
+        const [gamePlay, setGamePlay] = useState(false)
+
+        const handleSubmitGp = ()=>{
+            setGamePlay(true)
+        }
 
     return (
         
@@ -120,7 +127,7 @@ type HowToPlayProps = {
             </View>
             <Text style={styles.badgesText}>Your guess played for Portsmouth, Arsenal and Birmingham. Only Birmingham and Portsmoth have full colour though, this shows us that out of those three teams 'The Barclaysman' has played for Portsmouth and Birmingham</Text>
             </View>
-            <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
+            <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmitGp}>
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
             </TouchableOpacity>
             </ScrollView>
@@ -454,7 +461,7 @@ badgeC:{
         opacity:1,
         // marginRight:7,
         marginTop:1,
-        transform:[{translateY:-5}, {translateX:75}]
+        transform:[{translateY:-5}, {translateX:85}]
         // color:'beige',
     },buttonGpText:{
         fontSize: 16,
@@ -530,7 +537,7 @@ badgesText: {
        alignSelf:'center',
         opacity:1,
         color:'beige',
-        marginLeft:40,
+        marginLeft:20,
         padding: 10,
     }
 });
