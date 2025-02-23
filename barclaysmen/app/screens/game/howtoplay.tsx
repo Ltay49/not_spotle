@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         borderColor: '#0063A1',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
         // paddingVertical: 10, 
-        height:650
+        height:610
       },
     row:{
         flexDirection:'row',
