@@ -31,8 +31,8 @@ type HowToPlayProps = {
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.rowTitle}>
                 <Text style={styles.title}>How To Play</Text>
-            <TouchableOpacity  style={styles.button} onPress={handleSubmit}>
-                                <Text style={styles.buttonTextX}>X</Text>
+            <TouchableOpacity onPress={handleSubmit}>
+            <Icon style={styles.buttonTextX} name="times" size={55} color="red"/>
             </TouchableOpacity>
             </View>
             <Text style={styles.buttonText1}>THE AIM</Text>
@@ -449,12 +449,13 @@ badgeC:{
        marginTop:-50
     },
     buttonTextX: {
-        fontSize: 16,
-        fontFamily: 'VarelaRound_400Regular',
+        fontSize: 30,
+        // fontFamily: 'VarelaRound_400Regular',
         opacity:1,
-        marginRight:7,
+        // marginRight:7,
         marginTop:1,
-        color:'beige',
+        transform:[{translateY:-5}, {translateX:75}]
+        // color:'beige',
     },buttonGpText:{
         fontSize: 16,
         fontFamily: 'LuckiestGuy_400Regular',
@@ -525,10 +526,11 @@ badgesText: {
         fontSize: 20,
         fontFamily: 'LuckiestGuy_400Regular',
         // color: 'white',
-    //    textAlign:'center',
+       textAlign:'center',
+       alignSelf:'center',
         opacity:1,
         color:'beige',
-        marginLeft:15,
+        marginLeft:40,
         padding: 10,
     }
 });
