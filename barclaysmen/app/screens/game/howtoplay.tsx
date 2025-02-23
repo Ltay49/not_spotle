@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     scrollViewContent: {
         flexGrow: 1, // This allows the ScrollView content to grow and take available space
-        paddingBottom: 100, // Added some padding to the bottom
+        paddingBottom: 60, // Added some padding to the bottom
         // paddingTop: 20, // Added some padding to the top
       },
       overlay: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         borderColor: '#0063A1',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
         // paddingVertical: 10, 
-        height:700
+        height:610
       },
     row:{
         flexDirection:'row',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
 
     }, 
     buttonGp:{
-        marginTop: 10,
+        marginTop:0,
    marginLeft:90
     },
     stats: {
