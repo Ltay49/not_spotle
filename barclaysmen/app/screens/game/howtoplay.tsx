@@ -26,7 +26,7 @@ type HowToPlayProps = {
             </TouchableOpacity>
             </View>
             <Text style={styles.buttonText1}>THE AIM</Text>
-            <Text style={styles.buttonText}>Bag the Barclaysman within 10 shots, the game is a nostalgic replay back to the iconic Barclays Premier League</Text>
+            <Text style={styles.buttonText}>Bag the Barclaysman within 10 shots, the game is a nostalgic replay back to the iconic Barclays Premier League. This is a demo so there is only 100-200 players in the game so far</Text>
             <Text style={styles.buttonText1}>THE STATS</Text>
             <View style={styles.row}>
                 <Image  style={styles.football} source={Football}></Image>
