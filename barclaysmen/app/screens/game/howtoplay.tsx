@@ -18,6 +18,7 @@ type HowToPlayProps = {
     return (
         
         <Animated.View style={styles.background}>
+            <ScrollView style={styles.scrollViewContent}>
             <View style={styles.overlay}>
                 <View style={styles.rowTitle}>
                 <Text style={styles.title}>How To Play</Text>
@@ -58,6 +59,7 @@ type HowToPlayProps = {
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
             </TouchableOpacity>
           </View>
+          </ScrollView>
         </Animated.View>
     )
 }
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
         borderColor: '#0063A1',
         overflow:'scroll',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
-        paddingVertical: 20, 
+        paddingVertical: 10, 
       },
     row:{
         flexDirection:'row',
@@ -116,11 +118,8 @@ const styles = StyleSheet.create({
 
     }, 
     buttonGp:{
+        marginTop:-20,
    marginLeft:90
-    },
-    arrow:{
-        height:20,
-        width:20
     },
     stats: {
         // marginTop: -15,
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         borderRadius: 10,
         display: 'flex',
-        margin: 10,
+        margin: 1,
         marginBottom: 1,
         padding: 5,
         fontSize: 16,
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         borderRadius: 10,
         display: 'flex',
-        margin: 10,
+        margin: 1,
         marginBottom: 1,
         padding: 5,
         fontSize: 16,
@@ -174,7 +173,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 30,
         borderRadius: 10,
         display: 'flex',
-        margin: 10,
+        margin: 1,
         marginBottom: 1,
         padding: 5,
         fontSize: 16,
@@ -222,7 +221,7 @@ const styles = StyleSheet.create({
         fontFamily: 'LuckiestGuy_400Regular',
         opacity:1,
         marginRight:7,
-        marginTop:1,
+        marginTop:4,
         color:'#0063A1',
     },
     buttonText1: {
@@ -239,7 +238,7 @@ const styles = StyleSheet.create({
         opacity:1,
         color:'beige',
         // marginLeft:15,
-        marginTop:10
+        marginTop:0
     },
    gpText: {
         fontSize: 16,
