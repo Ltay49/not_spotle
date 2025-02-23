@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     scrollViewContent: {
         flexGrow: 1, // This allows the ScrollView content to grow and take available space
-        paddingBottom: 50, // Added some padding to the bottom
+        paddingBottom: 100, // Added some padding to the bottom
         // paddingTop: 20, // Added some padding to the top
       },
       overlay: {
