@@ -1,11 +1,17 @@
-import { View,Animated,Text, Image, StyleSheet, ScrollView, TouchableOpacity} from "react-native"
+import { View,Animated,Text, Image, StyleSheet, ScrollView, TouchableOpacity, ImageBackground} from "react-native"
+import { JumpingTransition } from "react-native-reanimated"
 const Football = require('../../../assets/images/Football.png')
 const AndyJ = require('../../../assets/images/AndyJ.png')
 const SearchBar = require('../../../assets/images/searchBar.png')
 const JulioArca = require('../../../assets/images/JulioArca.png')
 const WrongNation = require('../../../assets/images/wrongNation.png')
 const CorrectNation = require('../../../assets/images/correctNation.png')
+
+const Lua = require('../../../assets/images/LuaLua.png');
 import Icon from 'react-native-vector-icons/FontAwesome';
+"https://i.ibb.co/NXny8GS/birm.png"
+"https://i.ibb.co/Kz5VSfQP/Ars.png"
+"https://i.ibb.co/hJhSxL1s/pompy.png"
 
 type HowToPlayProps = {
     setHowToPlay: React.Dispatch<React.SetStateAction<boolean | null>>;
@@ -85,12 +91,34 @@ type HowToPlayProps = {
             <Text style={styles.statsEng}>ENG</Text>
             <Text style={styles.statsFra}>FRA</Text>
             </View>
-            <View style={styles.box}></View>
+            <Text style={styles.headerSP}>Seasons Played</Text>
+            <View style={styles.row}>
+            <View style={styles.box}>
+                <ImageBackground source={Lua} style={styles.lua} blurRadius={4} borderRadius={20}> </ImageBackground>
+            <Text style={styles.numbers}>01</Text>
+            <Text style={styles.numbers}>02</Text>
+            <Text style={styles.numbersC}>03</Text>
+            <Text style={styles.numbersC}>04</Text>
+            <Text style={styles.numbersC}>05</Text>
+            <Text style={styles.numbersC}>06</Text>
+            <Text style={styles.numbers}>07</Text>
+            </View>
+            <Text style={styles.seasonText}>Your guess played between 01 & 06, the highlighted numbers show that 'The Barclaysman' only played between 2003 & 2006 </Text>
+            </View>
             </View>
             <Image/>
             <View style={styles.row}>
                 <Image  style={styles.footballTeams} source={Football}></Image>
                 <Text style={styles.teamsText}>Teams also are either a match or not, a guessed players teams defaults to a faded colour if the player guessed has played for the same team then it will appear in full colour</Text>
+            </View>
+            <View style={styles.row}>
+            <View style={styles.box1}>
+            <ImageBackground source={Lua} style={styles.lua1} blurRadius={4} borderRadius={20}> </ImageBackground>
+            <Image  style={styles.badgeC} source={{uri:"https://i.ibb.co/hJhSxL1s/pompy.png"}}></Image>
+            <Image style={styles.badge}source={{uri:"https://i.ibb.co/Kz5VSfQP/Ars.png"}}></Image>
+            <Image style={styles.badgeC}source={{uri:"https://i.ibb.co/NXny8GS/birm.png"}}></Image>
+            </View>
+            <Text style={styles.badgesText}>Your guess played for Portsmouth, Arsenal and Birmingham. Only Birmingham and Portsmoth have full colour though, this shows us that out of those three teams 'The Barclaysman has played for Portsmouth and Birmingham</Text>
             </View>
             <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
@@ -114,12 +142,68 @@ const styles = StyleSheet.create({
         position:"relative",
         transform:[{translateY:-140}],
     }, 
+lua:{
+height:70,
+width:152,
+borderRadius:10,
+transform:[{translateY:30},{translateX:-6} ],
+},
+lua1:{
+    height:110,
+    width:30,
+    borderRadius:10,
+    transform:[{translateY:0},{translateX:0} ],
+    },
+badge:{
+height:30,
+width:30,
+opacity:0.3,
+transform:[{translateY:-110},{translateX:0} ],
+},
+badgeC:{
+    marginVertical:5,
+    transform:[{translateY:-110},{translateX:0} ],
+    height:30,
+    width:30
+    },
+    numbers:{
+        fontSize:16,
+        marginLeft:8,
+        marginTop:-30,
+        fontFamily: 'LuckiestGuy_400Regular',
+    },
+    numbersC:{
+        marginTop:-0,
+        padding:5,
+        fontSize:18,
+        marginLeft:8,
+        borderRadius:'50%',
+        borderColor:'black',
+        borderWidth:1,
+        backgroundColor:'green',
+        transform:[{translateY:-35}],        
+        fontFamily: 'LuckiestGuy_400Regular',
+    },
     box:{
         backgroundColor: 'rgba(225, 225, 225,1)',
-        width:200,
-        height:100,
+        width:150,
+        height:70,
         borderRadius:10,
-        transform:[{translateY:-55},{translateX:15}]
+        transform:[{translateX:15}],
+        marginBottom:60,
+        display:'flex',
+        flexDirection:'row',
+        padding:5,
+        justifyContent:'flex-start',
+        alignContent:'center',
+        flexWrap: 'wrap'
+    },
+    box1:{
+        height:110,
+        width:30,
+        backgroundColor:'white',
+        borderRadius:10,
+        transform:[{translateX:15}],
     },
     icons:{
         height:45,
@@ -354,6 +438,15 @@ const styles = StyleSheet.create({
        paddingBottom:5,
        marginTop:-20
     },
+    headerSP: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        color:'beige',
+        marginLeft:36,
+       paddingBottom:5,
+       marginTop:-50
+    },
     buttonTextX: {
         fontSize: 16,
         fontFamily: 'VarelaRound_400Regular',
@@ -402,6 +495,24 @@ const styles = StyleSheet.create({
         marginLeft:10,
         marginRight:5,
    },
+   seasonText: {
+    fontSize: 16,
+    fontFamily: 'VarelaRound_400Regular',
+    opacity:1,
+    marginTop:-25,
+    color: 'beige',
+    marginLeft:20,
+    marginRight:5,
+},
+badgesText: {
+    fontSize: 16,
+    fontFamily: 'VarelaRound_400Regular',
+    opacity:1,
+    marginTop:-2,
+    color: 'beige',
+    marginLeft:20,
+    marginRight:5,
+},
     rowTitle:{
         flexDirection:'row',
         // borderWidth:1,
