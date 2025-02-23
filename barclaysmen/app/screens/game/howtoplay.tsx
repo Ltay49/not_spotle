@@ -18,8 +18,9 @@ type HowToPlayProps = {
     return (
         
         <Animated.View style={styles.background}>
-            <ScrollView style={styles.scrollViewContent}>
+            {/* <ScrollView contentContainerStyle={styles.scrollViewContent}> */}
             <View style={styles.overlay}>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.rowTitle}>
                 <Text style={styles.title}>How To Play</Text>
             <TouchableOpacity  style={styles.button} onPress={handleSubmit}>
@@ -52,14 +53,23 @@ type HowToPlayProps = {
             </View>
             <View style={styles.row}>
             <Text style={styles.statsTextGm}>Games: 120</Text>
-            <Text style={styles.goalText}>you are not within 20</Text>
+            <Text style={styles.goalText}>you are not within 20 games</Text>
             </View>
+            </View>
+            <View style={styles.row}>
+                <Image  style={styles.football} source={Football}></Image>
+                <Text style={styles.buttonText}>Nationality and Season are only validated by a green background they either perfectly match or do not</Text>
+            </View>
+            <View style={styles.row}>
+                <Image  style={styles.football} source={Football}></Image>
+                <Text style={styles.buttonText}>Teams also are either a match or not, a guessed players teams defaults to a faded colour if the player guessed has played for the same team then it will appear in full colour</Text>
             </View>
             <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
             </TouchableOpacity>
+            </ScrollView>
           </View>
-          </ScrollView>
+          {/* </ScrollView> */}
         </Animated.View>
     )
 }
@@ -67,8 +77,10 @@ type HowToPlayProps = {
 const styles = StyleSheet.create({
     background: {
         // borderWidth:4,
+        borderColor:'green',
         alignSelf:'center',
         width: '110%',
+      flex:1,
         borderRadius:10,
         justifyContent: 'center',
         position:"relative",
@@ -80,7 +92,6 @@ const styles = StyleSheet.create({
         paddingLeft:17,
         borderRadius: '50%',
         alignItems: 'center',
-        borderWidth:2,
         borderColor: 'white',
         opacity:.5,
         transform:[{translateX:70}],
@@ -93,7 +104,7 @@ const styles = StyleSheet.create({
     },
     scrollViewContent: {
         flexGrow: 1, // This allows the ScrollView content to grow and take available space
-        paddingBottom: 30, // Added some padding to the bottom
+        // paddingBottom: 30, // Added some padding to the bottom
         // paddingTop: 20, // Added some padding to the top
       },
       overlay: {
@@ -101,9 +112,9 @@ const styles = StyleSheet.create({
         borderRadius: 9,
         borderWidth: 4,
         borderColor: '#0063A1',
-        overflow:'scroll',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
-        paddingVertical: 10, 
+        // paddingVertical: 10, 
+        height:650
       },
     row:{
         flexDirection:'row',
@@ -126,7 +137,7 @@ const styles = StyleSheet.create({
         alignContent: 'flex-end',
         justifyContent: 'flex-end',
         alignSelf: 'center',
-        borderWidth: 2,
+        // borderWidth: 2,
         marginBottom: 5,
         width: '100%'
 
@@ -135,7 +146,7 @@ const styles = StyleSheet.create({
     statsTextA:{
         justifyContent: 'center',
         textAlign: 'center',
-        marginHorizontal: 30,
+        marginHorizontal: 15,
         borderRadius: 10,
         display: 'flex',
         margin: 1,
@@ -143,7 +154,7 @@ const styles = StyleSheet.create({
         padding: 5,
         fontSize: 16,
         lineHeight: 20,
-        marginLeft:70,
+        marginLeft:60,
         color: 'black',
         backgroundColor: 'gold',
         fontFamily: 'LuckiestGuy_400Regular',
@@ -152,7 +163,7 @@ const styles = StyleSheet.create({
     statsTextG:{
         justifyContent: 'center',
         textAlign: 'center',
-        marginHorizontal: 30,
+        marginHorizontal: 15,
         borderRadius: 10,
         display: 'flex',
         margin: 1,
@@ -164,13 +175,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         fontFamily: 'LuckiestGuy_400Regular',
         // marginRight:50,
-        marginLeft:65
+        marginLeft:53
         // Adjust font size as needed
     },
     statsTextGm:{
         justifyContent: 'center',
         textAlign: 'center',
-        marginHorizontal: 30,
+        marginHorizontal: 15,
         borderRadius: 10,
         display: 'flex',
         margin: 1,
