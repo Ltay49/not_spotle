@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 9,
         borderWidth: 4,
         borderColor: '#0063A1',
+        overflow:'scroll',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
         paddingVertical: 20, 
       },
