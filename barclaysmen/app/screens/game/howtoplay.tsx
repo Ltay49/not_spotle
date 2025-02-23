@@ -3,6 +3,8 @@ const Football = require('../../../assets/images/Football.png')
 const AndyJ = require('../../../assets/images/AndyJ.png')
 const SearchBar = require('../../../assets/images/searchBar.png')
 const JulioArca = require('../../../assets/images/JulioArca.png')
+const WrongNation = require('../../../assets/images/wrongNation.png')
+const CorrectNation = require('../../../assets/images/correctNation.png')
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 type HowToPlayProps = {
@@ -58,11 +60,37 @@ type HowToPlayProps = {
             </View>
             <View style={styles.row}>
                 <Image  style={styles.football} source={Football}></Image>
-                <Text style={styles.buttonText}>Nationality and Season are only validated by a green background they either perfectly match or do not</Text>
+                <Text style={styles.buttonText}>Nationality, Seasons Played and Position are only validated by a green background they either perfectly match or do not</Text>
+            </View>
+            <View>
+                <Text style={styles.headers}>Nationality</Text>
+            <View style={styles.row}>
+            <Image style={styles.icons} source={{uri:'https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1600px-Flag_of_England.svg.png?20111003040319'}}/>
+            <Icon name="times" size={35} color="red"/>
+            <Image style={styles.iconsFra} source={{uri:'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/510px-Flag_of_France.svg.png'}}/>
+            <Icon name="check" size={35} color="green" />
+            <View>
+            <Text style={styles.headerP}>Position</Text>
+            <View style={styles.row}>
+                <Text style={styles.statsPos}>POS:DEF</Text>
+                <Icon name="times" size={35} color="red"/>
+                </View>
+                <View style={styles.row}>
+                <Text style={styles.statsPosW}>POS:FOR</Text>
+                <Icon name="check" size={35} color="green"/>
+                </View>
+            </View>
             </View>
             <View style={styles.row}>
-                <Image  style={styles.football} source={Football}></Image>
-                <Text style={styles.buttonText}>Teams also are either a match or not, a guessed players teams defaults to a faded colour if the player guessed has played for the same team then it will appear in full colour</Text>
+            <Text style={styles.statsEng}>ENG</Text>
+            <Text style={styles.statsFra}>FRA</Text>
+            </View>
+            <View style={styles.box}></View>
+            </View>
+            <Image/>
+            <View style={styles.row}>
+                <Image  style={styles.footballTeams} source={Football}></Image>
+                <Text style={styles.teamsText}>Teams also are either a match or not, a guessed players teams defaults to a faded colour if the player guessed has played for the same team then it will appear in full colour</Text>
             </View>
             <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
@@ -86,6 +114,25 @@ const styles = StyleSheet.create({
         position:"relative",
         transform:[{translateY:-140}],
     }, 
+    box:{
+        backgroundColor: 'rgba(225, 225, 225,1)',
+        width:200,
+        height:100,
+        borderRadius:10,
+        transform:[{translateY:-55},{translateX:15}]
+    },
+    icons:{
+        height:45,
+        width:60,
+        borderRadius:5,
+        marginLeft:20,
+    },
+    iconsFra:{
+        height:45,
+        width:60,
+        borderRadius:5,
+        marginLeft:10,
+    },
      button: {
         backgroundColor: 'red',
         padding: 10,
@@ -98,6 +145,12 @@ const styles = StyleSheet.create({
     },
     football: {
         marginTop:5,
+        height: 20,
+        width: 20,
+        marginLeft:5,
+    },
+    footballTeams: {
+        marginTop:-35,
         height: 20,
         width: 20,
         marginLeft:5,
@@ -194,6 +247,70 @@ const styles = StyleSheet.create({
         fontFamily: 'LuckiestGuy_400Regular',
         // Adjust font size as needed
     },
+    statsEng:{
+        marginHorizontal: 10,
+        borderRadius: 10,
+        display: 'flex',
+        marginTop:-43,
+        margin: 1,
+        marginBottom: 1,
+        marginLeft:25,
+        padding: 5,
+        fontSize: 16,
+        lineHeight: 0,
+        color: 'white',
+        backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    statsFra:{
+        marginBottom: 55,
+        marginHorizontal: 40,
+        borderRadius: 5,
+        marginTop:-55,
+        marginLeft:50,
+        margin: 1,
+        padding: 10,
+        paddingTop:15,
+        fontSize: 16,
+        lineHeight: 0,
+        color: 'black',
+        backgroundColor: 'green',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    statsPos:{
+        marginHorizontal: 10,
+        borderRadius: 5,
+        marginTop:5,
+        margin: 1,
+        marginBottom:10,
+        padding: 10,
+        paddingTop:15,
+        fontSize: 16,
+        lineHeight: 0,
+        marginLeft:25,
+        color: 'white',
+        backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    statsPosW:{
+        marginLeft:25,
+        marginHorizontal: 5,
+        borderRadius: 5,
+        marginTop:7,
+        margin: 1,
+        marginBottom:10,
+        padding: 10,
+        paddingTop:15,
+        fontSize: 16,
+        lineHeight: 0,
+        color: 'black',
+        backgroundColor: 'green',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
     searchBar:{
         height:110,
         width:'44%',
@@ -220,6 +337,23 @@ const styles = StyleSheet.create({
         color:'beige',
         marginLeft:5
     },
+    headers: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        color:'beige',
+        marginLeft:55,
+       paddingBottom:5
+    },
+    headerP: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        color:'beige',
+        marginLeft:55,
+       paddingBottom:5,
+       marginTop:-20
+    },
     buttonTextX: {
         fontSize: 16,
         fontFamily: 'VarelaRound_400Regular',
@@ -242,6 +376,14 @@ const styles = StyleSheet.create({
         marginTop:15,
         color: 'beige',
         marginLeft:10,
+    },
+    teamsText: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        color:'beige',
+        marginLeft:5,
+        marginTop:-40
     },
     goalText: {
         fontSize: 16,
