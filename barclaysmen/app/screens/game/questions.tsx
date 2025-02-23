@@ -11,6 +11,7 @@ import {
 } from "react-native"
 import React, { useEffect, useState } from "react";
 import axios from "axios"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Alan = require('../../../assets/images/shearer.png')
 const Football = require('../../../assets/images/Football.png')
 const slip = require('../../../assets/images/slip.png')

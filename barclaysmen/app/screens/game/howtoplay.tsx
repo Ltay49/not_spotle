@@ -118,7 +118,7 @@ type HowToPlayProps = {
             <Image style={styles.badge}source={{uri:"https://i.ibb.co/Kz5VSfQP/Ars.png"}}></Image>
             <Image style={styles.badgeC}source={{uri:"https://i.ibb.co/NXny8GS/birm.png"}}></Image>
             </View>
-            <Text style={styles.badgesText}>Your guess played for Portsmouth, Arsenal and Birmingham. Only Birmingham and Portsmoth have full colour though, this shows us that out of those three teams 'The Barclaysman has played for Portsmouth and Birmingham</Text>
+            <Text style={styles.badgesText}>Your guess played for Portsmouth, Arsenal and Birmingham. Only Birmingham and Portsmoth have full colour though, this shows us that out of those three teams 'The Barclaysman' has played for Portsmouth and Birmingham</Text>
             </View>
             <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
                                 <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
@@ -189,7 +189,7 @@ badgeC:{
         width:150,
         height:70,
         borderRadius:10,
-        transform:[{translateX:15}],
+        transform:[{translateX:10}],
         marginBottom:60,
         display:'flex',
         flexDirection:'row',
@@ -203,7 +203,7 @@ badgeC:{
         width:30,
         backgroundColor:'white',
         borderRadius:10,
-        transform:[{translateX:15}],
+        transform:[{translateX:10}],
     },
     icons:{
         height:45,
@@ -234,12 +234,13 @@ badgeC:{
         marginLeft:5,
     },
     footballTeams: {
-        marginTop:-35,
+        marginTop:-15,
         height: 20,
         width: 20,
         marginLeft:5,
     },
     scrollViewContent: {
+        padding:10,
         flexGrow: 1, // This allows the ScrollView content to grow and take available space
         paddingBottom: 60, // Added some padding to the bottom
         // paddingTop: 20, // Added some padding to the top
@@ -251,7 +252,7 @@ badgeC:{
         borderColor: '#0063A1',
         // paddingHorizontal: 15, // Added horizontal padding for better spacing
         // paddingVertical: 10, 
-        height:610
+        height:610,
       },
     row:{
         flexDirection:'row',
@@ -443,7 +444,7 @@ badgeC:{
         fontFamily: 'VarelaRound_400Regular',
         opacity:1,
         color:'beige',
-        marginLeft:36,
+        marginLeft:28,
        paddingBottom:5,
        marginTop:-50
     },
@@ -476,7 +477,7 @@ badgeC:{
         opacity:1,
         color:'beige',
         marginLeft:5,
-        marginTop:-40
+        marginTop:-20
     },
     goalText: {
         fontSize: 16,
