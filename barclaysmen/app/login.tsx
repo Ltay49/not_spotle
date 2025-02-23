@@ -39,10 +39,6 @@ export default function Login() {
             <View style={styles.overlay}> 
                 <View style={styles.container}>
                     <View style={styles.innerContainer}>
-                      <View style={styles.textbox}>
-                        {/* <Text style={styles.text}>Will you bag the barclaysman today?</Text>
-                        <Text style={styles.text}>10 shots, 100s of players!</Text> */}
-                      </View>
                         <View style={styles.inputContainer}>
                             <TouchableOpacity onPress={handleSubmit} style={styles.button}>
                                 <Text style={styles.buttonText}>Play</Text>
@@ -55,7 +51,7 @@ export default function Login() {
                         </View>
                         {howToPlay ? (
                        <HowToPlay setHowToPlay={setHowToPlay} />
-                    ) : null}  {/* If `howToPlay` is false, render nothing */}
+                    ) : null}
                     </View>
                 </View>
             </View>

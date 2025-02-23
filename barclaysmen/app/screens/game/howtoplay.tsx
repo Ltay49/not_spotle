@@ -2,6 +2,8 @@ import { View,Animated,Text, Image, StyleSheet, ScrollView, TouchableOpacity} fr
 const Football = require('../../../assets/images/Football.png')
 const AndyJ = require('../../../assets/images/AndyJ.png')
 const SearchBar = require('../../../assets/images/searchBar.png')
+const JulioArca = require('../../../assets/images/JulioArca.png')
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 type HowToPlayProps = {
     setHowToPlay: React.Dispatch<React.SetStateAction<boolean | null>>;
@@ -16,18 +18,15 @@ type HowToPlayProps = {
     return (
         
         <Animated.View style={styles.background}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.overlay}>
                 <View style={styles.rowTitle}>
                 <Text style={styles.title}>How To Play</Text>
             <TouchableOpacity  style={styles.button} onPress={handleSubmit}>
-                                <Text style={styles.buttonTextX} >X</Text>
+                                <Text style={styles.buttonTextX}>X</Text>
             </TouchableOpacity>
-            <View>
-            </View>
             </View>
             <Text style={styles.buttonText1}>THE AIM</Text>
-            <Text style={styles.buttonText}>Bag the Barclaysman within 10 shots</Text>
+            <Text style={styles.buttonText}>Bag the Barclaysman within 10 shots, the game is a nostalgic replay back to the iconic Barclays Premier League</Text>
             <Text style={styles.buttonText1}>THE STATS</Text>
             <View style={styles.row}>
                 <Image  style={styles.football} source={Football}></Image>
@@ -35,42 +34,45 @@ type HowToPlayProps = {
             </View>
             <View style={styles.row}>
                 <Image  style={styles.football} source={Football}></Image>
-                <Text style={styles.buttonText}>You need to narrow down the who the Barclaysman of the day is via their; Goals, Assists, Games, Position, Teams, Sesaons Played and Nationality</Text>
+                <Text style={styles.buttonText}>You need to narrow down who the Barclaysman of the day is via their; Goals, Assists, Games, Position, Teams, Sesaons Played and Nationality</Text>
             </View>
             <View style={styles.row}>
             <Image  style={styles.football} source={Football}></Image>
-            <Text style={styles.buttonText}>The green inidciates it's a perfect match so in this example you are looking for a player with...</Text>
+            <Text style={styles.buttonText}>Goals (Gls), Assists(Ast) and Apps (appearences), are shown in 3 styles: </Text>
             </View>
-            <Text style={styles.buttonText1}>Game pLay</Text>
-            <View style={styles.rowGp}>
-            <Text style={styles.buttonText}>Step1 . Begin by typing your guess</Text>
-            <Text style={styles.buttonText}>Step2. your guess will apear, you also notice your guesses remaining has updated along side your shootout image</Text>
+            <View style={styles.stats}>
+            <View style={styles.row}>
+            <Text style={styles.statsTextG}>Gls: 37</Text>
+            <Text style={styles.goalText}>exact number of goals</Text>
             </View>
             <View style={styles.row}>
-            <Image style={styles.pic} source={SearchBar}></Image>  
-            <Image style={styles.pic1} source={AndyJ}></Image>
-            </View>   
-            <Image style={styles.pic} source={SearchBar}></Image>     
+            <Text style={styles.statsTextA}>Ats: 6</Text>
+            <Text style={styles.goalText}>you are within 20 assits</Text>
             </View>
-            </ScrollView>
+            <View style={styles.row}>
+            <Text style={styles.statsTextGm}>Games: 120</Text>
+            <Text style={styles.goalText}>you are not within 20</Text>
+            </View>
+            </View>
+            <TouchableOpacity  style={styles.buttonGp} onPress={handleSubmit}>
+                                <Text style={styles.buttonGpText}>How to play...Game Play Here    <Icon name="arrow-right" size={18} color='#0063A1' /></Text>
+            </TouchableOpacity>
+          </View>
         </Animated.View>
     )
 }
 
 const styles = StyleSheet.create({
     background: {
+        // borderWidth:4,
         alignSelf:'center',
-        flex: 1,
         width: '110%',
-        // height: 200,
         borderRadius:10,
-        borderWidth:2,
-        borderColor:'#0063A1',
         justifyContent: 'center',
-        // alignContent:'center',
         position:"relative",
         transform:[{translateY:-140}],
-    },  button: {
+    }, 
+     button: {
         backgroundColor: 'red',
         padding: 10,
         paddingLeft:17,
@@ -82,49 +84,127 @@ const styles = StyleSheet.create({
         transform:[{translateX:70}],
     },
     football: {
-        marginTop:10,
+        marginTop:5,
         height: 20,
-        width: 20
+        width: 20,
+        marginLeft:5,
     },
-    scrollContainer:{
-        transform:[{translateY:0}],
-        flexGrow: 1,
-        borderWidth:2,
-        borderColor:'grey',
-        borderRadius:10,
-        // height:400,
-        position:'absolute',
+    scrollViewContent: {
+        flexGrow: 1, // This allows the ScrollView content to grow and take available space
+        paddingBottom: 30, // Added some padding to the bottom
+        // paddingTop: 20, // Added some padding to the top
+      },
+      overlay: {
         backgroundColor: 'rgba(0, 0, 0, 1)',
-    },
-    overlay: {
-        display:'flex',
-        backgroundColor: 'rgba(0, 0, 0, 1)',
-        overflow:'scroll'
-    },
+        borderRadius: 9,
+        borderWidth: 4,
+        borderColor: '#0063A1',
+        // paddingHorizontal: 15, // Added horizontal padding for better spacing
+        paddingVertical: 20, 
+      },
     row:{
-        flexDirection:'row'
+        flexDirection:'row',
+        marginBottom: 10,
     },
     rowGp:{
+        marginBottom: 10,
         flexDirection:'row',
+        //  borderWidth:1,
+        //  borderColor:'white',
+         justifyContent:'center',
 
+    }, 
+    buttonGp:{
+   marginLeft:90
     },
-    pic:{
+    arrow:{
+        height:20,
+        width:20
+    },
+    stats: {
+        // marginTop: -15,
+        alignContent: 'flex-end',
+        justifyContent: 'flex-end',
+        alignSelf: 'center',
+        borderWidth: 2,
+        marginBottom: 5,
+        width: '100%'
+
+        // Optional: space between each stat text
+    },
+    statsTextA:{
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginHorizontal: 30,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 1,
+        padding: 5,
+        fontSize: 16,
+        lineHeight: 20,
+        marginLeft:70,
+        color: 'black',
+        backgroundColor: 'gold',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    statsTextG:{
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginHorizontal: 30,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 1,
+        padding: 5,
+        fontSize: 16,
+        lineHeight: 20,
+        color: 'black',
+        backgroundColor: 'green',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // marginRight:50,
+        marginLeft:65
+        // Adjust font size as needed
+    },
+    statsTextGm:{
+        justifyContent: 'center',
+        textAlign: 'center',
+        marginHorizontal: 30,
+        borderRadius: 10,
+        display: 'flex',
+        margin: 10,
+        marginBottom: 1,
+        padding: 5,
+        fontSize: 16,
+        lineHeight: 20,
+        color: 'white',
+        backgroundColor: 'black',
+        fontFamily: 'LuckiestGuy_400Regular',
+        // Adjust font size as needed
+    },
+    searchBar:{
         height:110,
         width:'44%',
         borderRadius:10,
-        transform:[{translateX:15},{translateY:40} ],
+        transform:[{translateX:-5},{translateY:18} ],
     },
-    pic1:{
-        height:145,
-        width:'44%',
+    andyJ:{
+        height:175,
+        width:'55%',
         borderRadius:15,
-        transform:[{translateX:30},{translateY:40} ],
+        transform:[{translateX:5},{translateY:15} ],
+        marginBottom:10
+    },
+    andyJEx:{
+        height:151,
+        width:300,
+        borderRadius:15,
+        transform:[{translateX:30},{translateY:15} ],
     },
     buttonText: {
         fontSize: 16,
         fontFamily: 'VarelaRound_400Regular',
-        // color: 'white',
-    //    textAlign:'center',
         opacity:1,
         color:'beige',
         marginLeft:5
@@ -132,26 +212,43 @@ const styles = StyleSheet.create({
     buttonTextX: {
         fontSize: 16,
         fontFamily: 'VarelaRound_400Regular',
-        // color: 'white',
-    //    textAlign:'center',
         opacity:1,
         marginRight:7,
         marginTop:1,
         color:'beige',
+    },buttonGpText:{
+        fontSize: 16,
+        fontFamily: 'LuckiestGuy_400Regular',
+        opacity:1,
+        marginRight:7,
+        marginTop:1,
+        color:'#0063A1',
     },
     buttonText1: {
         fontSize: 16,
         fontFamily: 'LuckiestGuy_400Regular',
-        // color: 'white',
-    //    textAlign:'center',
         opacity:1,
         marginTop:15,
         color: 'beige',
         marginLeft:10,
-        // borderWidth:1,
-        // borderColor:'white'
-
     },
+    goalText: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        color:'beige',
+        // marginLeft:15,
+        marginTop:10
+    },
+   gpText: {
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        opacity:1,
+        marginTop:15,
+        color: 'beige',
+        marginLeft:10,
+        marginRight:5,
+   },
     rowTitle:{
         flexDirection:'row',
         // borderWidth:1,
