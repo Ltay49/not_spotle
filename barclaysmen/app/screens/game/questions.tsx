@@ -242,7 +242,7 @@ export default function () {
                                     }
                                 ]}
                             >
-                                <Image source={Football} style={styles.football} />
+                                <ImageBackground source={Football} style={styles.football}></ImageBackground>
                             </Animated.View>
                         ))}
                     </View>
