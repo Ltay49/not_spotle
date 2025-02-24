@@ -363,7 +363,8 @@ export default function () {
                                             style={
                                                 styles.playerNameText}
                                         >
-                                            {guess}
+                                            {guessedPlayer.playerUrl}
+                                            {/* {guess} */}
                                         </Text>
                                     </View>
                                     <View style={styles.teams}>
