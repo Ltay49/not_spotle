@@ -4,12 +4,15 @@ import { useFonts, VarelaRound_400Regular } from '@expo-google-fonts/varela-roun
 import { Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
-const responsiveFontSize = (width / 100) * 12;
+
+// Calculate a responsive font size
+const baseFontSize = (width / 100) * 12;  // Font size based on screen width
+const maxFontSize = 55; 
+const responsiveFontSize = Math.min(baseFontSize, maxFontSize);
 // Custom Header Component
 const Header = ({ title }: { title: string }) => {
 
-
-  const [fontsLoaded] = useFonts({
+const [fontsLoaded] = useFonts({
     VarelaRound_400Regular,
 });
 
