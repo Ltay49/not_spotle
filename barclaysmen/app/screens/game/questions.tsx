@@ -9,6 +9,7 @@ import {
     ImageBackground,
     Animated, Easing
 } from "react-native"
+import FastImage from 'react-native-fast-image';
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -353,14 +354,10 @@ export default function () {
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
                                     <Image
-                                        source={
-                                            guessedPlayer?.playerUrl && guessedPlayer?.playerUrl !== ""
-                                                ? { uri: guessedPlayer.playerUrl }
-                                                : Football  // Use the local 'Football' image as the fallback
-                                        }
+                                        key={`${guessedPlayer.playerUrl}?${new Date().getTime()}`} // Adding timestamp to force re-fetch
+                                        source={{ uri: guessedPlayer.playerUrl }}
                                         style={styles.playerimage}
                                     />
-
                                     <View style={styles.playerName}>
                                         <Text
                                             style={
@@ -381,12 +378,13 @@ export default function () {
                                             const isMatch = chosenPlayer?.team.includes(team);
 
                                             return (
-                                                <View key={index} style={styles.team}>
+                                                <View key={team} style={styles.team}>
                                                     <Image
+                                                        key={`${teamUrl}?${new Date().getTime()}`} // Adding timestamp to team badge image
                                                         source={{ uri: teamUrl }}
                                                         style={[
                                                             styles.teamBadge,
-                                                            !isMatch && { opacity: 0.3 } // Reduces brightness instead of full grayscale
+                                                            !isMatch && { opacity: 0.3 }
                                                         ]}
                                                     />
                                                 </View>
