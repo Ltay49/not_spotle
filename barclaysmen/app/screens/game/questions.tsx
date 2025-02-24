@@ -9,7 +9,6 @@ import {
     ImageBackground,
     Animated, Easing
 } from "react-native"
-import FastImage from 'react-native-fast-image';
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -40,7 +39,7 @@ export default function () {
         Chewy_400Regular,
         VarelaRound_400Regular,
         LuckiestGuy_400Regular,
-       
+
     });
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
@@ -52,7 +51,7 @@ export default function () {
     const [guesses, setGuesses] = useState<string[]>([]);
     const [gameComplete, setGameComplete] = useState(false);
     const [gameLost, setGameLost] = useState(false)
-    const greeting = `You have ${10-guessCount} shots remaining!`
+    const greeting = `You have ${10 - guessCount} shots remaining!`
     const randomPlayer = (array: Player[]): Player => {
         const randomIndex = Math.floor(Math.random() * array.length);
         return array[randomIndex];
@@ -63,56 +62,56 @@ export default function () {
     const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]);
 
     // Add new Animated.Value for translateY
-const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(300)); 
-const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // 
+    const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(300));
+    const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // 
 
-const [cardPositionAnimationCompleted, setCardPositionAnimationCompleted] = useState(false); 
+    const [cardPositionAnimationCompleted, setCardPositionAnimationCompleted] = useState(false);
 
-const [imageVisible, setImageVisible] = useState(false); // Controls when the image appears
-const [imageOpacity, setImageOpacity] = useState(new Animated.Value(0)); // For fade-in effect
+    const [imageVisible, setImageVisible] = useState(false); // Controls when the image appears
+    const [imageOpacity, setImageOpacity] = useState(new Animated.Value(0)); // For fade-in effect
 
-// Animate the completion card when the game ends
-useEffect(() => {
-    if (gameComplete || gameLost) {
-        // Animate the Y and X position of the completion card
-        Animated.parallel([
-            Animated.timing(completionCardTranslateY, {
-                toValue: 0, // Move to normal position on Y
-                duration: 2000,
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }),
-            Animated.timing(completionCardTranslateX, {
-                toValue: 8, // Nudge the card 50 units to the right
-                duration: 2000,
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }),
-        ]).start(() => {
-            // Set flag to true once the card has finished animating
-            setCardPositionAnimationCompleted(true); // Indicates animation is completed
-        });
-    }
-}, [gameComplete, gameLost]);
+    // Animate the completion card when the game ends
+    useEffect(() => {
+        if (gameComplete || gameLost) {
+            // Animate the Y and X position of the completion card
+            Animated.parallel([
+                Animated.timing(completionCardTranslateY, {
+                    toValue: 0, // Move to normal position on Y
+                    duration: 2000,
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(completionCardTranslateX, {
+                    toValue: 8, // Nudge the card 50 units to the right
+                    duration: 2000,
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+            ]).start(() => {
+                // Set flag to true once the card has finished animating
+                setCardPositionAnimationCompleted(true); // Indicates animation is completed
+            });
+        }
+    }, [gameComplete, gameLost]);
 
-useEffect(() => {
-    if (cardPositionAnimationCompleted) {
-        // Wait 2 seconds after the card animation
-        const timeoutId = setTimeout(() => {
-            setImageVisible(true); // Show the image
-            // Animate the image opacity to make it fade in
-            Animated.timing(imageOpacity, {
-                toValue: 1, // Full opacity (fade-in)
-                duration: 3000, // Duration for the fade-in
-                easing: Easing.ease,
-                useNativeDriver: true,
-            }).start();
-        }, 0); // 2000ms = 2 seconds delay for the image
+    useEffect(() => {
+        if (cardPositionAnimationCompleted) {
+            // Wait 2 seconds after the card animation
+            const timeoutId = setTimeout(() => {
+                setImageVisible(true); // Show the image
+                // Animate the image opacity to make it fade in
+                Animated.timing(imageOpacity, {
+                    toValue: 1, // Full opacity (fade-in)
+                    duration: 3000, // Duration for the fade-in
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }).start();
+            }, 0); // 2000ms = 2 seconds delay for the image
 
-        // Cleanup timeout if the component is unmounted or before the animation triggers
-        return () => clearTimeout(timeoutId);
-    }
-}, [cardPositionAnimationCompleted]);
+            // Cleanup timeout if the component is unmounted or before the animation triggers
+            return () => clearTimeout(timeoutId);
+        }
+    }, [cardPositionAnimationCompleted]);
 
 
     useEffect(() => {
@@ -158,7 +157,7 @@ useEffect(() => {
             setGuessCount((prevCount) => prevCount + 1);
         }
         setSearchText("");
-    
+
         const guessedPlayer = playerStats.find((player) => player.name.toLowerCase() === playerName.toLowerCase());
         if (guessedPlayer && chosenPlayer) {
             if (guessedPlayer.name.toLowerCase() === chosenPlayer.name.toLowerCase()) {
@@ -166,7 +165,7 @@ useEffect(() => {
             }
         }
     };
-    
+
     // useEffect to check if the game should be lost
     useEffect(() => {
         if (guessCount === 10 && !gameComplete) {
@@ -179,13 +178,13 @@ useEffect(() => {
             const guessedPlayer = playerStats.find(
                 (player) => player.name.toLowerCase() === guess.toLowerCase()
             );
-    
+
             if (guessedPlayer?.playerUrl) {
                 console.log('Guessed Player URL:', guessedPlayer.playerUrl);
             }
         });
     }, [guesses, playerStats]); // Re-run the effect when guesses or playerStats change
-    
+
 
     useEffect(() => {
         axios
@@ -210,9 +209,9 @@ useEffect(() => {
 
     useEffect(() => {
         if (chosenPlayer?.playerUrl) {
-          console.log('Player URL:', chosenPlayer.playerUrl);
+            console.log('Player URL:', chosenPlayer.playerUrl);
         }
-      }, [chosenPlayer?.playerUrl]);
+    }, [chosenPlayer?.playerUrl]);
 
     const filteredPlayers = searchText
         ? playerStats
@@ -293,57 +292,57 @@ useEffect(() => {
                                 </ImageBackground>
                             </View>
                             <View style={styles.compContainer}>
-                            <Animated.View 
-            style={[
-                styles.completionCard,
-                { 
-                    transform: [
-                        { translateY: completionCardTranslateY },
-                        { translateX: completionCardTranslateX } // Nudge the card to the right
-                    ]
-                }
-            ]}
-        >             
-                           <Animated.View style={[styles.completionImageCard, {opacity: gameLost ? imageOpacity : 1}]}>
-                            <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, {shadowColor: gameLost ? 'red' : 'green'} ]}/>
-                            </Animated.View>
-                            {/* , { opacity: imageOpacity }] */}
-                            <Animated.View style={[styles.completionTextBox,{opacity: gameLost ? imageOpacity : 1}]}>
-                            <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
-                            </Animated.View>
-                            <Animated.View>
+                                <Animated.View
+                                    style={[
+                                        styles.completionCard,
+                                        {
+                                            transform: [
+                                                { translateY: completionCardTranslateY },
+                                                { translateX: completionCardTranslateX } // Nudge the card to the right
+                                            ]
+                                        }
+                                    ]}
+                                >
+                                    <Animated.View style={[styles.completionImageCard, { opacity: gameLost ? imageOpacity : 1 }]}>
+                                        <Image source={{ uri: chosenPlayer?.playerUrl }} style={[styles.playerimageComplete, { shadowColor: gameLost ? 'red' : 'green' }]} />
+                                    </Animated.View>
+                                    {/* , { opacity: imageOpacity }] */}
+                                    <Animated.View style={[styles.completionTextBox, { opacity: gameLost ? imageOpacity : 1 }]}>
+                                        <Text style={[styles.playerNameTextComplete, { color: gameLost ? 'red' : 'green' }]}>{chosenPlayer?.name}</Text>
+                                    </Animated.View>
+                                    <Animated.View>
 
-                            </Animated.View>
-                            <Image style={styles.flagC} source={{uri: chosenPlayer?.flagUrl}}/>
-                            <Animated.View style={styles.statsComplete}>
-                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Assists: {chosenPlayer?.assists}</Text>
-                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Goals: {chosenPlayer?.goals}</Text>
-                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Games: {chosenPlayer?.games}</Text>
-                                <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Position: {chosenPlayer?.position}</Text>
-                            </Animated.View>
-                            <Animated.View style={styles.teamsComplete}>
-    {chosenPlayer?.teamUrl.map((teamUrl, index) => {
-        // Ensure both arrays (teamUrl and team) have the same length
-        const team = chosenPlayer.team[index];
+                                    </Animated.View>
+                                    <Image style={styles.flagC} source={{ uri: chosenPlayer?.flagUrl }} />
+                                    <Animated.View style={styles.statsComplete}>
+                                        <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Assists: {chosenPlayer?.assists}</Text>
+                                        <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Goals: {chosenPlayer?.goals}</Text>
+                                        <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Games: {chosenPlayer?.games}</Text>
+                                        <Text style={[styles.stextC, { color: gameLost ? 'red' : 'green' }]}>Position: {chosenPlayer?.position}</Text>
+                                    </Animated.View>
+                                    <Animated.View style={styles.teamsComplete}>
+                                        {chosenPlayer?.teamUrl.map((teamUrl, index) => {
+                                            // Ensure both arrays (teamUrl and team) have the same length
+                                            const team = chosenPlayer.team[index];
 
-        // Determine the size of the badge based on the number of teams
-        const badgeSize = chosenPlayer.teamUrl.length <= 4 ? 45 : 28;  // Increase size if there are 3 or more teams
-        
-        return (
-            <View key={index} style={styles.teamC}>
-                <Image
-                    source={{ uri: teamUrl }}
-                    style={[
-                        styles.teamBadgec,
-                        { width: badgeSize, height: badgeSize } // Dynamically set the width and height
-                    ]}
-                />
-            </View>
-        );
-    })}
-</Animated.View>
+                                            // Determine the size of the badge based on the number of teams
+                                            const badgeSize = chosenPlayer.teamUrl.length <= 4 ? 45 : 28;  // Increase size if there are 3 or more teams
 
-                            </Animated.View>
+                                            return (
+                                                <View key={index} style={styles.teamC}>
+                                                    <Image
+                                                        source={{ uri: teamUrl }}
+                                                        style={[
+                                                            styles.teamBadgec,
+                                                            { width: badgeSize, height: badgeSize } // Dynamically set the width and height
+                                                        ]}
+                                                    />
+                                                </View>
+                                            );
+                                        })}
+                                    </Animated.View>
+
+                                </Animated.View>
                             </View>
                         </View>
                     )}
@@ -353,7 +352,15 @@ useEffect(() => {
                         return guessedPlayer ? (
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
-                                    <FastImage source={{ uri: guessedPlayer.playerUrl ||  Football }} style={styles.playerimage} />
+                                    <Image
+                                        source={
+                                            guessedPlayer?.playerUrl && guessedPlayer?.playerUrl !== ""
+                                                ? { uri: guessedPlayer.playerUrl }
+                                                : Football  // Use the local 'Football' image as the fallback
+                                        }
+                                        style={styles.playerimage}
+                                    />
+
                                     <View style={styles.playerName}>
                                         <Text
                                             style={
@@ -375,7 +382,7 @@ useEffect(() => {
 
                                             return (
                                                 <View key={index} style={styles.team}>
-                                                    <FastImage
+                                                    <Image
                                                         source={{ uri: teamUrl }}
                                                         style={[
                                                             styles.teamBadge,
@@ -516,7 +523,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         // flex: 1, 
         justifyContent: "center",
-        
+
     },
     guesses: {
         width: '100%',
@@ -580,8 +587,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: "black",
         width: '99%',
-        position: 'relative', 
-         // Necessary for absolute positioning of child elements
+        position: 'relative',
+        // Necessary for absolute positioning of child elements
     },
     imagecontainer: {
         alignContent: 'center',
@@ -615,9 +622,9 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
-        shadowRadius: 1, 
+        shadowRadius: 1,
         elevation: 5,
-        transform: [{ translateX: 14 },{ translateY: -10 }],// Blur effect
+        transform: [{ translateX: 14 }, { translateY: -10 }],// Blur effect
     },
     playerimageComplete: {
         // borderWidth: 1,
@@ -634,12 +641,12 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         transform: [{ translateX: -8 }]
         // position: 'relative',
-    },  
-    completionImageCard:{
+    },
+    completionImageCard: {
         marginTop: 10, // Adjust the position to match the image
-        position:'relative', 
+        position: 'relative',
         // borderWidth: 1,
-        borderColor:'white',
+        borderColor: 'white',
         transform: [{ translateX: 185 }],
         // height: 400,
     },
@@ -663,17 +670,17 @@ const styles = StyleSheet.create({
         textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
 
-    },completionTextBox:{
-        justifyContent:'center',
-        alignContent:'center',
+    }, completionTextBox: {
+        justifyContent: 'center',
+        alignContent: 'center',
         // borderWidth:1,
-        borderColor:'white',
+        borderColor: 'white',
         width: 200,
-        height:260,
-        position:'absolute',
+        height: 260,
+        position: 'absolute',
         transform: [{ translateX: -61 }]
     },
-    playerNameTextComplete:{
+    playerNameTextComplete: {
         // marginTop: 120,
         // marginRight:130,
         fontFamily: 'LuckiestGuy_400Regular',
@@ -684,20 +691,20 @@ const styles = StyleSheet.create({
         textShadowColor: 'beige',  // Shadow color
         textShadowOffset: { width: 2, height: 1 },  // Shadow position
         textShadowRadius: 1,
-        opacity:.9
-        
+        opacity: .9
+
     },
-    completionCard:{
-            marginTop:5,
-            position:'relative',
-            width:'96%',
-            height:265,
-            flexDirection:'row',
-            justifyContent:'center',
-            alignContent:'center',
-            // transform: [{ translateX: 18 }],
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            borderRadius:5,
+    completionCard: {
+        marginTop: 5,
+        position: 'relative',
+        width: '96%',
+        height: 265,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: 'center',
+        // transform: [{ translateX: 18 }],
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        borderRadius: 5,
     },
     teams: {
         // borderWidth: 1,
@@ -712,7 +719,7 @@ const styles = StyleSheet.create({
     },
     teamsComplete: {
         // borderWidth: 1,
-        borderColor:'white',
+        borderColor: 'white',
         height: '55%',
         width: 100,
         position: 'relative',
@@ -720,7 +727,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', // Arrange items in a row
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{ translateX: -344 }, {translateY:80}],// Align badges to the left
+        transform: [{ translateX: -344 }, { translateY: 80 }],// Align badges to the left
     },
     team: {
         width: '99%',  // Each team takes up 45% of the container width
@@ -742,7 +749,7 @@ const styles = StyleSheet.create({
         height: 28,
         width: 28,
         marginTop: 1,
-        opacity:.9
+        opacity: .9
     },
     flag: {
         // position: 'absolute',
@@ -751,13 +758,13 @@ const styles = StyleSheet.create({
         width: 50,
         borderRadius: 5,
         alignSelf: 'center'
-    }, 
-    flagC:{
-        opacity:.9,
+    },
+    flagC: {
+        opacity: .9,
         borderRadius: 5,
         height: 50,  // Set the size of the overlay image
         width: 80,
-        transform: [{ translateX: -105 },{ translateY: 30 } ],
+        transform: [{ translateX: -105 }, { translateY: 30 }],
     },
     flagText:
     {
@@ -843,7 +850,7 @@ const styles = StyleSheet.create({
     },
     statsComplete: {
         // marginTop: 50,
-        position:'relative',
+        position: 'relative',
         alignContent: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
@@ -851,7 +858,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         // alignItems: 'flex-end',
         width: '40%',
-        transform: [{ translateX:45}]
+        transform: [{ translateX: 45 }]
     },
     stext: {
         justifyContent: 'center',
@@ -881,7 +888,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         lineHeight: 20,
         color: 'green',
-        opacity:0.8,
+        opacity: 0.8,
         // backgroundColor: 'white',
         fontFamily: 'LuckiestGuy_400Regular',
         // Adjust font size as needed
@@ -953,7 +960,7 @@ const styles = StyleSheet.create({
         zIndex: 10,
         width: '100%',
         borderRadius: 9,
-        alignContent:'center',
+        alignContent: 'center',
         overflow: 'hidden',
     },
     gameCompleteText: {
@@ -988,7 +995,7 @@ const styles = StyleSheet.create({
         // transform: [{ translateY: -295 }],
 
     },
-    compContainer:{
-        overflow:'hidden'
+    compContainer: {
+        overflow: 'hidden'
     }
 });
