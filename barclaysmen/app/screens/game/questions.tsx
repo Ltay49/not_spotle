@@ -33,11 +33,7 @@ type Player = {
     games: number;
 };
 
-
 export default function () {
-
-const { width, height } = Dimensions.get('window');
-const responsiveWidth = width * 0.9;
 
     const [fontsLoaded] = useFonts({
         Chewy_400Regular,
@@ -492,9 +488,7 @@ useEffect(() => {
 
 import { Dimensions } from 'react-native';
 
-
 const { width, height } = Dimensions.get('window');
-const responsiveWidth = width * 0.8;
 
 const styles = StyleSheet.create({
     container: {
@@ -520,7 +514,7 @@ const styles = StyleSheet.create({
     },
     input: {
         // fontFamily: 'LuckiestGuy_400Regular',
-        width: responsiveWidth,
+        width: '90%',
         height: 50,
         borderWidth: 2,
         borderRadius: 10,
@@ -536,7 +530,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         marginTop: 10,
         alignSelf: 'center',
-        width: 400,
+        width: 399,
         height: 40,
     },
     football: {
@@ -547,7 +541,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: "rgba(0, 0, 0, 0.65)", // Transparent dark blue
         borderRadius: 10,
-        width: responsiveWidth,
+        width: '90%',
         position: 'absolute', // This keeps the list above the player section
         zIndex: 10, // Ensure it sits above the player
         top: 153, // Adjust this value to control the vertical position // Optional: Add padding for spacing
