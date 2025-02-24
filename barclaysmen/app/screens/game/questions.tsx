@@ -173,6 +173,18 @@ useEffect(() => {
         }
     }, [guessCount, gameComplete]);
 
+    useEffect(() => {
+        guesses.forEach((guess) => {
+            const guessedPlayer = playerStats.find(
+                (player) => player.name.toLowerCase() === guess.toLowerCase()
+            );
+    
+            if (guessedPlayer?.playerUrl) {
+                console.log('Guessed Player URL:', guessedPlayer.playerUrl);
+            }
+        });
+    }, [guesses, playerStats]); // Re-run the effect when guesses or playerStats change
+    
 
     useEffect(() => {
         axios
@@ -195,6 +207,11 @@ useEffect(() => {
         }
     }, [chosenPlayer]);
 
+    useEffect(() => {
+        if (chosenPlayer?.playerUrl) {
+          console.log('Player URL:', chosenPlayer.playerUrl);
+        }
+      }, [chosenPlayer?.playerUrl]);
 
     const filteredPlayers = searchText
         ? playerStats
@@ -335,7 +352,7 @@ useEffect(() => {
                         return guessedPlayer ? (
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
-                                    <Image source={{ uri: guessedPlayer.playerUrl }} style={styles.playerimage} />
+                                    <Image source={{ uri: guessedPlayer.playerUrl ||  Football }} style={styles.playerimage} />
                                     <View style={styles.playerName}>
                                         <Text
                                             style={
@@ -598,6 +615,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 4, height: 2 }, // X and Y shadow
         shadowOpacity: .8, // Adjust for darkness
         shadowRadius: 1, 
+        elevation: 5,
         transform: [{ translateX: 14 },{ translateY: -10 }],// Blur effect
     },
     playerimageComplete: {
