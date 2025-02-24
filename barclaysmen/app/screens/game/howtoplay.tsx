@@ -11,9 +11,14 @@ import { useState } from "react"
 
 const Lua = require('../../../assets/images/LuaLua.png');
 import Icon from 'react-native-vector-icons/FontAwesome';
-"https://i.ibb.co/NXny8GS/birm.png"
-"https://i.ibb.co/Kz5VSfQP/Ars.png"
-"https://i.ibb.co/hJhSxL1s/pompy.png"
+
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+
+
+// Adjust padding based on screen size
+const responsivePadding = width / 100 * 5; 
 
 type HowToPlayProps = {
     setHowToPlay: React.Dispatch<React.SetStateAction<boolean | null>>;
@@ -249,7 +254,7 @@ badgeC:{
     scrollViewContent: {
         padding:10,
         flexGrow: 1, // This allows the ScrollView content to grow and take available space
-        paddingBottom: 60, // Added some padding to the bottom
+        paddingBottom: responsivePadding * 3, // Added some padding to the bottom
         // paddingTop: 20, // Added some padding to the top
       },
       overlay: {
