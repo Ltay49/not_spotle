@@ -9,6 +9,7 @@ import {
     ImageBackground,
     Animated, Easing
 } from "react-native"
+import FastImage from 'react-native-fast-image';
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -352,7 +353,7 @@ useEffect(() => {
                         return guessedPlayer ? (
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
-                                    <Image source={{ uri: guessedPlayer.playerUrl ||  Football }} style={styles.playerimage} />
+                                    <FastImage source={{ uri: guessedPlayer.playerUrl ||  Football }} style={styles.playerimage} />
                                     <View style={styles.playerName}>
                                         <Text
                                             style={
@@ -374,7 +375,7 @@ useEffect(() => {
 
                                             return (
                                                 <View key={index} style={styles.team}>
-                                                    <Image
+                                                    <FastImage
                                                         source={{ uri: teamUrl }}
                                                         style={[
                                                             styles.teamBadge,
