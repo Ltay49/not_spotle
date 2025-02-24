@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
+const responsiveWidth = width * .7;
 
 
 // Adjust padding based on screen size
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         // borderWidth:4,
         borderColor:'green',
         alignSelf:'center',
-        width: '110%',
+        width: responsiveWidth,
       flex:1,
         borderRadius:10,
         justifyContent: 'center',
