@@ -353,11 +353,12 @@ export default function () {
                         return guessedPlayer ? (
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
-                                    <Image
+                                    <ImageBackground
                                         key={`${guessedPlayer.playerUrl}?${new Date().getTime()}`} // Adding timestamp to force re-fetch
                                         source={{ uri: guessedPlayer.playerUrl }}
                                         style={styles.playerimage}
-                                    />
+                                    >
+                                    </ImageBackground>
                                     <View style={styles.playerName}>
                                         <Text
                                             style={
