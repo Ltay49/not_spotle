@@ -1,8 +1,13 @@
 import React from 'react';
 import { Text, View, StyleSheet, ActivityIndicator  } from 'react-native';
 import { useFonts, VarelaRound_400Regular } from '@expo-google-fonts/varela-round'
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const responsiveFontSize = (width / 100) * 8;
 // Custom Header Component
 const Header = ({ title }: { title: string }) => {
+
 
   const [fontsLoaded] = useFonts({
     VarelaRound_400Regular,
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
     width:'98%',
     color: '#0063A1',
     // marginTop:30,
-    fontSize: 55,
+    fontSize: responsiveFontSize,
     fontFamily:'VarelaRound_400Regular',
     fontWeight: 'bold',
     textAlign: 'center', // Ensures text is centered in its container
