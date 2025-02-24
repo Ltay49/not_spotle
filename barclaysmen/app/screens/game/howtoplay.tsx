@@ -23,7 +23,7 @@ const responsiveWidth = Math.min(baseWidth, maxWidth);
 
 
 // Adjust padding based on screen size
-const responsivePadding = width / 100 * 5; 
+const responsivePadding = width / 100 * 1; 
 
 type HowToPlayProps = {
     setHowToPlay: React.Dispatch<React.SetStateAction<boolean | null>>;
