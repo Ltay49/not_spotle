@@ -7,9 +7,9 @@ import {
     TextInput,
     TouchableOpacity,
     ImageBackground,
-    Animated, Easing
+    Animated, Easing, AppState, AppStateStatus 
 } from "react-native"
-import FastImage from 'react-native-fast-image';
+
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -45,7 +45,7 @@ export default function () {
         LuckiestGuy_400Regular,
 
     });
-
+    const [appState, setAppState] = useState<AppStateStatus>(AppState.currentState);
     const [timeRemaining, setTimeRemaining] = useState("00:00:00");
 
     const fetchPlayerStats = async () => {
@@ -170,84 +170,84 @@ export default function () {
     
     
 
-    useEffect(() => {
-        const updateRemainingTime = () => {
-            const currentTime = new Date();
-            const targetTime = new Date(currentTime);
+    const updateRemainingTime = () => {
+        const currentTime = new Date();
+        const targetTime = new Date(currentTime);
+        targetTime.setHours(22, 55, 0, 0);  // Set target time to 4:55 PM today
     
-            // Set the target time to 4:12 PM today
-            targetTime.setHours(22, 55, 0, 0);  // Set to 4:31 PM
+        if (currentTime > targetTime) {
+          targetTime.setDate(targetTime.getDate() + 1); // Move to next day
+        }
     
-            // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
-            if (currentTime > targetTime) {
-                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-            }
+        const timeDifference = targetTime.getTime() - currentTime.getTime();
     
-            const timeDifference = targetTime.getTime() - currentTime.getTime();
+        if (timeDifference <= 2000) {
+          console.log("Time has passed, resetting game...");
+          resetGame();
+          return;
+        }
     
-            if (timeDifference <= 2000) {
-                console.log("Time has passed, resetting game...");
-                resetGame(); //
-                return; // Stop further execution
-            }
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
     
-            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        setTimeRemaining(
+          `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+        );
+      };
     
-            // Update the time remaining in HH:mm:ss format
-            setTimeRemaining(
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-            );
-        };
+      // Function to check reset time (now placed outside the useEffect)
+      const checkResetTime = async () => {
+        const lastResetTime = await AsyncStorage.getItem('lastResetTime');
+        const currentTime = new Date();
     
-        // Update the time immediately and then every second
-        updateRemainingTime();
-        const intervalId = setInterval(updateRemainingTime, 1000);
+        if (lastResetTime) {
+          const lastResetDate = new Date(lastResetTime);
+          const targetTime = new Date(lastResetDate);
+          targetTime.setHours(22, 55, 0, 0); // Set target time to 4:55 PM
     
-        return () => clearInterval(intervalId); // Clean up interval
-    }, []);
-
-    useEffect(() => {
-        const checkResetTime = async () => {
-            const lastResetTime = await AsyncStorage.getItem('lastResetTime');
-            const currentTime = new Date();
+          if (currentTime > targetTime) {
+            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+          }
     
-            if (lastResetTime) {
-                const lastResetDate = new Date(lastResetTime);
-                const targetTime = new Date(lastResetDate);
+          const timeDifference = targetTime.getTime() - currentTime.getTime();
     
-                // Set the target time to 4:31 PM on the last reset date
-                targetTime.setHours(22, 55, 0, 0); 
+          if (timeDifference <= 1000) {
+            console.log("Time has passed, resetting game...");
+            resetGame();  // Reset game
+            return; // Stop further execution
+          }
     
-                // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
-                if (currentTime > targetTime) {
-                    targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-                }
+          const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+          const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
     
-                const timeDifference = targetTime.getTime() - currentTime.getTime();
+          setTimeRemaining(
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+          );
+        }
+      };
     
-                if (timeDifference <= 1000) {
-                    console.log("Time has passed, resetting game...");
-                    resetGame(); //
-                    return; // Stop further execution
-                }
+      // Check for reset time on page load
+      useEffect(() => {
+        loadGameState();  // Load game state on mount
+        updateRemainingTime();  // Update the time immediately
+        const intervalId = setInterval(updateRemainingTime, 1000); // Update every second
     
-                const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        return () => clearInterval(intervalId); // Clean up the interval on unmount
+      }, []);
     
-                // Update the time remaining in HH:mm:ss format
-                setTimeRemaining(
-                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-                );
-            }
-        };
+      // AppState listener to check reset time when app goes from background to foreground
+      useEffect(() => {
+        const appStateListener = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
+          setAppState(nextAppState);
+          if (nextAppState === 'active') {
+            checkResetTime();  // Call checkResetTime when the app returns to the foreground
+          }
+        });
     
-        // Check for reset time on page load
-        checkResetTime();
-    }, []);
-    
+        return () => appStateListener.remove(); // Cleanup listener on unmount
+      }, []);
 
     useEffect(() => {
         if (timeRemaining) {
