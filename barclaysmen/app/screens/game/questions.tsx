@@ -173,7 +173,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(21, 55, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(22, 20, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
@@ -204,6 +204,7 @@ export default function () {
     
         return () => clearInterval(intervalId); // Clean up interval
     }, []);
+
     useEffect(() => {
         const checkResetTime = () => {
             const lastResetTime = localStorage.getItem('lastResetTime');
@@ -214,7 +215,7 @@ export default function () {
                 const targetTime = new Date(lastResetDate);
     
                 // Set the target time to 4:31 PM on the last reset date
-                targetTime.setHours(21, 10, 0, 0);  // Set to 4:31 PM
+                targetTime.setHours(22, 20, 0, 0);  // Set to 4:31 PM
     
                 // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
                 if (currentTime > targetTime) {
