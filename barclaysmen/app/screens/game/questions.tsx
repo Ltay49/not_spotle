@@ -122,6 +122,7 @@ export default function () {
         }
     };
     const resetGame = () => {
+        localStorage.setItem('lastResetTime', new Date().toISOString());
         // Store the current game state in localStorage before resetting
         localStorage.setItem('gameState', JSON.stringify({
             chosenPlayer: null, // Or use the current chosen player if needed
@@ -202,6 +203,45 @@ export default function () {
         const intervalId = setInterval(updateRemainingTime, 1000);
     
         return () => clearInterval(intervalId); // Clean up interval
+    }, []);
+    useEffect(() => {
+        const checkResetTime = () => {
+            const lastResetTime = localStorage.getItem('lastResetTime');
+            const currentTime = new Date();
+    
+            if (lastResetTime) {
+                const lastResetDate = new Date(lastResetTime);
+                const targetTime = new Date(lastResetDate);
+    
+                // Set the target time to 4:31 PM on the last reset date
+                targetTime.setHours(21, 10, 0, 0);  // Set to 4:31 PM
+    
+                // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
+                if (currentTime > targetTime) {
+                    targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+                }
+    
+                const timeDifference = targetTime.getTime() - currentTime.getTime();
+    
+                if (timeDifference <= 1000) {
+                    console.log("Time has passed, resetting game...");
+                    resetGame(); // Reset the game when the time hits 4:31 PM
+                    return; // Stop further execution
+                }
+    
+                const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+                // Update the time remaining in HH:mm:ss format
+                setTimeRemaining(
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+                );
+            }
+        };
+    
+        // Check for reset time on page load
+        checkResetTime();
     }, []);
     
 
