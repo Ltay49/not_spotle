@@ -71,6 +71,76 @@ export default function () {
     const [imageVisible, setImageVisible] = useState(false); // Controls when the image appears
     const [imageOpacity, setImageOpacity] = useState(new Animated.Value(0)); // For fade-in effect
 
+    const loadGameState = async () => {
+        try {
+            const savedGameState = await AsyncStorage.getItem('gameState');
+            if (savedGameState) {
+                console.log('Loaded saved game state:', savedGameState);
+                const parsedGameState = JSON.parse(savedGameState);
+                
+                // Set state only if parsedGameState is not undefined or null
+                setGuesses(parsedGameState?.guesses || []);
+                setChosenPlayer(parsedGameState?.chosenPlayer || null);
+                setGameComplete(parsedGameState?.gameComplete || false);
+                setGameLost(parsedGameState?.gameLost || false);
+                setGuessCount(parsedGameState?.guessCount || 0);
+                setFootballImages(parsedGameState?.footballImages || []);
+            }
+        } catch (error) {
+            console.error('Error loading game state:', error);
+        }
+    };
+    
+    const saveGameState = async () => {
+        try {
+            const gameState = {
+                guesses,
+                chosenPlayer,
+                gameComplete,
+                gameLost,
+                guessCount,
+                footballImages,
+            };
+            console.log('Saving game state:', gameState);
+            
+            await AsyncStorage.setItem('gameState', JSON.stringify(gameState));
+            console.log('Game state saved successfully!');
+        } catch (error) {
+            console.error('Error saving game state:', error);
+        }
+    };
+    const resetGame = () => {
+        // Reset the game states to initial values
+        setGuesses([]);
+        setChosenPlayer(null);
+        setGameComplete(false);
+        setGameLost(false);
+        setGuessCount(0);
+        setFootballImages([]);
+    };
+    
+    useEffect(() => {
+        if (gameComplete || gameLost) {
+            // Wait 10 seconds before resetting the game
+            const timeoutId = setTimeout(() => {
+                console.log('Resetting the game...');
+                resetGame();
+            }, 5000); // 10 seconds in milliseconds
+    
+            // Cleanup the timeout when the component is unmounted or before the next effect runs
+            return () => clearTimeout(timeoutId);
+        }
+    }, [gameComplete, gameLost]); 
+    useEffect(() => {
+        loadGameState();
+    }, []);  
+    useEffect(() => {
+        console.log('Game state is changing, saving...');
+        saveGameState();
+    }, [guesses, chosenPlayer, gameComplete, gameLost, guessCount, footballImages]); 
+
+
+        
     // Animate the completion card when the game ends
     useEffect(() => {
         if (gameComplete || gameLost) {
@@ -166,7 +236,7 @@ export default function () {
             }
         }
     };
-
+      
     // useEffect to check if the game should be lost
     useEffect(() => {
         if (guessCount === 10 && !gameComplete) {
