@@ -53,7 +53,7 @@ export default function () {
             console.error("Error fetching player stats:", error);
         }
     };
-    
+
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
     const [guessCount, setGuessCount] = useState(0)
@@ -70,12 +70,15 @@ export default function () {
         return array[randomIndex];
     };
 
+    const [timeboxTranslateX] = useState(new Animated.Value(-300)); // Start with some offset on Y axis
+    const [timeboxOpacity] = useState(new Animated.Value(0));
+
     const [fadeAnims, setFadeAnims] = useState<Animated.Value[]>([]); // Explicitly type the state as an array of Animated.Values
     const [translateXAnims, setTranslateXAnims] = useState<Animated.Value[]>([]); // For X translation
     const [translateYAnims, setTranslateYAnims] = useState<Animated.Value[]>([]);
 
     // Add new Animated.Value for translateY
-    const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(300));
+    const [completionCardTranslateY, setCompletionCardTranslateY] = useState(new Animated.Value(200));
     const [completionCardTranslateX, setCompletionCardTranslateX] = useState(new Animated.Value(8)); // 
 
     const [cardPositionAnimationCompleted, setCardPositionAnimationCompleted] = useState(false);
@@ -88,7 +91,7 @@ export default function () {
             const savedGameState = await AsyncStorage.getItem('gameState');
             if (savedGameState) {
                 const parsedGameState = JSON.parse(savedGameState);
-                
+
                 // Set state only if parsedGameState is not undefined or null
                 setGuesses(parsedGameState?.guesses || []);
                 setChosenPlayer(parsedGameState?.chosenPlayer || null);
@@ -101,7 +104,7 @@ export default function () {
             console.error('Error loading game state:', error);
         }
     };
-    
+
     const saveGameState = async () => {
         try {
             const gameState = {
@@ -112,7 +115,7 @@ export default function () {
                 guessCount,
                 footballImages,
             };
-            
+
             await AsyncStorage.setItem('gameState', JSON.stringify(gameState));
         } catch (error) {
             console.error('Error saving game state:', error);
@@ -128,53 +131,24 @@ export default function () {
         setGuessCount(0);
         setFootballImages([]);
     };
-    
-    // useEffect(() => {
-    //     const currentTime = new Date();
-    //     const targetTime = new Date(currentTime);
 
-    //     // Set the target time to 1:28 PM today
-    //     targetTime.setHours(14, 1, 0, 0);
-
-    //     // If the current time is already past 1:28 PM, set the target time to 1:28 PM tomorrow
-    //     if (currentTime > targetTime) {
-    //         targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-    //     }
-
-    //     const timeDifference = targetTime.getTime() - currentTime.getTime(); // Time difference in milliseconds
-
-    //     // Wait until 1:28 PM before resetting the game
-    //     const timeoutId = setTimeout(() => {
-    //         console.log('Resetting the game...');
-    //         resetGame(); // Reset the game at the scheduled time
-    //     }, timeDifference);
-
-    //     // Cleanup the timeout when the component is unmounted or before the next effect runs
-    //     return () => clearTimeout(timeoutId);
-    // }, []); // Empty dependency array ensures this runs only once when the component mounts
-
-    // Second useEffect: Update the remaining time every second
     useEffect(() => {
-        const currentTime = new Date();
-        const targetTime = new Date(currentTime);
-
-        // Set the target time to 1:45 PM today
-        targetTime.setHours(14, 20, 50, 0);
-
-        // If the current time is already past 1:45 PM, set the target time to 1:45 PM tomorrow
-        if (currentTime > targetTime) {
-            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-        }
-
-        // Function to update remaining time
         const updateRemainingTime = () => {
             const currentTime = new Date();
+            const targetTime = new Date(currentTime);
+
+            // Set the target time to 5:00 PM today
+            targetTime.setHours(17, 0, 0, 0); // 17:00 is 5:00 PM
+
+            // If the current time is already past 5:00 PM, set the target time to 5:00 PM tomorrow
+            if (currentTime > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+            }
+
             const timeDifference = targetTime.getTime() - currentTime.getTime();
 
             if (timeDifference <= 0) {
-                setTimeRemaining("00:00:00");
-                clearInterval(intervalId); // Stop updating once the time is up
-                resetGame(); // Reset the game once time is up
+                resetGame(); // Reset the game when the time hits 5:00 PM
                 return;
             }
 
@@ -182,7 +156,7 @@ export default function () {
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            // Format the time into a string like "10:00:00"
+            // Update the time remaining in HH:mm:ss format
             setTimeRemaining(
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
             );
@@ -191,19 +165,39 @@ export default function () {
         // Update the time every second
         const intervalId = setInterval(updateRemainingTime, 1000);
 
-        // Clean up interval when component is unmounted or game reset is triggered
+        // Cleanup interval when component is unmounted or reset is triggered
         return () => clearInterval(intervalId);
-    }, [gameComplete, gameLost]);
+    }, []); // Empty dependency array ensures it runs only once when the component mounts
+
+    useEffect(() => {
+        if (timeRemaining) {
+            // Start animating the timebox when timeRemaining is updated
+            Animated.parallel([
+                Animated.timing(timeboxTranslateX, {
+                    toValue: 0, // Move to normal position (top)
+                    duration: 1000, // Duration for the Y animation
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(timeboxOpacity, {
+                    toValue: 1, // Fade in to full opacity
+                    duration: 1300, // Duration for opacity animation
+                    easing: Easing.ease,
+                    useNativeDriver: true,
+                }),
+            ]).start();
+        }
+    }, [timeRemaining]);
 
     useEffect(() => {
         loadGameState();
-    }, []);  
+    }, []);
     useEffect(() => {
         saveGameState();
-    }, [guesses, chosenPlayer, gameComplete, gameLost, guessCount, footballImages]); 
+    }, [guesses, chosenPlayer, gameComplete, gameLost, guessCount, footballImages]);
 
 
-        
+
     // Animate the completion card when the game ends
     useEffect(() => {
         if (gameComplete || gameLost) {
@@ -299,7 +293,7 @@ export default function () {
             }
         }
     };
-      
+
     // useEffect to check if the game should be lost
     useEffect(() => {
         if (guessCount === 10 && !gameComplete) {
@@ -317,7 +311,7 @@ export default function () {
 
 
     useEffect(() => {
-       fetchPlayerStats()
+        fetchPlayerStats()
     }, []); // Fetch data only once when component mounts
 
     useEffect(() => {
@@ -331,7 +325,7 @@ export default function () {
             console.log("Chosen Player:", chosenPlayer);
             saveGameState(); // Save the game state with the new chosenPlayer
         }
-    }, [chosenPlayer]); 
+    }, [chosenPlayer]);
 
     const filteredPlayers = searchText
         ? playerStats
@@ -411,9 +405,13 @@ export default function () {
                                     </Text>
                                 </ImageBackground>
                             </View>
-                            <View style={styles.timebox}>
-                                        <Text style={styles.timeboxText}>Time Remaining untill next the game: {timeRemaining}</Text>
-                                    </View>
+                            <Animated.View style={[
+                                styles.timebox,
+                                { opacity: timeboxOpacity, transform: [{ translateX: timeboxTranslateX }] },
+                            ]}
+                            >
+                                <Text style={styles.timeboxText}>Time Remaining untill next the game: {timeRemaining}</Text>
+                            </Animated.View>
                             <View style={styles.compContainer}>
                                 <Animated.View
                                     style={[
@@ -485,7 +483,7 @@ export default function () {
                                             style={
                                                 styles.playerNameText}
                                         >
-                                         
+
                                             {guess}
                                         </Text>
                                     </View>
@@ -801,24 +799,24 @@ const styles = StyleSheet.create({
         transform: [{ translateX: -61 }]
     },
     timebox: {
-        width: 380,
+        width: 383,
         height: 50,
         borderWidth: 1,
-        borderColor: 'white',
-        backgroundColor:'black',
-        borderRadius:10,
-        justifyContent:'center',
-        alignContent:'center',
+        // borderColor: 'white',
+        backgroundColor: 'black',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignContent: 'center',
         zIndex: 999, // Ensure it's above other components
         position: 'absolute', // Allows the element to be positioned outside of its normal flow
         top: 60, // Position it wherever you want in the absolute space
-        left: 10 // Position it wherever you want in the absolute space
-      },
-    timeboxText:{
+        left: 8 // Position it wherever you want in the absolute space
+    },
+    timeboxText: {
         fontSize: 16,
         fontFamily: 'VarelaRound_400Regular',
-        textAlign:'center',
-        color:'white'
+        textAlign: 'center',
+        color: 'beige'
     },
     playerNameTextComplete: {
         // marginTop: 120,
@@ -1107,7 +1105,7 @@ const styles = StyleSheet.create({
         marginTop: 25,
         fontFamily: 'LuckiestGuy_400Regular',
         fontSize: 20,
-        color: 'white',
+        color: 'beige',
         textAlign: 'center', // Green background with transparency
         width: '100%',
     },
@@ -1115,7 +1113,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontFamily: 'LuckiestGuy_400Regular',
         fontSize: 20,
-        color: 'white',
+        color: 'beige',
         textAlign: 'center', // Green background with transparency
         width: '100%',
     },
