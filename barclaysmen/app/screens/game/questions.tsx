@@ -20,6 +20,8 @@ import { useFonts, Chewy_400Regular } from '@expo-google-fonts/chewy';
 import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
 import { VarelaRound_400Regular } from '@expo-google-fonts/varela-round';
 
+import { useRouter } from 'expo-router'
+
 type Player = {
     name: string;
     assists: string;
@@ -33,6 +35,7 @@ type Player = {
     flagUrl: string;
     games: number;
 };
+
 
 export default function () {
 
@@ -162,7 +165,8 @@ export default function () {
         setImageOpacity(new Animated.Value(0));
     
         // Reload the page to simulate a reset
-        window.location.reload();
+        const router = useRouter();
+        router.push('/');
     };
     
     
