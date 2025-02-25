@@ -173,7 +173,7 @@ export default function () {
     const updateRemainingTime = () => {
         const currentTime = new Date();
         const targetTime = new Date(currentTime);
-        targetTime.setHours(22, 55, 0, 0);  // Set target time to 4:55 PM today
+        targetTime.setHours(23, 25, 0, 0);  // Set target time to 4:55 PM today
     
         if (currentTime > targetTime) {
           targetTime.setDate(targetTime.getDate() + 1); // Move to next day
@@ -204,7 +204,7 @@ export default function () {
         if (lastResetTime) {
           const lastResetDate = new Date(lastResetTime);
           const targetTime = new Date(lastResetDate);
-          targetTime.setHours(22, 55, 0, 0); // Set target time to 4:55 PM
+          targetTime.setHours(23, 25, 0, 0); // Set target time to 4:55 PM
     
           if (currentTime > targetTime) {
             targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
