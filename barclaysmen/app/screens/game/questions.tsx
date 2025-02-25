@@ -138,7 +138,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(17, 0, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(17, 20, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
@@ -147,12 +147,6 @@ export default function () {
     
             const timeDifference = targetTime.getTime() - currentTime.getTime();
     
-            // Log to check if time difference is correct
-            // console.log('Current Time:', currentTime.toLocaleString());
-            // console.log('Target Time:', targetTime.toLocaleString());
-            // console.log('Time Difference:', timeDifference);
-    
-            // If the time difference is <= 0, trigger the reset
             if (timeDifference <= 1000) {
                 console.log("Time has passed, resetting game...");
                 resetGame(); // Reset the game when the time hits 4:31 PM
