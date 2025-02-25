@@ -122,36 +122,48 @@ export default function () {
         }
     };
     const resetGame = () => {
-        // Reset the game states to initial values
-        fetchPlayerStats(); // Fetch player stats again (if needed)
-        setGuesses([]); // Clear guesses
-        setChosenPlayer(randomPlayer(playerStats)); // Pick a new random player
-        setGameComplete(false); // Reset game complete state
-        setGameLost(false); // Reset game lost state
-        setGuessCount(0); // Reset guess count
-        setFootballImages([]); // Clear football images
-        setCardPositionAnimationCompleted(false); // Reset card animation completion flag
+        // Store the current game state in localStorage before resetting
+        localStorage.setItem('gameState', JSON.stringify({
+            chosenPlayer: null, // Or use the current chosen player if needed
+            guesses: [],
+            gameComplete: false,
+            gameLost: false,
+            guessCount: 0,
+            footballImages: [],
+            cardPositionAnimationCompleted: false,
+            timeRemaining: "00:00:00",
+            imageVisible: false, // Store image visibility
+            imageOpacity: 0 // Store image opacity
+        }));
+    
+        // Clear guesses and reset other states
+        setGuesses([]);
+        setGameComplete(false); 
+        setGameLost(false);
+        setGuessCount(0);
+        setFootballImages([]);
+        setCardPositionAnimationCompleted(false);
         
-        window.location.reload();
-
         setTimeRemaining("00:00:00");
-
+    
         // Reset animated values to their initial states
-        timeboxTranslateX.setValue(-300); // Reset X translation for timebox
-        timeboxOpacity.setValue(0); // Reset opacity for timebox
+        timeboxTranslateX.setValue(-300);
+        timeboxOpacity.setValue(0);
         
-        // Reset fade, translation animations for other items
-        fadeAnims.forEach(anim => anim.setValue(0)); // Reset fade animation values
-        translateXAnims.forEach(anim => anim.setValue(0)); // Reset X translation animations
-        translateYAnims.forEach(anim => anim.setValue(200)); // Reset Y translation animations
+        fadeAnims.forEach(anim => anim.setValue(0));
+        translateXAnims.forEach(anim => anim.setValue(0));
+        translateYAnims.forEach(anim => anim.setValue(200));
         
-        // Reset completion card position animations
-        completionCardTranslateY.setValue(200); // Reset Y position for completion card
-        completionCardTranslateX.setValue(8); // Reset X position for completion card
+        completionCardTranslateY.setValue(200);
+        completionCardTranslateX.setValue(8);
         
-        setImageVisible(false); // Hide image initially
-        setImageOpacity(new Animated.Value(0)); 
+        setImageVisible(false);
+        setImageOpacity(new Animated.Value(0));
+    
+        // Reload the page to simulate a reset
+        window.location.reload();
     };
+    
     
 
     useEffect(() => {
@@ -160,7 +172,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(20, 25, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(20, 37, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
