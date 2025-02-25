@@ -136,38 +136,46 @@ export default function () {
         const updateRemainingTime = () => {
             const currentTime = new Date();
             const targetTime = new Date(currentTime);
-
-            // Set the target time to 5:00 PM today
-            targetTime.setHours(17, 0, 0, 0); // 17:00 is 5:00 PM
-
-            // If the current time is already past 5:00 PM, set the target time to 5:00 PM tomorrow
+    
+            // Set the target time to 4:12 PM today
+            targetTime.setHours(17, 0, 0, 0);  // Set to 4:31 PM
+    
+            // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
                 targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
             }
-
+    
             const timeDifference = targetTime.getTime() - currentTime.getTime();
-
-            if (timeDifference <= 0) {
-                resetGame(); // Reset the game when the time hits 5:00 PM
-                return;
+    
+            // Log to check if time difference is correct
+            // console.log('Current Time:', currentTime.toLocaleString());
+            // console.log('Target Time:', targetTime.toLocaleString());
+            // console.log('Time Difference:', timeDifference);
+    
+            // If the time difference is <= 0, trigger the reset
+            if (timeDifference <= 1000) {
+                console.log("Time has passed, resetting game...");
+                resetGame(); // Reset the game when the time hits 4:31 PM
+                return; // Stop further execution
             }
-
+    
             const hours = Math.floor(timeDifference / (1000 * 60 * 60));
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
+    
             // Update the time remaining in HH:mm:ss format
             setTimeRemaining(
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
             );
         };
-
-        // Update the time every second
+    
+        // Update the time immediately and then every second
+        updateRemainingTime();
         const intervalId = setInterval(updateRemainingTime, 1000);
-
-        // Cleanup interval when component is unmounted or reset is triggered
-        return () => clearInterval(intervalId);
-    }, []); // Empty dependency array ensures it runs only once when the component mounts
+    
+        return () => clearInterval(intervalId); // Clean up interval
+    }, []);
+    
 
     useEffect(() => {
         if (timeRemaining) {
@@ -181,7 +189,7 @@ export default function () {
                 }),
                 Animated.timing(timeboxOpacity, {
                     toValue: 1, // Fade in to full opacity
-                    duration: 1300, // Duration for opacity animation
+                    duration: 1500, // Duration for opacity animation
                     easing: Easing.ease,
                     useNativeDriver: true,
                 }),
