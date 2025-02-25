@@ -45,6 +45,15 @@ export default function () {
 
     const [timeRemaining, setTimeRemaining] = useState("00:00:00");
 
+    const fetchPlayerStats = async () => {
+        try {
+            const response = await axios.get<Player[]>("https://notspotle-production.up.railway.app/api/playerstats");
+            setPlayerStats(response.data);
+        } catch (error) {
+            console.error("Error fetching player stats:", error);
+        }
+    };
+    
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
     const [guessCount, setGuessCount] = useState(0)
@@ -111,6 +120,7 @@ export default function () {
     };
     const resetGame = () => {
         // Reset the game states to initial values
+        fetchPlayerStats();
         setGuesses([]);
         setChosenPlayer(randomPlayer(playerStats));
         setGameComplete(false);
@@ -119,73 +129,70 @@ export default function () {
         setFootballImages([]);
     };
     
+    // useEffect(() => {
+    //     const currentTime = new Date();
+    //     const targetTime = new Date(currentTime);
+
+    //     // Set the target time to 1:28 PM today
+    //     targetTime.setHours(14, 1, 0, 0);
+
+    //     // If the current time is already past 1:28 PM, set the target time to 1:28 PM tomorrow
+    //     if (currentTime > targetTime) {
+    //         targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+    //     }
+
+    //     const timeDifference = targetTime.getTime() - currentTime.getTime(); // Time difference in milliseconds
+
+    //     // Wait until 1:28 PM before resetting the game
+    //     const timeoutId = setTimeout(() => {
+    //         console.log('Resetting the game...');
+    //         resetGame(); // Reset the game at the scheduled time
+    //     }, timeDifference);
+
+    //     // Cleanup the timeout when the component is unmounted or before the next effect runs
+    //     return () => clearTimeout(timeoutId);
+    // }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+    // Second useEffect: Update the remaining time every second
     useEffect(() => {
-        if (gameComplete || gameLost) {
-            const currentTime = new Date();
-            const targetTime = new Date(currentTime);
-            
-            // Set the target time to 1:20 PM today
-            targetTime.setHours(13, 20, 0, 0);
-    
-            // If the current time is already past 1:20 PM, set the target time to 1:20 PM tomorrow
-            if (currentTime > targetTime) {
-                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-            }
-    
-            const timeDifference = targetTime.getTime() - currentTime.getTime(); // Time difference in milliseconds
-           
-            // Wait until 1:20 PM before resetting the game
-            const timeoutId = setTimeout(() => {
-                console.log('Resetting the game...');
-                resetGame();
-            }, timeDifference);
-    
-            // Cleanup the timeout when the component is unmounted or before the next effect runs
-            return () => clearTimeout(timeoutId);
-        }
-    }, [gameComplete, gameLost]); // Ensure this effect is triggered by gameComplete or gameLost
-     
-    useEffect(() => {
-        if (gameComplete || gameLost) {
-            const currentTime = new Date();
-            const targetTime = new Date(currentTime);
-            
-            // Set the target time to 1:20 PM today
-            targetTime.setHours(13, 20, 0, 0);
+        const currentTime = new Date();
+        const targetTime = new Date(currentTime);
 
-            // If the current time is already past 1:20 PM, set the target time to 1:20 PM tomorrow
-            if (currentTime > targetTime) {
-                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+        // Set the target time to 1:45 PM today
+        targetTime.setHours(14, 20, 50, 0);
+
+        // If the current time is already past 1:45 PM, set the target time to 1:45 PM tomorrow
+        if (currentTime > targetTime) {
+            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+        }
+
+        // Function to update remaining time
+        const updateRemainingTime = () => {
+            const currentTime = new Date();
+            const timeDifference = targetTime.getTime() - currentTime.getTime();
+
+            if (timeDifference <= 0) {
+                setTimeRemaining("00:00:00");
+                clearInterval(intervalId); // Stop updating once the time is up
+                resetGame(); // Reset the game once time is up
+                return;
             }
 
-            // Function to update remaining time
-            const updateRemainingTime = () => {
-                const currentTime = new Date();
-                const timeDifference = targetTime.getTime() - currentTime.getTime();
+            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-                if (timeDifference <= 0) {
-                    setTimeRemaining("00:00:00");
-                    clearInterval(intervalId); // Stop updating once the time is up
-                    resetGame(); // Reset the game once time is up
-                    return;
-                }
+            // Format the time into a string like "10:00:00"
+            setTimeRemaining(
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+            );
+        };
 
-                const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+        // Update the time every second
+        const intervalId = setInterval(updateRemainingTime, 1000);
 
-                // Format the time into a string like "10:00:00"
-                setTimeRemaining(
-                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-                );
-            };
-
-            // Update the time every second
-            const intervalId = setInterval(updateRemainingTime, 1000);
-
-            // Clean up interval when component is unmounted or game reset is triggered
-            return () => clearInterval(intervalId);
-        }
+        // Clean up interval when component is unmounted or game reset is triggered
+        return () => clearInterval(intervalId);
     }, [gameComplete, gameLost]);
 
     useEffect(() => {
@@ -310,12 +317,7 @@ export default function () {
 
 
     useEffect(() => {
-        axios
-            .get<Player[]>("https://notspotle-production.up.railway.app/api/playerstats")
-            .then((response) => {
-                setPlayerStats(response.data);
-            })
-            .catch((error) => console.error("Error fetching player stats:", error));
+       fetchPlayerStats()
     }, []); // Fetch data only once when component mounts
 
     useEffect(() => {
@@ -474,7 +476,6 @@ export default function () {
                             <View key={index} style={styles.player}>
                                 <View style={styles.imagecontainer}>
                                     <ImageBackground
-                                        key={`${guessedPlayer.playerUrl}?${new Date().getTime()}`} // Adding timestamp to force re-fetch
                                         source={{ uri: guessedPlayer.playerUrl }}
                                         style={styles.playerimage}
                                     >
@@ -502,7 +503,6 @@ export default function () {
                                             return (
                                                 <View key={team} style={styles.team}>
                                                     <Image
-                                                        key={`${teamUrl}?${new Date().getTime()}`} // Adding timestamp to team badge image
                                                         source={{ uri: teamUrl }}
                                                         style={[
                                                             styles.teamBadge,
