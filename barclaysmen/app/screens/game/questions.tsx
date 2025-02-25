@@ -123,14 +123,35 @@ export default function () {
     };
     const resetGame = () => {
         // Reset the game states to initial values
-        fetchPlayerStats();
-        setGuesses([]);
-        setChosenPlayer(randomPlayer(playerStats));
-        setGameComplete(false);
-        setGameLost(false);
-        setGuessCount(0);
-        setFootballImages([]);
+        fetchPlayerStats(); // Fetch player stats again (if needed)
+        setGuesses([]); // Clear guesses
+        setChosenPlayer(randomPlayer(playerStats)); // Pick a new random player
+        setGameComplete(false); // Reset game complete state
+        setGameLost(false); // Reset game lost state
+        setGuessCount(0); // Reset guess count
+        setFootballImages([]); // Clear football images
+        setCardPositionAnimationCompleted(false); // Reset card animation completion flag
+        
+
+        setTimeRemaining("00:00:00");
+
+        // Reset animated values to their initial states
+        timeboxTranslateX.setValue(-300); // Reset X translation for timebox
+        timeboxOpacity.setValue(0); // Reset opacity for timebox
+        
+        // Reset fade, translation animations for other items
+        fadeAnims.forEach(anim => anim.setValue(0)); // Reset fade animation values
+        translateXAnims.forEach(anim => anim.setValue(0)); // Reset X translation animations
+        translateYAnims.forEach(anim => anim.setValue(200)); // Reset Y translation animations
+        
+        // Reset completion card position animations
+        completionCardTranslateY.setValue(200); // Reset Y position for completion card
+        completionCardTranslateX.setValue(8); // Reset X position for completion card
+        
+        setImageVisible(false); // Hide image initially
+        setImageOpacity(new Animated.Value(0)); 
     };
+    
 
     useEffect(() => {
         const updateRemainingTime = () => {
@@ -138,7 +159,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(17, 20, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(19, 51, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
@@ -173,7 +194,7 @@ export default function () {
 
     useEffect(() => {
         if (timeRemaining) {
-            // Start animating the timebox when timeRemaining is updated
+            console.log("Time remaining updated: Starting animation");
             Animated.parallel([
                 Animated.timing(timeboxTranslateX, {
                     toValue: 0, // Move to normal position (top)
@@ -198,11 +219,10 @@ export default function () {
         saveGameState();
     }, [guesses, chosenPlayer, gameComplete, gameLost, guessCount, footballImages]);
 
-
-
-    // Animate the completion card when the game ends
     useEffect(() => {
         if (gameComplete || gameLost) {
+            setCardPositionAnimationCompleted(false);
+            console.log("Time remaining updated: Starting animation");
             // Animate the Y and X position of the completion card
             Animated.parallel([
                 Animated.timing(completionCardTranslateY, {
@@ -226,7 +246,7 @@ export default function () {
 
     useEffect(() => {
         if (cardPositionAnimationCompleted) {
-            // Wait 2 seconds after the card animation
+            console.log("look at me");
             const timeoutId = setTimeout(() => {
                 setImageVisible(true); // Show the image
                 // Animate the image opacity to make it fade in
@@ -245,6 +265,10 @@ export default function () {
 
 
     useEffect(() => {
+        setFadeAnims([]); // Clear previous fade animations
+        setTranslateXAnims([]); // Clear previous X translation animations
+        setTranslateYAnims([]); 
+
         if (footballImages.length > 0) {
             // Create new animations for the new ball
             const lastFadeAnim = new Animated.Value(0); // Fade animation
@@ -318,9 +342,12 @@ export default function () {
 
     useEffect(() => {
         if (playerStats.length > 0 && !chosenPlayer) {
-            setChosenPlayer(randomPlayer(playerStats));
+            // Use the current date as a seed to generate the same random player for everyone on that day
+            const dateSeed = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD' format
+            const playerIndex = Math.abs(dateSeed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)) % playerStats.length;
+            setChosenPlayer(playerStats[playerIndex]);
         }
-    }, [playerStats]);
+    }, [playerStats, chosenPlayer]);
 
     useEffect(() => {
         if (chosenPlayer) {
