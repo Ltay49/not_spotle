@@ -42,6 +42,9 @@ export default function () {
         LuckiestGuy_400Regular,
 
     });
+
+    const [timeRemaining, setTimeRemaining] = useState("00:00:00");
+
     const youLose = "you've let this one slip!"
     const gameOver = "well done, same again tommorrow!"
     const [guessCount, setGuessCount] = useState(0)
@@ -75,7 +78,6 @@ export default function () {
         try {
             const savedGameState = await AsyncStorage.getItem('gameState');
             if (savedGameState) {
-                console.log('Loaded saved game state:', savedGameState);
                 const parsedGameState = JSON.parse(savedGameState);
                 
                 // Set state only if parsedGameState is not undefined or null
@@ -101,10 +103,8 @@ export default function () {
                 guessCount,
                 footballImages,
             };
-            console.log('Saving game state:', gameState);
             
             await AsyncStorage.setItem('gameState', JSON.stringify(gameState));
-            console.log('Game state saved successfully!');
         } catch (error) {
             console.error('Error saving game state:', error);
         }
@@ -112,7 +112,7 @@ export default function () {
     const resetGame = () => {
         // Reset the game states to initial values
         setGuesses([]);
-        setChosenPlayer(null);
+        setChosenPlayer(randomPlayer(playerStats));
         setGameComplete(false);
         setGameLost(false);
         setGuessCount(0);
@@ -121,21 +121,77 @@ export default function () {
     
     useEffect(() => {
         if (gameComplete || gameLost) {
-            // Wait 10 seconds before resetting the game
+            const currentTime = new Date();
+            const targetTime = new Date(currentTime);
+            
+            // Set the target time to 1:20 PM today
+            targetTime.setHours(13, 20, 0, 0);
+    
+            // If the current time is already past 1:20 PM, set the target time to 1:20 PM tomorrow
+            if (currentTime > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+            }
+    
+            const timeDifference = targetTime.getTime() - currentTime.getTime(); // Time difference in milliseconds
+           
+            // Wait until 1:20 PM before resetting the game
             const timeoutId = setTimeout(() => {
                 console.log('Resetting the game...');
                 resetGame();
-            }, 5000); // 10 seconds in milliseconds
+            }, timeDifference);
     
             // Cleanup the timeout when the component is unmounted or before the next effect runs
             return () => clearTimeout(timeoutId);
         }
-    }, [gameComplete, gameLost]); 
+    }, [gameComplete, gameLost]); // Ensure this effect is triggered by gameComplete or gameLost
+     
+    useEffect(() => {
+        if (gameComplete || gameLost) {
+            const currentTime = new Date();
+            const targetTime = new Date(currentTime);
+            
+            // Set the target time to 1:20 PM today
+            targetTime.setHours(13, 20, 0, 0);
+
+            // If the current time is already past 1:20 PM, set the target time to 1:20 PM tomorrow
+            if (currentTime > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+            }
+
+            // Function to update remaining time
+            const updateRemainingTime = () => {
+                const currentTime = new Date();
+                const timeDifference = targetTime.getTime() - currentTime.getTime();
+
+                if (timeDifference <= 0) {
+                    setTimeRemaining("00:00:00");
+                    clearInterval(intervalId); // Stop updating once the time is up
+                    resetGame(); // Reset the game once time is up
+                    return;
+                }
+
+                const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                // Format the time into a string like "10:00:00"
+                setTimeRemaining(
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+                );
+            };
+
+            // Update the time every second
+            const intervalId = setInterval(updateRemainingTime, 1000);
+
+            // Clean up interval when component is unmounted or game reset is triggered
+            return () => clearInterval(intervalId);
+        }
+    }, [gameComplete, gameLost]);
+
     useEffect(() => {
         loadGameState();
     }, []);  
     useEffect(() => {
-        console.log('Game state is changing, saving...');
         saveGameState();
     }, [guesses, chosenPlayer, gameComplete, gameLost, guessCount, footballImages]); 
 
@@ -249,10 +305,6 @@ export default function () {
             const guessedPlayer = playerStats.find(
                 (player) => player.name.toLowerCase() === guess.toLowerCase()
             );
-
-            if (guessedPlayer?.playerUrl) {
-                console.log('Guessed Player URL:', guessedPlayer.playerUrl);
-            }
         });
     }, [guesses, playerStats]); // Re-run the effect when guesses or playerStats change
 
@@ -267,7 +319,7 @@ export default function () {
     }, []); // Fetch data only once when component mounts
 
     useEffect(() => {
-        if (playerStats.length > 0) {
+        if (playerStats.length > 0 && !chosenPlayer) {
             setChosenPlayer(randomPlayer(playerStats));
         }
     }, [playerStats]);
@@ -275,14 +327,9 @@ export default function () {
     useEffect(() => {
         if (chosenPlayer) {
             console.log("Chosen Player:", chosenPlayer);
+            saveGameState(); // Save the game state with the new chosenPlayer
         }
-    }, [chosenPlayer]);
-
-    useEffect(() => {
-        if (chosenPlayer?.playerUrl) {
-            console.log('Player URL:', chosenPlayer.playerUrl);
-        }
-    }, [chosenPlayer?.playerUrl]);
+    }, [chosenPlayer]); 
 
     const filteredPlayers = searchText
         ? playerStats
@@ -357,11 +404,14 @@ export default function () {
                                     <Text style={styles.gameCompleteText}>
                                         "They think it's all over!... It is now!"
                                     </Text>
-                                    <Text style={styles.gameCompleteText}>
+                                    <Text style={styles.gameCompleteText1}>
                                         {gameComplete ? gameOver : gameLost ? youLose : ''}
                                     </Text>
                                 </ImageBackground>
                             </View>
+                            <View style={styles.timebox}>
+                                        <Text style={styles.timeboxText}>Time Remaining untill next the game: {timeRemaining}</Text>
+                                    </View>
                             <View style={styles.compContainer}>
                                 <Animated.View
                                     style={[
@@ -750,6 +800,26 @@ const styles = StyleSheet.create({
         position: 'absolute',
         transform: [{ translateX: -61 }]
     },
+    timebox: {
+        width: 380,
+        height: 50,
+        borderWidth: 1,
+        borderColor: 'white',
+        backgroundColor:'black',
+        borderRadius:10,
+        justifyContent:'center',
+        alignContent:'center',
+        zIndex: 999, // Ensure it's above other components
+        position: 'absolute', // Allows the element to be positioned outside of its normal flow
+        top: 60, // Position it wherever you want in the absolute space
+        left: 10 // Position it wherever you want in the absolute space
+      },
+    timeboxText:{
+        fontSize: 16,
+        fontFamily: 'VarelaRound_400Regular',
+        textAlign:'center',
+        color:'white'
+    },
     playerNameTextComplete: {
         // marginTop: 120,
         // marginRight:130,
@@ -1034,7 +1104,15 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     gameCompleteText: {
-        marginTop: 35,
+        marginTop: 25,
+        fontFamily: 'LuckiestGuy_400Regular',
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center', // Green background with transparency
+        width: '100%',
+    },
+    gameCompleteText1: {
+        marginTop: 10,
         fontFamily: 'LuckiestGuy_400Regular',
         fontSize: 20,
         color: 'white',
