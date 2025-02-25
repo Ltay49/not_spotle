@@ -172,7 +172,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(20, 37, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(20, 55, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
