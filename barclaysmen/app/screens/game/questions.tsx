@@ -124,10 +124,10 @@ export default function () {
             console.error('Error saving game state:', error);
         }
     };
-    const resetGame = () => {
-        localStorage.setItem('lastResetTime', new Date().toISOString());
-        // Store the current game state in localStorage before resetting
-        localStorage.setItem('gameState', JSON.stringify({
+    const router = useRouter();
+    const resetGame = async () => {
+        await AsyncStorage.setItem('lastResetTime', new Date().toISOString());
+        await AsyncStorage.setItem('gameState', JSON.stringify({
             chosenPlayer: null, // Or use the current chosen player if needed
             guesses: [],
             gameComplete: false,
@@ -165,7 +165,6 @@ export default function () {
         setImageOpacity(new Animated.Value(0));
     
         // Reload the page to simulate a reset
-        const router = useRouter();
         router.push('/');
     };
     
@@ -177,7 +176,7 @@ export default function () {
             const targetTime = new Date(currentTime);
     
             // Set the target time to 4:12 PM today
-            targetTime.setHours(22, 20, 0, 0);  // Set to 4:31 PM
+            targetTime.setHours(22, 55, 0, 0);  // Set to 4:31 PM
     
             // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
             if (currentTime > targetTime) {
@@ -186,9 +185,9 @@ export default function () {
     
             const timeDifference = targetTime.getTime() - currentTime.getTime();
     
-            if (timeDifference <= 1000) {
+            if (timeDifference <= 2000) {
                 console.log("Time has passed, resetting game...");
-                resetGame(); // Reset the game when the time hits 4:31 PM
+                resetGame(); //
                 return; // Stop further execution
             }
     
@@ -210,8 +209,8 @@ export default function () {
     }, []);
 
     useEffect(() => {
-        const checkResetTime = () => {
-            const lastResetTime = localStorage.getItem('lastResetTime');
+        const checkResetTime = async () => {
+            const lastResetTime = await AsyncStorage.getItem('lastResetTime');
             const currentTime = new Date();
     
             if (lastResetTime) {
@@ -219,7 +218,7 @@ export default function () {
                 const targetTime = new Date(lastResetDate);
     
                 // Set the target time to 4:31 PM on the last reset date
-                targetTime.setHours(22, 20, 0, 0);  // Set to 4:31 PM
+                targetTime.setHours(22, 55, 0, 0); 
     
                 // If the current time is already past the target time, set the target time to 4:31 PM tomorrow
                 if (currentTime > targetTime) {
@@ -230,7 +229,7 @@ export default function () {
     
                 if (timeDifference <= 1000) {
                     console.log("Time has passed, resetting game...");
-                    resetGame(); // Reset the game when the time hits 4:31 PM
+                    resetGame(); //
                     return; // Stop further execution
                 }
     
