@@ -7,9 +7,9 @@ import {
     TextInput,
     TouchableOpacity,
     ImageBackground,
-    Animated, Easing, AppState, AppStateStatus 
+    Animated, Easing
 } from "react-native"
-
+import FastImage from 'react-native-fast-image';
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -19,8 +19,6 @@ const slip = require('../../../assets/images/slip.png')
 import { useFonts, Chewy_400Regular } from '@expo-google-fonts/chewy';
 import { LuckiestGuy_400Regular } from '@expo-google-fonts/luckiest-guy';
 import { VarelaRound_400Regular } from '@expo-google-fonts/varela-round';
-
-import { useRouter } from 'expo-router'
 
 type Player = {
     name: string;
@@ -36,7 +34,6 @@ type Player = {
     games: number;
 };
 
-
 export default function () {
 
     const [fontsLoaded] = useFonts({
@@ -45,7 +42,7 @@ export default function () {
         LuckiestGuy_400Regular,
 
     });
-    const [appState, setAppState] = useState<AppStateStatus>(AppState.currentState);
+
     const [timeRemaining, setTimeRemaining] = useState("00:00:00");
 
     const fetchPlayerStats = async () => {
@@ -124,134 +121,118 @@ export default function () {
             console.error('Error saving game state:', error);
         }
     };
-    const router = useRouter();
     const resetGame = async () => {
-        await AsyncStorage.setItem('lastResetTime', new Date().toISOString());
-        await AsyncStorage.setItem('gameState', JSON.stringify({
-            chosenPlayer: null, // Or use the current chosen player if needed
-            guesses: [],
-            gameComplete: false,
-            gameLost: false,
-            guessCount: 0,
-            footballImages: [],
-            cardPositionAnimationCompleted: false,
-            timeRemaining: "00:00:00",
-            imageVisible: false, // Store image visibility
-            imageOpacity: 0 // Store image opacity
-        }));
+        try {
+            console.log("Resetting game...");
+            // Clear out all AsyncStorage data related to the game
+            await AsyncStorage.removeItem('guesses');
+            await AsyncStorage.removeItem('chosenPlayer');
+            await AsyncStorage.removeItem('gameComplete');
+            await AsyncStorage.removeItem('gameLost');
+            await AsyncStorage.removeItem('guessCount');
+            await AsyncStorage.removeItem('footballImages');
+            await AsyncStorage.removeItem('cardPositionAnimationCompleted');
+            await AsyncStorage.removeItem('timeRemaining');
+            
+            // Optionally clear other game-related data in AsyncStorage if needed
+            // await AsyncStorage.clear(); // This would clear all data from AsyncStorage, not just the game state
     
-        // Clear guesses and reset other states
-        setGuesses([]);
-        setGameComplete(false); 
-        setGameLost(false);
-        setGuessCount(0);
-        setFootballImages([]);
-        setCardPositionAnimationCompleted(false);
-        
-        setTimeRemaining("00:00:00");
+            // Reset all state to their initial values
+            setGuesses([]); // Reset guesses
+            setChosenPlayer(null); // Reset chosen player to null
+            setGameComplete(false); // Reset gameComplete state to false
+            setGameLost(false); // Reset gameLost state to false
+            setGuessCount(0); // Reset guess count to 0
+            setFootballImages([]); // Reset football images state
+            setCardPositionAnimationCompleted(false); // Reset card position animation state
+            setTimeRemaining("00:00:00"); // Reset time remaining to 00:00:00
     
-        // Reset animated values to their initial states
-        timeboxTranslateX.setValue(-300);
-        timeboxOpacity.setValue(0);
-        
-        fadeAnims.forEach(anim => anim.setValue(0));
-        translateXAnims.forEach(anim => anim.setValue(0));
-        translateYAnims.forEach(anim => anim.setValue(200));
-        
-        completionCardTranslateY.setValue(200);
-        completionCardTranslateX.setValue(8);
-        
-        setImageVisible(false);
-        setImageOpacity(new Animated.Value(0));
+            // Reset animations
+            timeboxTranslateX.setValue(-300);
+            timeboxOpacity.setValue(0);
+            fadeAnims.forEach(anim => anim.setValue(0));
+            translateXAnims.forEach(anim => anim.setValue(0));
+            translateYAnims.forEach(anim => anim.setValue(200));
+            completionCardTranslateY.setValue(200);
+            completionCardTranslateX.setValue(8);
     
-        // Reload the page to simulate a reset
-        router.push('/');
+            // Hide image initially
+            setImageVisible(false);
+            setImageOpacity(new Animated.Value(0));
+    
+            // Fetch player stats again if needed
+            await fetchPlayerStats(); // Assuming you might need to fetch new player stats or reset player data
+    
+            // Reload the page to fully reset everything (if required)
+            // window.location.reload();
+        } catch (error) {
+            console.error('Error resetting game:', error);
+        }
     };
     
-    
 
-    const updateRemainingTime = () => {
-        const currentTime = new Date();
-        const targetTime = new Date(currentTime);
-        targetTime.setHours(23, 25, 0, 0);  // Set target time to 4:55 PM today
-    
-        if (currentTime > targetTime) {
-          targetTime.setDate(targetTime.getDate() + 1); // Move to next day
+
+    useEffect(() => {
+        const updateRemainingTime = () => {
+            const currentTime = new Date();
+            const targetTime = new Date(currentTime);
+            targetTime.setHours(0, 37, 0, 0); // Set target time (e.g., 14:00)
+
+            if (currentTime > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
+            }
+
+            const timeDifference = targetTime.getTime() - currentTime.getTime();
+
+            if (timeDifference <= 1000) {
+                console.log("Time has passed, resetting game...");
+                resetGame();
+                return;
+            }
+
+            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // Update the time remaining in HH:mm:ss format
+            setTimeRemaining(
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+            );
+        };
+
+        // Update time immediately and set interval
+        updateRemainingTime();
+        const intervalId = setInterval(updateRemainingTime, 1000);
+
+        // Page visibility change listener to handle when the page becomes visible again
+        const handleVisibilityChange = () => {
+            console.log("Visibility change detected");
+            if (document.visibilityState === 'visible') {
+                console.log("Page is visible, updating time...");
+                updateRemainingTime(); // Recalculate time when the page becomes visible
+            } else {
+                console.log("Page is not visible.");
+            }
+        };
+
+        // Add event listener for visibility change
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Initial check to see if the page is visible when the component mounts
+        if (document.visibilityState === 'visible') {
+            console.log("Page is visible on mount.");
+            updateRemainingTime();
         }
-    
-        const timeDifference = targetTime.getTime() - currentTime.getTime();
-    
-        if (timeDifference <= 2000) {
-          console.log("Time has passed, resetting game...");
-          resetGame();
-          return;
-        }
-    
-        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    
-        setTimeRemaining(
-          `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-        );
-      };
-    
-      // Function to check reset time (now placed outside the useEffect)
-      const checkResetTime = async () => {
-        const lastResetTime = await AsyncStorage.getItem('lastResetTime');
-        const currentTime = new Date();
-    
-        if (lastResetTime) {
-          const lastResetDate = new Date(lastResetTime);
-          const targetTime = new Date(lastResetDate);
-          targetTime.setHours(23, 25, 0, 0); // Set target time to 4:55 PM
-    
-          if (currentTime > targetTime) {
-            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-          }
-    
-          const timeDifference = targetTime.getTime() - currentTime.getTime();
-    
-          if (timeDifference <= 1000) {
-            console.log("Time has passed, resetting game...");
-            resetGame();  // Reset game
-            return; // Stop further execution
-          }
-    
-          const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-          const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-    
-          setTimeRemaining(
-            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-          );
-        }
-      };
-    
-      // Check for reset time on page load
-      useEffect(() => {
-        loadGameState();  // Load game state on mount
-        updateRemainingTime();  // Update the time immediately
-        const intervalId = setInterval(updateRemainingTime, 1000); // Update every second
-    
-        return () => clearInterval(intervalId); // Clean up the interval on unmount
-      }, []);
-    
-      // AppState listener to check reset time when app goes from background to foreground
-      useEffect(() => {
-        const appStateListener = AppState.addEventListener('change', (nextAppState: AppStateStatus) => {
-          setAppState(nextAppState);
-          if (nextAppState === 'active') {
-            checkResetTime();  // Call checkResetTime when the app returns to the foreground
-          }
-        });
-    
-        return () => appStateListener.remove(); // Cleanup listener on unmount
-      }, []);
+
+        // Cleanup: remove event listener and clear interval when component unmounts
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            clearInterval(intervalId); // Cleanup interval
+        };
+    }, []); //
 
     useEffect(() => {
         if (timeRemaining) {
-            console.log("Time remaining updated: Starting animation");
             Animated.parallel([
                 Animated.timing(timeboxTranslateX, {
                     toValue: 0, // Move to normal position (top)
@@ -279,7 +260,6 @@ export default function () {
     useEffect(() => {
         if (gameComplete || gameLost) {
             setCardPositionAnimationCompleted(false);
-            console.log("Time remaining updated: Starting animation");
             // Animate the Y and X position of the completion card
             Animated.parallel([
                 Animated.timing(completionCardTranslateY, {
@@ -303,7 +283,6 @@ export default function () {
 
     useEffect(() => {
         if (cardPositionAnimationCompleted) {
-            console.log("look at me");
             const timeoutId = setTimeout(() => {
                 setImageVisible(true); // Show the image
                 // Animate the image opacity to make it fade in
@@ -324,7 +303,7 @@ export default function () {
     useEffect(() => {
         setFadeAnims([]); // Clear previous fade animations
         setTranslateXAnims([]); // Clear previous X translation animations
-        setTranslateYAnims([]); 
+        setTranslateYAnims([]);
 
         if (footballImages.length > 0) {
             // Create new animations for the new ball
