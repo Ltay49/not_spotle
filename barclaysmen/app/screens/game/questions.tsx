@@ -199,7 +199,7 @@ export default function () {
     
             // Calculate the target time (e.g., 17:10:00 of the current or next day)
             const targetTime = new Date();
-            targetTime.setHours(19,30, 0);
+            targetTime.setHours(19,35, 0);
             if (currentTime > targetTime.getTime()) {
                 targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if target time has passed
             }
