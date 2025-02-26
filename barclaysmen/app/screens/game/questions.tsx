@@ -173,52 +173,45 @@ export default function () {
     };
     
 
-
     useEffect(() => {
         const checkAndResetGame = async () => {
-            const lastResetTime = await AsyncStorage.getItem('lastResetTime');
-            const currentTime = new Date().getTime();
+            const lastResetDate = await AsyncStorage.getItem('lastResetDate');
+            const currentTime = new Date();
             
-            // If there's no last reset time, reset the game immediately
-            if (!lastResetTime) {
-                console.log("No last reset time, resetting game...");
+            // Format the current date as YYYY-MM-DD for comparison
+            const currentDayStamp = `${currentTime.getFullYear()}-${String(currentTime.getMonth() + 1).padStart(2, '0')}-${String(currentTime.getDate()).padStart(2, '0')}`;
+    
+            // Check if the day has changed
+            if (!lastResetDate || lastResetDate !== currentDayStamp) {
+                console.log("Date has changed, resetting game...");
                 await resetGame();
-                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the current time
+                await AsyncStorage.setItem('lastResetDate', currentDayStamp);  // Save the current date as the new reset date
                 return;
             }
     
-            const timeElapsed = currentTime - parseInt(lastResetTime);
-            
-            // If more than 24 hours have passed, reset the game
-            if (timeElapsed > 24 * 60 * 60 * 1000) {
-                console.log("More than 24 hours passed, resetting game...");
-                await resetGame();
-                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the new reset time
-                return;
-            }
-    
-            // Calculate the target time (e.g., 17:10:00 of the current or next day)
+            // Calculate time difference for countdown UX
             const targetTime = new Date();
-            targetTime.setHours(20, 10, 0, 0);
-            if (currentTime > targetTime.getTime()) {
-                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if target time has passed
+            targetTime.setHours(23, 59, 0, 0); // Target time is 23:59:00 of today
+            if (currentTime > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1); // If target time has passed, set it to the next day
             }
     
-            const timeDifference = targetTime.getTime() - currentTime;
-            
-            // If time difference is <= 10 seconds, reset the game
+            const timeDifference = targetTime.getTime() - currentTime.getTime();
+    
+            // If time difference is <= 10 seconds, reset the game (for user experience)
             if (timeDifference <= 10000) {
-                console.log("Time has passed, resetting game...");
+                console.log("Time is less than or equal to 10 seconds, resetting game...");
                 await resetGame();
-                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the new reset time
+                await AsyncStorage.setItem('lastResetDate', currentDayStamp);  // Save the current date as the new reset date
                 return;
             }
     
-            // Otherwise, continue the countdown as usual
+            // Continue countdown as usual if no reset is needed
             const hours = Math.floor(timeDifference / (1000 * 60 * 60));
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
     
+            // Update the UI with the remaining time
             setTimeRemaining(
                 `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
             );
@@ -227,8 +220,9 @@ export default function () {
         // Initial check when the component mounts
         checkAndResetGame();
     
+        // Interval for checking the reset logic every second (or adjust as needed)
         const intervalId = setInterval(() => {
-            checkAndResetGame(); // Check every second if we need to reset the game
+            checkAndResetGame();
         }, 1000);
     
         const handleVisibilityChange = async () => {
@@ -236,7 +230,7 @@ export default function () {
     
             if (document.visibilityState === 'visible') {
                 console.log("Page is visible, checking reset condition...");
-                await checkAndResetGame(); // Recheck when the page becomes visible
+                await checkAndResetGame(); // Recheck the reset condition when the page becomes visible
             }
         };
     
@@ -249,7 +243,9 @@ export default function () {
         };
     }, []);
     
-
+    
+    
+    // console.log(timeRemaining)
     useEffect(() => {
         if (timeRemaining) {
             Animated.parallel([
