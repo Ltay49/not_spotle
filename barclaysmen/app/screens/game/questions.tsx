@@ -7,9 +7,8 @@ import {
     TextInput,
     TouchableOpacity,
     ImageBackground,
-    Animated, Easing
+    Animated, Easing,
 } from "react-native"
-import FastImage from 'react-native-fast-image';
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -172,36 +171,57 @@ export default function () {
     
 
 
+    const updateRemainingTime = () => {
+        const currentTime = new Date();
+        const targetTime = new Date(currentTime);
+        
+        // Set your target time (example: 7:00 AM)
+        targetTime.setHours(1,55, 0, 0); 
+
+        if (currentTime > targetTime) {
+            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if needed
+        }
+
+        const timeDifference = targetTime.getTime() - currentTime.getTime();
+
+        // If the time difference is zero or less, reset the game
+        if (timeDifference <= 1000) {
+            console.log("Time has passed, resetting game...");
+            resetGame();
+            return;
+        }
+
+        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Save the formatted time to localStorage if available
+        if (typeof(Storage) !== "undefined") {
+            try {
+                localStorage.setItem('remainingTime', formattedTime); // Store time in localStorage
+                setTimeRemaining(formattedTime); // Update state with new time
+            } catch (error) {
+                console.error("Error saving to localStorage:", error);
+                // Handle localStorage errors, like quota exceeded or if localStorage is unavailable
+            }
+        } else {
+            console.error('localStorage is not available');
+        }
+    };
+
+    // useEffect to handle initial setup and cleanup
     useEffect(() => {
-        const updateRemainingTime = () => {
-            const currentTime = new Date();
-            const targetTime = new Date(currentTime);
-            targetTime.setHours(7, 0, 0, 0); // Set target time (e.g., 14:00)
+        // Retrieve time from localStorage when the component mounts (or reloads)
+        const savedTime = localStorage.getItem('remainingTime');
+        if (savedTime) {
+            setTimeRemaining(savedTime); // Set the time from localStorage
+        } else {
+            updateRemainingTime(); // If no saved time, start updating
+        }
 
-            if (currentTime > targetTime) {
-                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
-            }
-
-            const timeDifference = targetTime.getTime() - currentTime.getTime();
-
-            if (timeDifference <= 1000) {
-                console.log("Time has passed, resetting game...");
-                resetGame();
-                return;
-            }
-
-            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            // Update the time remaining in HH:mm:ss format
-            setTimeRemaining(
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-            );
-        };
-
-        // Update time immediately and set interval
-        updateRemainingTime();
+        // Set an interval to update the remaining time every second
         const intervalId = setInterval(updateRemainingTime, 1000);
 
         // Page visibility change listener to handle when the page becomes visible again
@@ -227,9 +247,9 @@ export default function () {
         // Cleanup: remove event listener and clear interval when component unmounts
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            clearInterval(intervalId); // Cleanup interval
+            clearInterval(intervalId); // Stop the interval to avoid memory leaks
         };
-    }, []); //
+    }, []);  //
 
     useEffect(() => {
         if (timeRemaining) {

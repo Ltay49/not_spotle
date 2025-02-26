@@ -11,7 +11,7 @@ export default function GamePage() {
     return (
         <ImageBackground source={Lua} style={styles.background} resizeMode="cover" blurRadius={5}>
             <View style={styles.overlay}> 
-                <Questions />
+                <Questions/>
             </View>
         </ImageBackground>
     );
