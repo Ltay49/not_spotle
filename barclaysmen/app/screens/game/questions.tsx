@@ -124,6 +124,8 @@ export default function () {
     const resetGame = async () => {
         try {
             console.log("Resetting game...");
+                   
+            window.location.reload();
             // Clear out all AsyncStorage data related to the game
             await AsyncStorage.removeItem('guesses');
             await AsyncStorage.removeItem('chosenPlayer');
@@ -151,8 +153,6 @@ export default function () {
             translateYAnims.forEach(anim => anim.setValue(200));
             completionCardTranslateY.setValue(200);
             completionCardTranslateX.setValue(8);
-            
-            window.location.reload();
 
             // Hide image initially
             setImageVisible(false);
@@ -182,7 +182,6 @@ export default function () {
             // If there's no last reset time, reset the game immediately
             if (!lastResetTime) {
                 console.log("No last reset time, resetting game...");
-                await resetGame();
                 await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the current time
                 return;
             }
@@ -199,7 +198,7 @@ export default function () {
     
             // Calculate the target time (e.g., 17:10:00 of the current or next day)
             const targetTime = new Date();
-            targetTime.setHours(17, 53, 0, 0);
+            targetTime.setHours(19, 20, 0, 0);
             if (currentTime > targetTime.getTime()) {
                 targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if target time has passed
             }
