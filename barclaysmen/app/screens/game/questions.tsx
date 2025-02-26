@@ -9,6 +9,7 @@ import {
     ImageBackground,
     Animated, Easing,
 } from "react-native"
+
 import React, { useEffect, useState } from "react";
 import axios from "axios"
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -133,10 +134,6 @@ export default function () {
             await AsyncStorage.removeItem('cardPositionAnimationCompleted');
             await AsyncStorage.removeItem('timeRemaining');
             
-            // Optionally clear other game-related data in AsyncStorage if needed
-            // await AsyncStorage.clear(); // This would clear all data from AsyncStorage, not just the game state
-    
-            // Reset all state to their initial values
             setGuesses([]); // Reset guesses
             setChosenPlayer(null); // Reset chosen player to null
             setGameComplete(false); // Reset gameComplete state to false
@@ -154,16 +151,22 @@ export default function () {
             translateYAnims.forEach(anim => anim.setValue(200));
             completionCardTranslateY.setValue(200);
             completionCardTranslateX.setValue(8);
-    
+            
+            window.location.reload();
+
             // Hide image initially
             setImageVisible(false);
             setImageOpacity(new Animated.Value(0));
     
             // Fetch player stats again if needed
             await fetchPlayerStats(); // Assuming you might need to fetch new player stats or reset player data
+            
+            if (playerStats.length > 0) {
+                const dateSeed = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD' format
+                const playerIndex = Math.abs(dateSeed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)) % playerStats.length;
+                setChosenPlayer(playerStats[playerIndex]);
+            }
     
-            // Reload the page to fully reset everything (if required)
-            // window.location.reload();
         } catch (error) {
             console.error('Error resetting game:', error);
         }
@@ -171,85 +174,81 @@ export default function () {
     
 
 
-const updateRemainingTime = () => {
-        const currentTime = new Date();
-        const targetTime = new Date(currentTime);
-        
-        // Set your target time (example: 7:00 AM)
-        targetTime.setHours(15,24, 0, 0); 
-
-        if (currentTime > targetTime) {
-            targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if needed
-        }
-
-        const timeDifference = targetTime.getTime() - currentTime.getTime();
-
-        // If the time difference is zero or less, reset the game
-        if (timeDifference <= 10000) {
-            console.log("Time has passed, resetting game...");
-            resetGame();
-            return;
-        }
-
-        const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-        const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-        // Save the formatted time to localStorage if available
-        if (typeof(Storage) !== "undefined") {
-            try {
-                localStorage.setItem('remainingTime', formattedTime); // Store time in localStorage
-                setTimeRemaining(formattedTime); // Update state with new time
-            } catch (error) {
-                console.error("Error saving to localStorage:", error);
-                // Handle localStorage errors, like quota exceeded or if localStorage is unavailable
-            }
-        } else {
-            console.error('localStorage is not available');
-        }
-    };
-
-    // useEffect to handle initial setup and cleanup
     useEffect(() => {
-        // Retrieve time from localStorage when the component mounts (or reloads)
-        const savedTime = localStorage.getItem('remainingTime');
-        if (savedTime) {
-            setTimeRemaining(savedTime); // Set the time from localStorage
-        } else {
-            updateRemainingTime(); // If no saved time, start updating
-        }
-
-        // Set an interval to update the remaining time every second
-        const intervalId = setInterval(updateRemainingTime, 1000);
-
-        // Page visibility change listener to handle when the page becomes visible again
-        const handleVisibilityChange = () => {
+        const checkAndResetGame = async () => {
+            const lastResetTime = await AsyncStorage.getItem('lastResetTime');
+            const currentTime = new Date().getTime();
+            
+            // If there's no last reset time, reset the game immediately
+            if (!lastResetTime) {
+                console.log("No last reset time, resetting game...");
+                await resetGame();
+                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the current time
+                return;
+            }
+    
+            const timeElapsed = currentTime - parseInt(lastResetTime);
+            
+            // If more than 24 hours have passed, reset the game
+            if (timeElapsed > 24 * 60 * 60 * 1000) {
+                console.log("More than 24 hours passed, resetting game...");
+                await resetGame();
+                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the new reset time
+                return;
+            }
+    
+            // Calculate the target time (e.g., 17:10:00 of the current or next day)
+            const targetTime = new Date();
+            targetTime.setHours(17, 53, 0, 0);
+            if (currentTime > targetTime.getTime()) {
+                targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if target time has passed
+            }
+    
+            const timeDifference = targetTime.getTime() - currentTime;
+            
+            // If time difference is <= 10 seconds, reset the game
+            if (timeDifference <= 10000) {
+                console.log("Time has passed, resetting game...");
+                await resetGame();
+                await AsyncStorage.setItem('lastResetTime', currentTime.toString());  // Save the new reset time
+                return;
+            }
+    
+            // Otherwise, continue the countdown as usual
+            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+            setTimeRemaining(
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+            );
+        };
+    
+        // Initial check when the component mounts
+        checkAndResetGame();
+    
+        const intervalId = setInterval(() => {
+            checkAndResetGame(); // Check every second if we need to reset the game
+        }, 1000);
+    
+        const handleVisibilityChange = async () => {
             console.log("Visibility change detected");
+    
             if (document.visibilityState === 'visible') {
-                console.log("Page is visible, updating time...");
-                updateRemainingTime(); // Recalculate time when the page becomes visible
-            } else {
-                console.log("Page is not visible.");
+                console.log("Page is visible, checking reset condition...");
+                await checkAndResetGame(); // Recheck when the page becomes visible
             }
         };
-
-        // Add event listener for visibility change
+    
         document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // Initial check to see if the page is visible when the component mounts
-        if (document.visibilityState === 'visible') {
-            console.log("Page is visible on mount.");
-            updateRemainingTime();
-        }
-
-        // Cleanup: remove event listener and clear interval when component unmounts
+    
+        // Cleanup
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            clearInterval(intervalId); // Stop the interval to avoid memory leaks
+            clearInterval(intervalId); // Cleanup interval on unmount
         };
-    }, []);  //
+    }, []);
+    
 
     useEffect(() => {
         if (timeRemaining) {
