@@ -176,7 +176,7 @@ export default function () {
         const updateRemainingTime = () => {
             const currentTime = new Date();
             const targetTime = new Date(currentTime);
-            targetTime.setHours(0, 37, 0, 0); // Set target time (e.g., 14:00)
+            targetTime.setHours(0, 45, 0, 0); // Set target time (e.g., 14:00)
 
             if (currentTime > targetTime) {
                 targetTime.setDate(targetTime.getDate() + 1); // Move to the next day
