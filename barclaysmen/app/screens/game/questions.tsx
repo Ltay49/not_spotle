@@ -171,12 +171,12 @@ export default function () {
     
 
 
-    const updateRemainingTime = () => {
+const updateRemainingTime = () => {
         const currentTime = new Date();
         const targetTime = new Date(currentTime);
         
         // Set your target time (example: 7:00 AM)
-        targetTime.setHours(1,55, 0, 0); 
+        targetTime.setHours(15,24, 0, 0); 
 
         if (currentTime > targetTime) {
             targetTime.setDate(targetTime.getDate() + 1); // Move to the next day if needed
@@ -185,7 +185,7 @@ export default function () {
         const timeDifference = targetTime.getTime() - currentTime.getTime();
 
         // If the time difference is zero or less, reset the game
-        if (timeDifference <= 1000) {
+        if (timeDifference <= 10000) {
             console.log("Time has passed, resetting game...");
             resetGame();
             return;
