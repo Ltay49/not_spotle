@@ -189,7 +189,7 @@ export default function () {
     
             // Calculate time difference for countdown UX
             const targetTime = new Date();
-            targetTime.setHours(23, 59, 0, 0); // Target time is 23:59:00 of today
+            targetTime.setHours(24, 0, 0, 0); // Target time is 23:59:00 of today
             if (currentTime > targetTime) {
                 targetTime.setDate(targetTime.getDate() + 1); // If target time has passed, set it to the next day
             }
