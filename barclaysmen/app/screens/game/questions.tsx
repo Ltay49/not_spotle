@@ -152,8 +152,6 @@ export default function () {
             completionCardTranslateY.setValue(200);
             completionCardTranslateX.setValue(8);
             
-            window.location.reload();
-
             // Hide image initially
             setImageVisible(false);
             setImageOpacity(new Animated.Value(0));
