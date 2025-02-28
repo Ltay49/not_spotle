@@ -406,11 +406,22 @@ export default function () {
     }, [chosenPlayer]);
 
     const filteredPlayers = searchText
-        ? playerStats
-            .filter(player => player.name.toLowerCase().startsWith(searchText.toLowerCase())) // Match by the first letter
-            .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically
-            .slice(0, 5) // Limit to 5 players
-        : [];
+    ? playerStats
+        .filter(player => {
+            // Convert the player's name to lowercase for comparison
+            const fullName = player.name.toLowerCase();
+            const searchTerm = searchText.toLowerCase();
+
+            // Split the name into first and last name (or just use the full name)
+            const nameParts = fullName.split(' ');
+
+            // Check if the search term matches either the first name or the last name
+            return nameParts.some(part => part.startsWith(searchTerm));
+        })
+        .sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically
+        .slice(0, 5) // Limit to 5 players
+    : [];
+
 
 
     return (
